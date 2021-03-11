@@ -1,6 +1,6 @@
-# beat_the_virus
+# Beat The Virus
 
-A cross-platform application for Beat The Virus Startup
+A cross-platform application for Beat The Virus Startup.
 
 ## Getting Started
 
