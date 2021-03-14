@@ -1,3 +1,4 @@
+import 'package:beat_the_virus/widgets/DrawerItems.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,13 +12,7 @@ class BeatTheVirus extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         home: Scaffold(
             drawer: Drawer(
-              child: ListView(
-                children: <Widget>[
-                  DrawerHeader(),
-                  ListTile(),
-                  ListTile(),
-                ],
-              ),
+              child: drawerItems(),
             ),
             appBar: AppBar(
                 title: Text("Beat The Virus"),
@@ -39,9 +34,6 @@ class BeatTheVirus extends StatelessWidget {
                     icon: Icon(Icons.fastfood),
                     onPressed: () => Scaffold.of(context).openDrawer(),
                   );
-                })
-            )
-        )
-    );
+                }))));
   }
 }
