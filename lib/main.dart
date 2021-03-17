@@ -1,6 +1,8 @@
 import 'package:beat_the_virus/widgets/DrawerItems.dart';
 import 'package:flutter/material.dart';
 
+import 'widgets/DrawerItems.dart';
+
 void main() {
   runApp(BeatTheVirus()); //Appbar Created
 }
@@ -12,7 +14,7 @@ class BeatTheVirus extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         home: Scaffold(
             drawer: Drawer(
-              child: drawerItems(),
+              child: DrawerItems(),
             ),
             appBar: AppBar(
                 title: Text("Beat The Virus"),
