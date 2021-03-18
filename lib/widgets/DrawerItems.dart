@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../aboutus.dart';
+import '../blog.dart';
 
 class DrawerItems extends StatelessWidget {
   @override
@@ -65,7 +66,14 @@ class DrawerItems extends StatelessWidget {
               leading: Image.asset('assets/icons/gift.png'),
               title: Text('PRODUCT')),
           ListTile(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            blog())); //navigation Blog added
+
+              },
               leading: Image.asset('assets/icons/blogging.png'),
               title: Text('BLOG')),
           Divider(color: Colors.grey, height: 1.0),
