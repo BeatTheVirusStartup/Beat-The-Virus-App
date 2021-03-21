@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-
 import '../aboutus.dart';
 import '../blog.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class DrawerItems extends StatelessWidget {
   @override
@@ -20,9 +20,14 @@ class DrawerItems extends StatelessWidget {
                     alignment: AlignmentDirectional.centerStart,
                     child: InkWell(
                         onTap: () {},
-                        child: Image(
-                            image: AssetImage('assets/icons/user.png'),
-                            height: 80))),
+                        child: Icon(
+                          Icons.person,
+                          size: 80.0,
+                          color: Colors.black87,
+                        )
+                    )
+                )
+                ,
                 Align(
                     alignment: AlignmentDirectional.center,
                     child: Padding(
@@ -33,7 +38,11 @@ class DrawerItems extends StatelessWidget {
               ])),
           ListTile(
               onTap: () {},
-              leading: Image.asset('assets/icons/home.png'),
+              leading: Icon(
+                Icons.home,
+                size: 34.0,
+                color: Colors.black87
+              ),
               title: Text('HOME')),
           ListTile(
               onTap: () {
@@ -43,27 +52,51 @@ class DrawerItems extends StatelessWidget {
                         builder: (context) =>
                             aboutus())); //navigation aboutus added
               },
-              leading: Image.asset('assets/icons/about.png'),
+              leading: Icon(
+                Icons.info_outlined,
+                size: 32.0,
+                color: Colors.black87
+              ),
               title: Text('ABOUT')),
           ListTile(
               onTap: () {},
-              leading: Image.asset('assets/icons/group.png'),
+              leading: Icon(
+                Icons.people_alt,
+                size: 32.0,
+                color: Colors.black87
+              ),
               title: Text('TEAM')),
           ListTile(
               onTap: () {},
-              leading: Image.asset('assets/icons/list.png'),
+              leading: Icon(
+                Icons.miscellaneous_services,
+                size: 32.0,
+                color: Colors.black87
+              ),
               title: Text('SERVICES')),
           ListTile(
               onTap: () {},
-              leading: Image.asset('assets/icons/call-center.png'),
+              leading: Icon(
+                Icons.support_agent,
+                size: 32.0,
+                color: Colors.black87
+              ),
               title: Text('CONTACT')),
           ListTile(
               onTap: () {},
-              leading: Image.asset('assets/icons/career.png'),
+              leading: Icon(
+                  Icons.trending_up,
+                  size: 32.0,
+                  color: Colors.black87
+              ),
               title: Text('CAREERS')),
           ListTile(
               onTap: () {},
-              leading: Image.asset('assets/icons/gift.png'),
+              leading: Icon(
+                  Icons.add_shopping_cart,
+                  size: 32.0,
+                  color: Colors.black87
+              ),
               title: Text('PRODUCT')),
           ListTile(
               onTap: () {
@@ -74,7 +107,11 @@ class DrawerItems extends StatelessWidget {
                             blog())); //navigation Blog added
 
               },
-              leading: Image.asset('assets/icons/blogging.png'),
+              leading: Icon(
+                  FontAwesomeIcons.blog,
+                  size: 32.0,
+                  color: Colors.black87
+              ),
               title: Text('BLOG')),
           Divider(color: Colors.grey, height: 1.0),
           Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: <
@@ -92,30 +129,38 @@ class DrawerItems extends StatelessWidget {
                       children: <Widget>[
                         InkWell(
                             onTap: () {},
-                            child: Image(
-                                image:
-                                    AssetImage('assets/icons/facebook.png'))),
+                            child: Icon(
+                              FontAwesomeIcons.facebook,
+                              size: 32,
+                            )),
                         InkWell(
                             onTap: () {},
-                            child: Image(
-                                image: AssetImage('assets/icons/youtube.png'))),
+                            child: Icon(
+                              FontAwesomeIcons.youtube,
+                              size: 32,
+                            )),
                         InkWell(
                             onTap: () {},
-                            child: Image(
-                                image: AssetImage('assets/icons/google.png'))),
+                            child: Icon(
+                              FontAwesomeIcons.envelope,
+                              size: 32,
+                            )),
                         InkWell(
                             onTap: () {},
-                            child: Image(
-                                image: AssetImage('assets/icons/twitter.png'))),
+                            child: Icon(
+                              FontAwesomeIcons.twitter,
+                              size: 32,
+                            )),
                         InkWell(
                             onTap: () {},
-                            child: Image(
-                                image:
-                                    AssetImage('assets/icons/instagram.png')))
+                            child: Icon(
+                              FontAwesomeIcons.instagram,
+                              size: 32,
+                            ))
                       ]))
             ]),
             Padding(
-              padding: const EdgeInsets.only(top: 8.0),
+              padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
               child: Image(
                 image: AssetImage('assets/icons/btvlogo.png'),
                 height: 120,
