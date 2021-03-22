@@ -22,7 +22,7 @@ class _blogState extends State<blog> {
       body: SingleChildScrollView(
         child:Column(
           children: [
-            Image.asset('assets/blog.jpeg'),
+            Image.asset('assets/blog/blog.jpeg'),
             SizedBox(height: 20),
             Column(
               children: [
@@ -100,7 +100,7 @@ class _blogState extends State<blog> {
             SizedBox(height:20 ),
             Column(
               children: [
-                Image.asset('assets/blog1.webp'),
+                Image.asset('assets/blog/blog1.webp'),
               ],
             ),
             SizedBox(height: 10),
@@ -174,7 +174,7 @@ class _blogState extends State<blog> {
             SizedBox(height:20 ),
             Column(
               children: [
-                Image.asset('assets/blog2.webp'),
+                Image.asset('assets/blog/blog2.webp'),
               ],
             ),
             SizedBox(height: 10),
@@ -248,7 +248,7 @@ class _blogState extends State<blog> {
             SizedBox(height:20 ),
             Column(
               children: [
-                Image.asset('assets/blog3.webp'),
+                Image.asset('assets/blog/blog3.webp'),
               ],
             ),
             SizedBox(height: 10),
