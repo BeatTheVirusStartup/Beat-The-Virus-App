@@ -1,7 +1,79 @@
+import 'package:beat_the_virus/screens/Services.dart';
 import 'package:flutter/material.dart';
 import '../aboutus.dart';
 import '../blog.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+
+class DrawerItems extends StatefulWidget {
+  DrawerItems({Key key}) : super(key: key);
+
+  @override
+  _DrawerItemsState createState() => _DrawerItemsState();
+}
+
+class _DrawerItemsState extends State<DrawerItems> {
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+        child: ListView(padding: EdgeInsets.zero, children: <Widget>[
+      Container(
+          padding: EdgeInsets.symmetric(horizontal: 5.0),
+          height: 100,
+          decoration: BoxDecoration(color: Colors.blue[300]),
+          child: Stack(children: [
+            Align(
+                alignment: AlignmentDirectional.centerStart,
+                child: InkWell(
+                    onTap: () {},
+                    child: Image(
+                        image: AssetImage('assets/icons/user.png'),
+                        height: 80))),
+            Align(
+                alignment: AlignmentDirectional.center,
+                child: Padding(
+                    padding: const EdgeInsets.only(left: 15.0),
+                    child: Text('Welcome Guest',
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold))))
+          ])),
+      ListTile(
+          onTap: () {},
+          leading: Image.asset('assets/icons/home.png'),
+          title: Text('HOME')),
+      ListTile(
+          onTap: () {},
+          leading: Image.asset('assets/icons/about.png'),
+          title: Text('ABOUT')),
+      ListTile(
+          onTap: () {},
+          leading: Image.asset('assets/icons/group.png'),
+          title: Text('TEAM')),
+      ListTile(
+          onTap: () => Navigator.of(context)
+              .push(MaterialPageRoute(builder: (ctc) => Services())),
+          leading: Image.asset('assets/icons/list.png'),
+          title: Text('SERVICES')),
+      ListTile(
+          onTap: () {},
+          leading: Image.asset('assets/icons/call-center.png'),
+          title: Text('CONTACT')),
+      ListTile(
+          onTap: () {},
+          leading: Image.asset('assets/icons/career.png'),
+          title: Text('CAREERS')),
+      ListTile(
+          onTap: () {},
+          leading: Image.asset('assets/icons/gift.png'),
+          title: Text('PRODUCT')),
+      ListTile(
+          onTap: () {},
+          leading: Image.asset('assets/icons/blogging.png'),
+          title: Text('BLOG')),
+      Divider(color: Colors.grey, height: 1.0),
+      Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
 
 class DrawerItems extends StatelessWidget {
   @override
@@ -116,6 +188,7 @@ class DrawerItems extends StatelessWidget {
           Divider(color: Colors.grey, height: 1.0),
           Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: <
               Widget>[
+
             Column(children: <Widget>[
               Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -129,6 +202,38 @@ class DrawerItems extends StatelessWidget {
                       children: <Widget>[
                         InkWell(
                             onTap: () {},
+
+                            child: Image(
+                                image:
+                                    AssetImage('assets/icons/facebook.png'))),
+                        InkWell(
+                            onTap: () {},
+                            child: Image(
+                                image: AssetImage('assets/icons/youtube.png'))),
+                        InkWell(
+                            onTap: () {},
+                            child: Image(
+                                image: AssetImage('assets/icons/google.png'))),
+                        InkWell(
+                            onTap: () {},
+                            child: Image(
+                                image: AssetImage('assets/icons/twitter.png'))),
+                        InkWell(
+                            onTap: () {},
+                            child: Image(
+                                image:
+                                    AssetImage('assets/icons/instagram.png')))
+                      ]))
+            ]),
+            Padding(
+                padding: const EdgeInsets.only(top: 8.0),
+                child: Image(
+                  image: AssetImage('assets/icons/btvlogo.png'),
+                  height: 120,
+                ))
+          ])
+    ]));
+
                             child: Icon(
                               FontAwesomeIcons.facebook,
                               size: 32,
@@ -170,5 +275,6 @@ class DrawerItems extends StatelessWidget {
         ],
       ),
     );
+
   }
 }
