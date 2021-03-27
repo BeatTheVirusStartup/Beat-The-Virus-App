@@ -12,7 +12,7 @@ class BeatTheVirus extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         home: Scaffold(
             drawer: Drawer(
-              child: drawerItems(),
+              child: DrawerItems(),
             ),
             appBar: AppBar(
                 title: Text("Beat The Virus"),
@@ -21,13 +21,11 @@ class BeatTheVirus extends StatelessWidget {
                 actionsIconTheme: IconThemeData(color: Colors.white),
                 actions: <Widget>[
                   IconButton(
-                    icon: Icon(Icons.search),
-                    onPressed: () => debugPrint("search pressed"),
-                  ),
+                      icon: Icon(Icons.search),
+                      onPressed: () => debugPrint("search pressed")),
                   IconButton(
-                    icon: Icon(Icons.help),
-                    onPressed: () => debugPrint("help pressed"),
-                  ),
+                      icon: Icon(Icons.help),
+                      onPressed: () => debugPrint("help pressed")),
                 ],
                 leading: Builder(builder: (context) {
                   return IconButton(

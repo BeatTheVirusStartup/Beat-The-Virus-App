@@ -1,0 +1,127 @@
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+class Services extends StatefulWidget {
+  Services({Key key}) : super(key: key);
+
+  @override
+  _ServicesState createState() => _ServicesState();
+}
+
+class _ServicesState extends State<Services> {
+  int currentPos = 0;
+  List<List<String>> imgList = [
+    ['Yoga', 'assets/images/yoga.jpg'],
+    ['Meditation', 'assets/images/meditation.jpg'],
+    ['Fitness', 'assets/images/fitness.jpg'],
+    ['Other Services', 'assets/images/services.jpg'],
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+            title: Text("Beat The Virus"),
+            elevation: 0,
+            backgroundColor: Color(0xFF82D8FF),
+            actionsIconTheme: IconThemeData(color: Colors.white),
+            actions: <Widget>[
+              IconButton(
+                  icon: Icon(Icons.search),
+                  onPressed: () => debugPrint("search pressed")),
+              IconButton(
+                  icon: Icon(Icons.help),
+                  onPressed: () => debugPrint("help pressed")),
+            ],
+            leading: Builder(builder: (context) {
+              return IconButton(
+                icon: Icon(Icons.fastfood),
+                onPressed: () => Scaffold.of(context).openDrawer(),
+              );
+            })),
+        body: Stack(children: [
+          Container(
+            height: MediaQuery.of(context).size.height * 0.50,
+            width: double.infinity,
+            decoration: BoxDecoration(
+                color: Color(0xFF82D8FF),
+                borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(150),
+                    bottomRight: Radius.circular(150))),
+          ),
+          Center(
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                SizedBox(height: 50),
+                CarouselSlider(
+                    items: imgList.map((i) {
+                      return Builder(builder: (BuildContext context) {
+                        return Stack(children: [
+                          ClipRRect(
+                              borderRadius: BorderRadius.circular(20.0),
+                              child: Image.asset(
+                                i[1],
+                                fit: BoxFit.cover,
+                              )),
+                          Align(
+                              alignment: AlignmentDirectional.topCenter,
+                              child: Text(i[0],
+                                  style: TextStyle(
+                                      fontSize: 60,
+                                      fontFamily: 'Forte',
+                                      color: Colors.white))),
+                          Align(
+                              alignment: AlignmentDirectional.bottomCenter,
+                              child: OutlinedButton(
+                                  style: OutlinedButton.styleFrom(
+                                      side: BorderSide(
+                                          color: Colors.white, width: 2.0),
+                                      shape: const RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20)))),
+                                  onPressed: () {},
+                                  child: Text('EXPLORE +',
+                                      style: GoogleFonts.poppins(
+                                          color: Colors.white, fontSize: 18))))
+                        ]);
+                      });
+                    }).toList(),
+                    options: CarouselOptions(
+                        initialPage: 0,
+                        enlargeCenterPage: true,
+                        height: MediaQuery.of(context).size.height * 0.60,
+                        onPageChanged: (index, reason) {
+                          setState(() {
+                            currentPos = index;
+                          });
+                        })),
+                Image.asset('assets/images/dropShadowNew.png',
+                    width: 280, height: 50),
+                Padding(
+                    padding: const EdgeInsets.only(top: 20.0),
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: imgList.map((url) {
+                          int index = imgList.indexOf(url);
+                          return Container(
+                              width: 8.0,
+                              height: 8.0,
+                              margin: EdgeInsets.symmetric(
+                                  vertical: 10.0, horizontal: 2.0),
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: currentPos == index
+                                    ? Colors.blue
+                                    : Color.fromRGBO(0, 0, 0, 0.4),
+                              ));
+                        }).toList()))
+              ])),
+          Align(
+              alignment: AlignmentDirectional.topCenter,
+              child: Text('Services we offer',
+                  style: TextStyle(fontFamily: 'Vivaldi', fontSize: 66)))
+        ]));
+  }
+}
