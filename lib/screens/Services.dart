@@ -11,12 +11,6 @@ class Services extends StatefulWidget {
 
 class _ServicesState extends State<Services> {
   int currentPos = 0;
-  List<List<String>> imgList = [
-    ['Yoga', 'assets/images/yoga.jpg'],
-    ['Meditation', 'assets/images/meditation.jpg'],
-    ['Fitness', 'assets/images/fitness.jpg'],
-    ['Other Services', 'assets/images/services.jpg'],
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -56,38 +50,129 @@ class _ServicesState extends State<Services> {
                   children: [
                 SizedBox(height: 50),
                 CarouselSlider(
-                    items: imgList.map((i) {
-                      return Builder(builder: (BuildContext context) {
-                        return Stack(children: [
-                          ClipRRect(
-                              borderRadius: BorderRadius.circular(20.0),
-                              child: Image.asset(
-                                i[1],
-                                fit: BoxFit.cover,
-                              )),
-                          Align(
-                              alignment: AlignmentDirectional.topCenter,
-                              child: Text(i[0],
-                                  style: TextStyle(
-                                      fontSize: 60,
-                                      fontFamily: 'Forte',
-                                      color: Colors.white))),
-                          Align(
-                              alignment: AlignmentDirectional.bottomCenter,
-                              child: OutlinedButton(
-                                  style: OutlinedButton.styleFrom(
-                                      side: BorderSide(
-                                          color: Colors.white, width: 2.0),
-                                      shape: const RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(20)))),
-                                  onPressed: () {},
-                                  child: Text('EXPLORE +',
-                                      style: GoogleFonts.poppins(
-                                          color: Colors.white, fontSize: 18))))
-                        ]);
-                      });
-                    }).toList(),
+                    items: [
+                      Stack(children: [
+                        ClipRRect(
+                            borderRadius: BorderRadius.circular(20.0),
+                            child: Image.asset(
+                              'assets/images/yoga.jpg',
+                              fit: BoxFit.cover,
+                            )),
+                        Align(
+                            alignment: AlignmentDirectional.topCenter,
+                            child: Text('Yoga',
+                                style: TextStyle(
+                                    fontSize: 60,
+                                    fontFamily: 'Forte',
+                                    color: Colors.white))),
+                        Align(
+                            alignment: AlignmentDirectional.bottomCenter,
+                            child: OutlinedButton(
+                                style: OutlinedButton.styleFrom(
+                                    side: BorderSide(
+                                        color: Colors.white, width: 2.0),
+                                    shape: const RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(20)))),
+                                onPressed: () {},
+                                child: Text('EXPLORE +',
+                                    style: GoogleFonts.poppins(
+                                        color: Colors.white, fontSize: 18))))
+                      ]),
+                      Stack(children: [
+                        ClipRRect(
+                            borderRadius: BorderRadius.circular(20.0),
+                            child: Image.asset(
+                              'assets/images/meditation.jpg',
+                              fit: BoxFit.cover,
+                            )),
+                        Align(
+                            alignment: AlignmentDirectional.topCenter,
+                            child: Text('Meditation',
+                                style: TextStyle(
+                                    fontSize: 60,
+                                    fontFamily: 'Forte',
+                                    color: Colors.white))),
+                        Align(
+                            alignment: AlignmentDirectional.bottomCenter,
+                            child: OutlinedButton(
+                                style: OutlinedButton.styleFrom(
+                                    side: BorderSide(
+                                        color: Colors.white, width: 2.0),
+                                    shape: const RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(20)))),
+                                onPressed: () {},
+                                child: Text('EXPLORE +',
+                                    style: GoogleFonts.poppins(
+                                        color: Colors.white, fontSize: 18))))
+                      ]),
+                      Stack(children: [
+                        ClipRRect(
+                            borderRadius: BorderRadius.circular(20.0),
+                            child: Image.asset(
+                              'assets/images/fitness.jpg',
+                              fit: BoxFit.cover,
+                            )),
+                        Align(
+                            alignment: AlignmentDirectional.topCenter,
+                            child: Text('Fitness',
+                                style: TextStyle(
+                                    fontSize: 60,
+                                    fontFamily: 'Forte',
+                                    color: Colors.white))),
+                        Align(
+                            alignment: AlignmentDirectional.bottomCenter,
+                            child: OutlinedButton(
+                                style: OutlinedButton.styleFrom(
+                                    side: BorderSide(
+                                        color: Colors.white, width: 2.0),
+                                    shape: const RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(20)))),
+                                onPressed: () {},
+                                child: Text('EXPLORE +',
+                                    style: GoogleFonts.poppins(
+                                        color: Colors.white, fontSize: 18))))
+                      ]),
+                      Stack(children: [
+                        ClipRRect(
+                            borderRadius: BorderRadius.circular(20.0),
+                            child: Image.asset(
+                              'assets/images/services.jpg',
+                              fit: BoxFit.cover,
+                            )),
+                        Align(
+                            alignment: AlignmentDirectional.topCenter,
+                            child: Column(
+                              children: [
+                                Text('Other',
+                                    style: TextStyle(
+                                        fontSize: 60,
+                                        fontFamily: 'Forte',
+                                        color: Colors.white)),
+                                Text('Services',
+                                    style: TextStyle(
+                                        fontSize: 60,
+                                        fontFamily: 'Forte',
+                                        color: Colors.white))
+                              ],
+                            )),
+                        Align(
+                            alignment: AlignmentDirectional.bottomCenter,
+                            child: OutlinedButton(
+                                style: OutlinedButton.styleFrom(
+                                    side: BorderSide(
+                                        color: Colors.white, width: 2.0),
+                                    shape: const RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(20)))),
+                                onPressed: () {},
+                                child: Text('EXPLORE +',
+                                    style: GoogleFonts.poppins(
+                                        color: Colors.white, fontSize: 18))))
+                      ]),
+                    ],
                     options: CarouselOptions(
                         initialPage: 0,
                         enlargeCenterPage: true,
@@ -99,24 +184,27 @@ class _ServicesState extends State<Services> {
                         })),
                 Image.asset('assets/images/dropShadowNew.png',
                     width: 280, height: 50),
-                Padding(
-                    padding: const EdgeInsets.only(top: 20.0),
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: imgList.map((url) {
-                          int index = imgList.indexOf(url);
-                          return Container(
-                              width: 8.0,
-                              height: 8.0,
-                              margin: EdgeInsets.symmetric(
-                                  vertical: 10.0, horizontal: 2.0),
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: currentPos == index
-                                    ? Colors.blue
-                                    : Color.fromRGBO(0, 0, 0, 0.4),
-                              ));
-                        }).toList()))
+                Container(
+                  height: 40,
+                  child: ListView.builder(
+                      shrinkWrap: true,
+                      scrollDirection: Axis.horizontal,
+                      physics: NeverScrollableScrollPhysics(),
+                      itemCount: 4,
+                      itemBuilder: (ctx, index) {
+                        return Container(
+                            width: 8.0,
+                            height: 8.0,
+                            margin: EdgeInsets.symmetric(
+                                vertical: 10.0, horizontal: 2.0),
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: currentPos == index
+                                  ? Colors.blue
+                                  : Color.fromRGBO(0, 0, 0, 0.4),
+                            ));
+                      }),
+                )
               ])),
           Align(
               alignment: AlignmentDirectional.topCenter,
