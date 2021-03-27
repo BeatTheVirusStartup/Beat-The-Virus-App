@@ -1,5 +1,6 @@
 import 'package:beat_the_virus/widgets/DrawerItems.dart';
 import 'package:flutter/material.dart';
+import 'widgets/DrawerItems.dart';
 
 void main() {
   runApp(BeatTheVirus()); //Appbar Created
@@ -16,7 +17,8 @@ class BeatTheVirus extends StatelessWidget {
             ),
             appBar: AppBar(
                 title: Text("Beat The Virus"),
-                backgroundColor: Color(0xFF82D8FF),
+                backgroundColor: Colors.blue[300],
+                // backgroundColor: Color(0xFF82D8FF),
                 //backgroundColor: Colors.lightBlueAccent,
                 actionsIconTheme: IconThemeData(color: Colors.white),
                 actions: <Widget>[
