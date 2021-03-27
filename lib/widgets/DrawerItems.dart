@@ -1,3 +1,4 @@
+import 'package:beat_the_virus/main.dart';
 import 'package:beat_the_virus/screens/Services.dart';
 import 'package:flutter/material.dart';
 import '../aboutus.dart';
@@ -27,7 +28,8 @@ class _DrawerItemsState extends State<DrawerItems> {
                   title:
                       Text('Welcome Guest', style: TextStyle(fontSize: 20))))),
       ListTile(
-        onTap: () {},
+        onTap: () => Navigator.of(context).pushReplacement(
+            MaterialPageRoute(builder: (ctx) => BeatTheVirus())),
         leading: FaIcon(FontAwesomeIcons.home, color: Colors.black),
         title: Text('HOME'),
       ),
