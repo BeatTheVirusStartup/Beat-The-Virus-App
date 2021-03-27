@@ -34,7 +34,8 @@ class _DrawerItemsState extends State<DrawerItems> {
         title: Text('HOME'),
       ),
       ListTile(
-          onTap: () {},
+          onTap: () => Navigator.of(context)
+              .push(MaterialPageRoute(builder: (ctc) => aboutus())),
           leading: FaIcon(FontAwesomeIcons.addressCard, color: Colors.black),
           title: Text('ABOUT')),
       ListTile(
@@ -60,7 +61,8 @@ class _DrawerItemsState extends State<DrawerItems> {
           leading: FaIcon(FontAwesomeIcons.shoppingCart, color: Colors.black),
           title: Text('PRODUCT')),
       ListTile(
-          onTap: () {},
+          onTap: () => Navigator.of(context)
+              .push(MaterialPageRoute(builder: (ctc) => blog())),
           leading: FaIcon(FontAwesomeIcons.blog, color: Colors.black),
           title: Text('BLOG')),
       Divider(color: Colors.grey, height: 1.0),
