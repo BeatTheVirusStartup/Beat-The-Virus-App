@@ -1,8 +1,8 @@
 import 'package:beat_the_virus/main.dart';
 import 'package:beat_the_virus/screens/Services.dart';
 import 'package:flutter/material.dart';
-import '../aboutus.dart';
-import '../blog.dart';
+import '../screens/AboutUs.dart';
+import '../screens/Blog.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class DrawerItems extends StatefulWidget {
@@ -35,8 +35,9 @@ class _DrawerItemsState extends State<DrawerItems> {
       ),
       ListTile(
           onTap: () => Navigator.of(context)
-              .push(MaterialPageRoute(builder: (ctc) => aboutus())),
-          leading: FaIcon(FontAwesomeIcons.addressCard, color: Colors.black),
+              .push(MaterialPageRoute(builder: (ctc) => AboutUs())),
+          leading:
+              FaIcon(FontAwesomeIcons.addressCard, color: Colors.black),
           title: Text('ABOUT')),
       ListTile(
           onTap: () {},
@@ -62,7 +63,7 @@ class _DrawerItemsState extends State<DrawerItems> {
           title: Text('PRODUCT')),
       ListTile(
           onTap: () => Navigator.of(context)
-              .push(MaterialPageRoute(builder: (ctc) => blog())),
+              .push(MaterialPageRoute(builder: (ctc) => Blog())),
           leading: FaIcon(FontAwesomeIcons.blog, color: Colors.black),
           title: Text('BLOG')),
       Divider(color: Colors.grey, height: 1.0),

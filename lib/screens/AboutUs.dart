@@ -1,14 +1,14 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
-class aboutus extends StatefulWidget {
-  aboutus({Key key}) : super(key: key);
+class AboutUs extends StatefulWidget {
+  AboutUs({Key key}) : super(key: key);
 
   @override
-  _aboutusState createState() => _aboutusState();
+  _AboutUsState createState() => _AboutUsState();
 }
 
-class _aboutusState extends State<aboutus> {
+class _AboutUsState extends State<AboutUs> {
   int currentPos = 0;
   List<List<String>> imgList = [
     ['first_item'],
@@ -61,27 +61,29 @@ class _aboutusState extends State<aboutus> {
                                       height: 500,
                                       width: 900,
                                       color: Colors.lightBlueAccent,
-                                      child: Column(
-                                          children: [
-                                            Padding(
-                                              padding: const EdgeInsets.all(12.0),
-                                              child: Text(
-                                                  'For Preventing Coronavirus and building Long term Health, Beat the Virus Startup through its 400+ Team Members offers Immunity and Health Solutions to Employees and their Families Globally.',
-                                                  style: TextStyle(fontSize: 20)),
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.all(12.0),
-                                              child: Text(
-                                                  'We do this by offering 15+ Categories of Immunity Products and Services.',
-                                                  style: TextStyle(fontSize: 20)),
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.all(12.0),
-                                              child: Text(
-                                                  'Our 400+ Team Members have several decades of Health, Execution and other complimentary aspect.',
-                                                  style: TextStyle(fontSize: 20)),
-                                            ),
-                                          ]
+                                      child: SingleChildScrollView(
+                                        child: Column(
+                                            children: [
+                                              Padding(
+                                                padding: const EdgeInsets.all(12.0),
+                                                child: Text(
+                                                    'For Preventing Coronavirus and building Long term Health, Beat the Virus Startup through its 400+ Team Members offers Immunity and Health Solutions to Employees and their Families Globally.',
+                                                    style: TextStyle(fontSize: 20)),
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsets.all(12.0),
+                                                child: Text(
+                                                    'We do this by offering 15+ Categories of Immunity Products and Services.',
+                                                    style: TextStyle(fontSize: 20)),
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsets.all(12.0),
+                                                child: Text(
+                                                    'Our 400+ Team Members have several decades of Health, Execution and other complimentary aspect.',
+                                                    style: TextStyle(fontSize: 20)),
+                                              ),
+                                            ]
+                                        ),
                                       )), ),
                             ]);
                           });
@@ -120,6 +122,6 @@ class _aboutusState extends State<aboutus> {
               alignment: AlignmentDirectional.topCenter,
               child: Text('About Us',
                   style: TextStyle(fontSize: 50 ,color: Colors.white, fontWeight: FontWeight.w600)))
-        ]));
+          ]));
   }
 }
