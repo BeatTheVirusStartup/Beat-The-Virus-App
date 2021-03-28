@@ -1,3 +1,4 @@
+import 'package:beat_the_virus/widgets/DrawerItems.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
@@ -17,6 +18,9 @@ class _AboutUsState extends State<AboutUs> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        drawer: Drawer(
+          child: DrawerItems(),
+        ),
         appBar: AppBar(
             title: Text("Beat The Virus"),
             elevation: 0,
