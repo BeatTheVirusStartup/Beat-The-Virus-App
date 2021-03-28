@@ -1,49 +1,125 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 class aboutus extends StatefulWidget {
+  aboutus({Key key}) : super(key: key);
+
   @override
   _aboutusState createState() => _aboutusState();
 }
 
 class _aboutusState extends State<aboutus> {
+  int currentPos = 0;
+  List<List<String>> imgList = [
+    ['first_item'],
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:
-          AppBar(title: Text('About Us'), backgroundColor: Color(0xFF86CEEB)),
-      body: Column(
-        children: [
+        appBar: AppBar(
+            title: Text("Beat The Virus"),
+            elevation: 0,
+            backgroundColor: Color(0xFF82D8FF),
+            actionsIconTheme: IconThemeData(color: Colors.white),
+            actions: <Widget>[
+              IconButton(
+                  icon: Icon(Icons.search),
+                  onPressed: () => debugPrint("search pressed")),
+              IconButton(
+                  icon: Icon(Icons.help),
+                  onPressed: () => debugPrint("help pressed")),
+            ],
+            leading: Builder(builder: (context) {
+              return IconButton(
+                icon: Icon(Icons.fastfood),
+                onPressed: () => Scaffold.of(context).openDrawer(),
+              );
+            })),
+        body: Stack(children: [
           Container(
-            decoration: BoxDecoration(color: Colors.white),
-            height: 240,
-            child: Stack(
-              children: <Widget>[
-                Image.network(
-                    'https://static.wixstatic.com/media/035244_881cbe4617f449cab844cb6a48b5fbeb~mv2_d_2475_2475_s_4_2.jpeg/v1/fill/w_980,h_576,al_c,q_85,usm_0.66_1.00_0.01/035244_881cbe4617f449cab844cb6a48b5fbeb~mv2_d_2475_2475_s_4_2.webp',
-                    fit: BoxFit.fill),
-              ],
-            ),
+            height: MediaQuery.of(context).size.height * 0.50,
+            width: double.infinity,
+            decoration: BoxDecoration(
+                color: Color(0xFF82D8FF),
+                borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(150),
+                    bottomRight: Radius.circular(150))),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-                'For Preventing Coronavirus and building Long term Health, Beat the Virus Startup through its 400+ Team Members offers Immunity and Health Solutions to Employees and their Families Globally.',
-                style: TextStyle(fontSize: 20)),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-                'We do this by offering 15+ Categories of Immunity Products and Services.',
-                style: TextStyle(fontSize: 20)),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-                'Our 400+ Team Members have several decades of Health, Execution and other complimentary aspect.',
-                style: TextStyle(fontSize: 20)),
-          ),
-        ],
-      ),
-    );
+          Center(
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(height: 50),
+                    CarouselSlider(
+                        items: imgList.map((i) {
+                          return Builder(builder: (BuildContext context) {
+                            return Stack(children: [
+                              ClipRRect(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                  child: Container(
+                                      height: 500,
+                                      width: 900,
+                                      color: Colors.lightBlueAccent,
+                                      child: Column(
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsets.all(12.0),
+                                              child: Text(
+                                                  'For Preventing Coronavirus and building Long term Health, Beat the Virus Startup through its 400+ Team Members offers Immunity and Health Solutions to Employees and their Families Globally.',
+                                                  style: TextStyle(fontSize: 20)),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.all(12.0),
+                                              child: Text(
+                                                  'We do this by offering 15+ Categories of Immunity Products and Services.',
+                                                  style: TextStyle(fontSize: 20)),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.all(12.0),
+                                              child: Text(
+                                                  'Our 400+ Team Members have several decades of Health, Execution and other complimentary aspect.',
+                                                  style: TextStyle(fontSize: 20)),
+                                            ),
+                                          ]
+                                      )), ),
+                            ]);
+                          });
+                        }).toList(),
+                        options: CarouselOptions(
+                            initialPage: 0,
+                            enlargeCenterPage: true,
+                            height: MediaQuery.of(context).size.height * 0.60,
+                            onPageChanged: (index, reason) {
+                              setState(() {
+                                currentPos = index;
+                              });
+                            })),
+                    Image.asset('assets/images/dropShadowNew.png',
+                        width: 280, height: 50),
+                    Padding(
+                        padding: const EdgeInsets.only(top: 20.0),
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: imgList.map((url) {
+                              int index = imgList.indexOf(url);
+                              return Container(
+                                  width: 8.0,
+                                  height: 8.0,
+                                  margin: EdgeInsets.symmetric(
+                                      vertical: 10.0, horizontal: 2.0),
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: currentPos == index
+                                        ? Colors.blue
+                                        : Color.fromRGBO(0, 0, 0, 0.4),
+                                  ));
+                            }).toList()))
+                  ])),
+          Align(
+              alignment: AlignmentDirectional.topCenter,
+              child: Text('About Us',
+                  style: TextStyle(fontSize: 50 ,color: Colors.white, fontWeight: FontWeight.w600)))
+        ]));
   }
 }
