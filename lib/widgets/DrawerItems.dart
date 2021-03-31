@@ -1,7 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:beat_the_virus/main.dart';
 import 'package:beat_the_virus/screens/Services.dart';
-import 'package:flutter/material.dart';
-import '../aboutus.dart';
+import '../AboutUs.dart';
 import '../blog.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -35,7 +35,7 @@ class _DrawerItemsState extends State<DrawerItems> {
       ),
       ListTile(
           onTap: () => Navigator.of(context)
-              .push(MaterialPageRoute(builder: (ctc) => aboutus())),
+              .push(MaterialPageRoute(builder: (ctc) => AboutUs())),
           leading: FaIcon(FontAwesomeIcons.addressCard, color: Colors.black),
           title: Text('ABOUT')),
       ListTile(
