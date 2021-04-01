@@ -39,7 +39,7 @@ class _BlogState extends State<Blog> {
                     Text('min'),
 
 
-                    SizedBox(width:230),
+                    SizedBox(width:220),
                     IconButton(
                       icon: Icon(Icons.more_vert_sharp),
                       onPressed:(){
@@ -55,7 +55,7 @@ class _BlogState extends State<Blog> {
               children: <Widget>[
                 Text('Naturopathy',
                   style: TextStyle(fontWeight: FontWeight.bold,
-                    fontSize: 30,
+                    fontSize: 25,
                   ),
                 ),
                 SizedBox(height: 20),
@@ -66,7 +66,7 @@ class _BlogState extends State<Blog> {
                 ),
               ],
             ),
-            SizedBox(height:10 ),
+            SizedBox(height: 15),
             Column(
               children: [
                 Row(
@@ -80,7 +80,6 @@ class _BlogState extends State<Blog> {
                     SizedBox(width: 300),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.end,
-
                       children:[
                         IconButton(
                           icon: Icon(Icons.thumb_up_alt_outlined),
@@ -97,13 +96,13 @@ class _BlogState extends State<Blog> {
             Divider(
               color: Colors.black,
             ),
-            SizedBox(height:20 ),
+            SizedBox(height: 15),
             Column(
               children: [
                 Image.asset('assets/blog/blog1.webp'),
               ],
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 5),
             Column(
               children: [
                 Row(
@@ -123,16 +122,16 @@ class _BlogState extends State<Blog> {
                 ),
               ],
             ),
-            SizedBox(height: 30),
+            SizedBox(height: 20),
             Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 Text('Food supplements: A necessity for good health',
                   style: TextStyle(fontWeight: FontWeight.bold,
-                    fontSize: 30,
+                    fontSize: 25,
                   ),
                 ),
-                SizedBox(height: 20),
+                SizedBox(height: 10),
                 Text('1. Gaia Herbs oil of Oregano A natural antioxidant source, Oregano Oil contains phytochemicals which support the body’s n…',
                   style: TextStyle(
                     fontSize: 20,
@@ -203,7 +202,7 @@ class _BlogState extends State<Blog> {
               children: <Widget>[
                 Text('Herbs in Germany that you can use for immunity boosting',
                   style: TextStyle(fontWeight: FontWeight.bold,
-                    fontSize: 30,
+                    fontSize: 25,
                   ),
                 ),
                 SizedBox(height: 20),
@@ -277,7 +276,7 @@ class _BlogState extends State<Blog> {
               children: <Widget>[
                 Text('Acupressure',
                   style: TextStyle(fontWeight: FontWeight.bold,
-                    fontSize: 30,
+                    fontSize: 25,
                   ),
                 ),
                 SizedBox(height: 20),

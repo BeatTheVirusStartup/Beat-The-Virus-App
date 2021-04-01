@@ -3,6 +3,7 @@ import 'package:beat_the_virus/screens/Services.dart';
 import 'package:flutter/material.dart';
 import '../screens/AboutUs.dart';
 import '../screens/Blog.dart';
+import '../screens/ContactUs.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class DrawerItems extends StatefulWidget {
@@ -50,7 +51,8 @@ class _DrawerItemsState extends State<DrawerItems> {
               FaIcon(FontAwesomeIcons.handHoldingHeart, color: Colors.black),
           title: Text('SERVICES')),
       ListTile(
-          onTap: () {},
+          onTap: () => Navigator.of(context)
+              .push(MaterialPageRoute(builder: (ctc) => ContactUs())),
           leading: FaIcon(FontAwesomeIcons.addressBook, color: Colors.black),
           title: Text('CONTACT')),
       ListTile(
