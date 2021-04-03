@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:beat_the_virus/widgets/DrawerItems.dart';
 
 class Blog extends StatefulWidget {
   @override
