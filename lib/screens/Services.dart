@@ -16,34 +16,17 @@ class _ServicesState extends State<Services> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        drawer: Drawer(
-          child: DrawerItems(),
-        ),
         appBar: AppBar(
-            title: Text("Beat The Virus"),
-            elevation: 0,
-            backgroundColor: Color(0xFF82D8FF),
-            actionsIconTheme: IconThemeData(color: Colors.white),
-            actions: <Widget>[
-              IconButton(
-                  icon: Icon(Icons.search),
-                  onPressed: () => debugPrint("search pressed")),
-              IconButton(
-                  icon: Icon(Icons.help),
-                  onPressed: () => debugPrint("help pressed")),
-            ],
-            leading: Builder(builder: (context) {
-              return IconButton(
-                icon: Icon(Icons.fastfood),
-                onPressed: () => Scaffold.of(context).openDrawer(),
-              );
-            })),
+          title: Text("Services Page"),
+          elevation: 0,
+          backgroundColor: Colors.blue[300],
+        ),
         body: Stack(children: [
           Container(
             height: MediaQuery.of(context).size.height * 0.50,
             width: double.infinity,
             decoration: BoxDecoration(
-                color: Color(0xFF82D8FF),
+                color: Colors.blue[300],
                 borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(150),
                     bottomRight: Radius.circular(150))),

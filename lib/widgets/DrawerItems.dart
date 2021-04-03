@@ -1,9 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:beat_the_virus/main.dart';
 import 'package:beat_the_virus/screens/Services.dart';
-import 'package:flutter/material.dart';
-import '../screens/AboutUs.dart';
-import '../screens/Blog.dart';
-import '../screens/ContactUs.dart';
+import '../AboutUs.dart';
+import '../blog.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class DrawerItems extends StatefulWidget {
@@ -37,8 +36,7 @@ class _DrawerItemsState extends State<DrawerItems> {
       ListTile(
           onTap: () => Navigator.of(context)
               .push(MaterialPageRoute(builder: (ctc) => AboutUs())),
-          leading:
-              FaIcon(FontAwesomeIcons.addressCard, color: Colors.black),
+          leading: FaIcon(FontAwesomeIcons.addressCard, color: Colors.black),
           title: Text('ABOUT')),
       ListTile(
           onTap: () {},
@@ -51,8 +49,7 @@ class _DrawerItemsState extends State<DrawerItems> {
               FaIcon(FontAwesomeIcons.handHoldingHeart, color: Colors.black),
           title: Text('SERVICES')),
       ListTile(
-          onTap: () => Navigator.of(context)
-              .push(MaterialPageRoute(builder: (ctc) => ContactUs())),
+          onTap: () {},
           leading: FaIcon(FontAwesomeIcons.addressBook, color: Colors.black),
           title: Text('CONTACT')),
       ListTile(
@@ -65,7 +62,7 @@ class _DrawerItemsState extends State<DrawerItems> {
           title: Text('PRODUCT')),
       ListTile(
           onTap: () => Navigator.of(context)
-              .push(MaterialPageRoute(builder: (ctc) => Blog())),
+              .push(MaterialPageRoute(builder: (ctc) => blog())),
           leading: FaIcon(FontAwesomeIcons.blog, color: Colors.black),
           title: Text('BLOG')),
       Divider(color: Colors.grey, height: 1.0),
