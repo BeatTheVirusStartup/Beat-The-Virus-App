@@ -90,7 +90,7 @@ class _ContactUsState extends State<ContactUs> {
           SizedBox(height: 10),
           Column(
             children: [
-              Image(image:AssetImage("assets/contact/btvlogo.png"),
+              Image(image:AssetImage("assets/images/btvlogo.png"),
               height: 100,
               width:100,
               ),
@@ -125,22 +125,22 @@ class _ContactUsState extends State<ContactUs> {
               Row(
                 children: [
                   IconButton(onPressed:(){} ,
-                  icon: Image.asset("assets/contact/facebook.jpeg"),
+                  icon: Image.asset("assets/images/facebook.jpeg"),
                   ),
                   IconButton(onPressed:(){} ,
-                    icon: Image.asset("assets/contact/twitter.jpeg"),
+                    icon: Image.asset("assets/images/twitter.jpeg"),
                   ),
                   IconButton(onPressed:(){} ,
-                    icon: Image.asset("assets/contact/utube.jpeg"),
+                    icon: Image.asset("assets/images/utube.jpeg"),
                   ),
                   IconButton(onPressed:(){} ,
-                    icon: Image.asset("assets/contact/pinterest.jpeg"),
+                    icon: Image.asset("assets/images/pinterest.jpeg"),
                   ),
                   IconButton(onPressed:(){} ,
-                    icon: Image.asset("assets/contact/t.jpeg"),
+                    icon: Image.asset("assets/images/t.jpeg"),
                   ),
                   IconButton(onPressed:(){} ,
-                    icon: Image.asset("assets/contact/insta.jpeg"),
+                    icon: Image.asset("assets/images/insta.jpeg"),
                   ),
                 ],
               )
