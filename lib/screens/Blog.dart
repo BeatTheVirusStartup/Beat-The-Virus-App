@@ -8,19 +8,21 @@ class Blog extends StatefulWidget {
 class _BlogState extends State<Blog> {
   @override
   Widget build(BuildContext context) {
-    DateTime now= new DateTime.now();
+    DateTime now = new DateTime.now();
     return Scaffold(
-      appBar: AppBar(title: Text('Blog'),
-        backgroundColor:Colors.black,
+      appBar: AppBar(
+        title: Text("Services Page"),
+        elevation: 0,
+        backgroundColor: Colors.blue[300],
         actions: [
           IconButton(
             icon: Icon(Icons.search_rounded),
-            onPressed:(){},
+            onPressed: () {},
           ),
         ],
       ),
       body: SingleChildScrollView(
-        child:Column(
+        child: Column(
           children: [
             Image.asset('assets/blog/blog.jpeg'),
             SizedBox(height: 20),
@@ -28,22 +30,18 @@ class _BlogState extends State<Blog> {
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  children:[
-                    SizedBox(width:10 ),
+                  children: [
+                    SizedBox(width: 10),
                     Text('${now.day}'),
-                    SizedBox(width:3),
+                    SizedBox(width: 3),
                     Text('days ago'),
-
-                    Text( '.${now.minute}'),
-                    SizedBox(width:3),
+                    Text('.${now.minute}'),
+                    SizedBox(width: 3),
                     Text('min'),
-
-
-                    SizedBox(width:220),
+                    SizedBox(width: 220),
                     IconButton(
                       icon: Icon(Icons.more_vert_sharp),
-                      onPressed:(){
-                      },
+                      onPressed: () {},
                     ),
                   ],
                 ),
@@ -53,13 +51,16 @@ class _BlogState extends State<Blog> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                Text('Naturopathy',
-                  style: TextStyle(fontWeight: FontWeight.bold,
+                Text(
+                  'Naturopathy',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
                     fontSize: 25,
                   ),
                 ),
                 SizedBox(height: 20),
-                Text('Naturopathy is an art and science of healthy living and a drugless system of healing based on well-founded philosophy. Naturopathy is...',
+                Text(
+                  'Naturopathy is an art and science of healthy living and a drugless system of healing based on well-founded philosophy. Naturopathy is...',
                   style: TextStyle(
                     fontSize: 20,
                   ),
@@ -71,20 +72,18 @@ class _BlogState extends State<Blog> {
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  children:[
+                  children: [
                     IconButton(
                       icon: Icon(Icons.visibility_outlined),
-                      onPressed:(){
-                      },
+                      onPressed: () {},
                     ),
                     SizedBox(width: 300),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.end,
-                      children:[
+                      children: [
                         IconButton(
                           icon: Icon(Icons.thumb_up_alt_outlined),
-                          onPressed:(){
-                          },
+                          onPressed: () {},
                         ),
                       ],
                     ),
@@ -92,7 +91,7 @@ class _BlogState extends State<Blog> {
                 ),
               ],
             ),
-            SizedBox(height:10 ),
+            SizedBox(height: 10),
             Divider(
               color: Colors.black,
             ),
@@ -106,17 +105,14 @@ class _BlogState extends State<Blog> {
             Column(
               children: [
                 Row(
-                  children:[
-
-                  ],
+                  children: [],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
-                  children:[
+                  children: [
                     IconButton(
                       icon: Icon(Icons.more_vert_sharp),
-                      onPressed:(){
-                      },
+                      onPressed: () {},
                     ),
                   ],
                 ),
@@ -126,39 +122,39 @@ class _BlogState extends State<Blog> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                Text('Food supplements: A necessity for good health',
-                  style: TextStyle(fontWeight: FontWeight.bold,
+                Text(
+                  'Food supplements: A necessity for good health',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
                     fontSize: 25,
                   ),
                 ),
                 SizedBox(height: 10),
-                Text('1. Gaia Herbs oil of Oregano A natural antioxidant source, Oregano Oil contains phytochemicals which support the body’s n…',
+                Text(
+                  '1. Gaia Herbs oil of Oregano A natural antioxidant source, Oregano Oil contains phytochemicals which support the body’s n…',
                   style: TextStyle(
                     fontSize: 20,
                   ),
                 ),
               ],
             ),
-            SizedBox(height:10 ),
+            SizedBox(height: 10),
             Column(
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  children:[
+                  children: [
                     IconButton(
                       icon: Icon(Icons.visibility_outlined),
-                      onPressed:(){
-                      },
+                      onPressed: () {},
                     ),
                     SizedBox(width: 300),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.end,
-
-                      children:[
+                      children: [
                         IconButton(
                           icon: Icon(Icons.thumb_up_alt_outlined),
-                          onPressed:(){
-                          },
+                          onPressed: () {},
                         ),
                       ],
                     ),
@@ -166,11 +162,11 @@ class _BlogState extends State<Blog> {
                 ),
               ],
             ),
-            SizedBox(height:10 ),
+            SizedBox(height: 10),
             Divider(
               color: Colors.black,
             ),
-            SizedBox(height:20 ),
+            SizedBox(height: 20),
             Column(
               children: [
                 Image.asset('assets/blog/blog2.webp'),
@@ -180,17 +176,14 @@ class _BlogState extends State<Blog> {
             Column(
               children: [
                 Row(
-                  children:[
-
-                  ],
+                  children: [],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
-                  children:[
+                  children: [
                     IconButton(
                       icon: Icon(Icons.more_vert_sharp),
-                      onPressed:(){
-                      },
+                      onPressed: () {},
                     ),
                   ],
                 ),
@@ -200,39 +193,39 @@ class _BlogState extends State<Blog> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                Text('Herbs in Germany that you can use for immunity boosting',
-                  style: TextStyle(fontWeight: FontWeight.bold,
+                Text(
+                  'Herbs in Germany that you can use for immunity boosting',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
                     fontSize: 25,
                   ),
                 ),
                 SizedBox(height: 20),
-                Text('In scientific words “immune system is a network of biological processes that protects an organism from disease. It detects and re…',
+                Text(
+                  'In scientific words “immune system is a network of biological processes that protects an organism from disease. It detects and re…',
                   style: TextStyle(
                     fontSize: 20,
                   ),
                 ),
               ],
             ),
-            SizedBox(height:10 ),
+            SizedBox(height: 10),
             Column(
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  children:[
+                  children: [
                     IconButton(
                       icon: Icon(Icons.visibility_outlined),
-                      onPressed:(){
-                      },
+                      onPressed: () {},
                     ),
                     SizedBox(width: 300),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.end,
-
-                      children:[
+                      children: [
                         IconButton(
                           icon: Icon(Icons.thumb_up_alt_outlined),
-                          onPressed:(){
-                          },
+                          onPressed: () {},
                         ),
                       ],
                     ),
@@ -240,11 +233,11 @@ class _BlogState extends State<Blog> {
                 ),
               ],
             ),
-            SizedBox(height:10 ),
+            SizedBox(height: 10),
             Divider(
               color: Colors.black,
             ),
-            SizedBox(height:20 ),
+            SizedBox(height: 20),
             Column(
               children: [
                 Image.asset('assets/blog/blog3.webp'),
@@ -254,17 +247,14 @@ class _BlogState extends State<Blog> {
             Column(
               children: [
                 Row(
-                  children:[
-
-                  ],
+                  children: [],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
-                  children:[
+                  children: [
                     IconButton(
                       icon: Icon(Icons.more_vert_sharp),
-                      onPressed:(){
-                      },
+                      onPressed: () {},
                     ),
                   ],
                 ),
@@ -274,39 +264,39 @@ class _BlogState extends State<Blog> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                Text('Acupressure',
-                  style: TextStyle(fontWeight: FontWeight.bold,
+                Text(
+                  'Acupressure',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
                     fontSize: 25,
                   ),
                 ),
                 SizedBox(height: 20),
-                Text('Acupressure is an alternative medicine technique often used for treatment of body pain , disease, pain in the joints or bones, tr…',
+                Text(
+                  'Acupressure is an alternative medicine technique often used for treatment of body pain , disease, pain in the joints or bones, tr…',
                   style: TextStyle(
                     fontSize: 20,
                   ),
                 ),
               ],
             ),
-            SizedBox(height:10 ),
+            SizedBox(height: 10),
             Column(
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  children:[
+                  children: [
                     IconButton(
                       icon: Icon(Icons.visibility_outlined),
-                      onPressed:(){
-                      },
+                      onPressed: () {},
                     ),
                     SizedBox(width: 300),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.end,
-
-                      children:[
+                      children: [
                         IconButton(
                           icon: Icon(Icons.thumb_up_alt_outlined),
-                          onPressed:(){
-                          },
+                          onPressed: () {},
                         ),
                       ],
                     ),
@@ -314,16 +304,16 @@ class _BlogState extends State<Blog> {
                 ),
               ],
             ),
-            SizedBox(height:10 ),
+            SizedBox(height: 10),
             Divider(
               color: Colors.black,
             ),
-            SizedBox(height:20 ),
+            SizedBox(height: 20),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){},
+        onPressed: () {},
         child: Icon(Icons.more_horiz_rounded),
       ),
     );
