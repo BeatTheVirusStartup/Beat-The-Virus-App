@@ -31,6 +31,7 @@ dependencies:
   google_fonts: ^2.0.0
   carousel_slider: ^3.0.0
   font_awesome_flutter: ^9.0.0
+  intl: ^0.17.0
 
 dev_dependencies:
   flutter_test:
@@ -53,7 +54,6 @@ flutter:
     - assets/images/
     - assets/icons/
     - assets/blog/
-    - assets/contact/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
