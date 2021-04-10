@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:beat_the_virus/main.dart';
+// import 'package:beat_the_virus/main.dart';
 import 'package:beat_the_virus/screens/Services.dart';
 import 'package:beat_the_virus/screens/AboutUs.dart';
 import 'package:beat_the_virus/screens/ContactUs.dart';
 import 'package:beat_the_virus/screens/Blog.dart';
+import 'package:beat_the_virus/screens/Home.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class DrawerItems extends StatefulWidget {
@@ -29,11 +30,10 @@ class _DrawerItemsState extends State<DrawerItems> {
                   title:
                       Text('Welcome Guest', style: TextStyle(fontSize: 20))))),
       ListTile(
-        onTap: () => Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (ctx) => BeatTheVirus())),
+        onTap: () => Navigator.of(context)
+            .push(MaterialPageRoute(builder: (ctc) => Home())),
         leading: FaIcon(FontAwesomeIcons.home, color: Colors.black),
-        title: Text('HOME'),
-      ),
+        title: Text('HOME')),
       ListTile(
           onTap: () => Navigator.of(context)
               .push(MaterialPageRoute(builder: (ctc) => AboutUs())),
