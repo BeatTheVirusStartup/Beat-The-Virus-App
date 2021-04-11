@@ -78,33 +78,34 @@ class _DrawerItemsState extends State<DrawerItems> {
                       style: TextStyle(fontSize: 20, color: Colors.grey),
                       textAlign: TextAlign.center)),
               Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 5.0),
+                  padding: const EdgeInsets.only(top: 5.0, bottom: 8.0),
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
-                        InkWell(
-                            onTap: () {},
-                            child: FaIcon(FontAwesomeIcons.facebook,
-                                color: Colors.black, size: 50)),
-                        InkWell(
-                            onTap: () {},
-                            child: FaIcon(FontAwesomeIcons.twitter,
-                                color: Colors.black, size: 50)),
-                        InkWell(
-                            onTap: () {},
-                            child: FaIcon(FontAwesomeIcons.youtube,
-                                color: Colors.black, size: 50)),
-                        InkWell(
-                            onTap: () {},
-                            child: FaIcon(FontAwesomeIcons.instagram,
-                                color: Colors.black, size: 50)),
-                        InkWell(
-                            onTap: () {},
-                            child: FaIcon(FontAwesomeIcons.google,
-                                color: Colors.black, size: 50))
+                        IconButton(
+                            padding: EdgeInsets.zero,
+                            icon: FaIcon(FontAwesomeIcons.facebook, size: 48),
+                            onPressed: () {}),
+                        IconButton(
+                            padding: EdgeInsets.zero,
+                            icon: FaIcon(FontAwesomeIcons.instagramSquare,
+                                size: 48),
+                            onPressed: () {}),
+                        IconButton(
+                            padding: EdgeInsets.zero,
+                            icon: FaIcon(FontAwesomeIcons.youtube, size: 48),
+                            onPressed: () {}),
+                        IconButton(
+                            padding: EdgeInsets.zero,
+                            icon: FaIcon(FontAwesomeIcons.twitter, size: 48),
+                            onPressed: () {}),
+                        IconButton(
+                            padding: EdgeInsets.zero,
+                            icon: FaIcon(FontAwesomeIcons.google, size: 48),
+                            onPressed: () {})
                       ]))
             ]),
-            Image(image: AssetImage('assets/icons/btvlogo.png'), height: 120)
+            Image(image: AssetImage('assets/icons/btvlogolow.png'), height: 120)
           ])
     ]));
   }
