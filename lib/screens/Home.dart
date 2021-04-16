@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:ui';
 
 class Home extends StatefulWidget {
   _HomePage createState() => _HomePage();
@@ -46,8 +47,8 @@ class _HomePage extends State<Home> {
                 child: Text("Home",
                 style: TextStyle(
                   fontSize: 50.0,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
                 ),),
               ),
               // FractionallySizedBox(
@@ -185,9 +186,19 @@ class BgPainter extends CustomPainter {
     curveBg.quadraticBezierTo(width / 2, height / 2, width, height * 0.25);
     curveBg.lineTo(width, 0);
     curveBg.lineTo(0, 0);
-    paint.color = Colors.white;
+    paint.color = Colors.white60;
 
     canvas.drawPath(curveBg, paint);
+
+    Path topCurve = Path();
+
+    topCurve.moveTo(0, height * 0.0833);
+    topCurve.quadraticBezierTo(width * 0.25, height * 0.150, width * 0.5, height * 0.0833);
+    topCurve.quadraticBezierTo(width * 0.75, height * 0.04, width * 1.0, height * 0.0833);
+    topCurve.lineTo(width, 0);
+    topCurve.lineTo(0, 0);
+    paint.color = Colors.lightBlueAccent.shade700;
+    canvas.drawPath(topCurve, paint);
   }
 
   @override
