@@ -1,3 +1,4 @@
+import 'package:beat_the_virus/screens/Careers.dart';
 import 'package:flutter/material.dart';
 import 'package:beat_the_virus/main.dart';
 import 'package:beat_the_virus/screens/Services.dart';
@@ -55,7 +56,8 @@ class _DrawerItemsState extends State<DrawerItems> {
           leading: FaIcon(FontAwesomeIcons.addressBook, color: Colors.black),
           title: Text('CONTACT')),
       ListTile(
-          onTap: () {},
+          onTap: () => Navigator.of(context)
+              .push(MaterialPageRoute(builder: (ctc) => Careers())),
           leading: FaIcon(FontAwesomeIcons.userGraduate, color: Colors.black),
           title: Text('CAREERS')),
       ListTile(
