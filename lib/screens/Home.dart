@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:ui';
+import '../widgets/DrawerItems.dart';
+import 'package:beat_the_virus/widgets/DrawerItems.dart';
 
 class Home extends StatefulWidget {
   _HomePage createState() => _HomePage();
@@ -13,12 +15,12 @@ class _HomePage extends State<Home> {
             title: Text(
               "Beat The Virus",
               style: TextStyle(
-                color: Colors.black87,
+                color: Colors.white,
               ),
             ),
-            backgroundColor: Colors.white,
+            backgroundColor: Colors.lightBlueAccent.shade700,
             elevation: 0,
-            actionsIconTheme: IconThemeData(color: Colors.black87),
+            actionsIconTheme: IconThemeData(color: Colors.white),
             actions: <Widget>[
               IconButton(
                   icon: Icon(Icons.search),
@@ -31,135 +33,137 @@ class _HomePage extends State<Home> {
               return IconButton(
                 icon: Icon(
                   Icons.fastfood,
-                  color: Colors.black87,
+                  color: Colors.white,
                 ),
                 onPressed: () => Scaffold.of(context).openDrawer(),
               );
             })
         ),
-        body: CustomPaint(
-          painter: BgPainter(),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(30.0, 20.0, 0.0, 0.0),
-                child: Text("Home",
-                style: TextStyle(
-                  fontSize: 50.0,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),),
-              ),
-              // FractionallySizedBox(
-              //   heightFactor: 1,
-              // ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height / 3,
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(10.0, 0, 0, 0),
-                child: Text("What we offer?",
+        body: SafeArea(
+          child: CustomPaint(
+            painter: BgPainter(),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(30.0, 20.0, 0.0, 0.0),
+                  child: Text("Home",
                   style: TextStyle(
-                    fontSize: 25.0,
+                    fontSize: 50.0,
                     color: Colors.white,
-                    fontWeight: FontWeight.w600
+                    fontWeight: FontWeight.bold,
+                  ),),
+                ),
+                // FractionallySizedBox(
+                //   heightFactor: 1,
+                // ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height / 3,
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(10.0, 0, 0, 0),
+                  child: Text("What we offer?",
+                    style: TextStyle(
+                      fontSize: 25.0,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w600
+                    ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      children: [
-                        Image.asset(
-                          'assets/images/yoga.png',
-                          height: 100,
-                          width: 150,
-                          fit: BoxFit.fill,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
-                          child: Text("Yoga",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w500,
-                                fontSize: 15.0
-                            ),),
-                        )
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Image.asset(
-                          'assets/images/meditation.png',
-                          height: 100,
-                          width: 150,
-                          fit: BoxFit.fill,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
-                          child: Text("Meditation",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w500,
-                                fontSize: 15.0
-                            ),),
-                        )
-                      ],
-                    )
-                  ],
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        children: [
+                          Image.asset(
+                            'assets/images/yoga.png',
+                            height: 100,
+                            width: 150,
+                            fit: BoxFit.fill,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
+                            child: Text("Yoga",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 15.0
+                              ),),
+                          )
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Image.asset(
+                            'assets/images/meditation.png',
+                            height: 100,
+                            width: 150,
+                            fit: BoxFit.fill,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
+                            child: Text("Meditation",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 15.0
+                              ),),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      children: [
-                        Image.asset(
-                          'assets/images/fitness.png',
-                          height: 100,
-                          width: 150,
-                          fit: BoxFit.fill,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
-                          child: Text("Fitness",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 15.0
-                          ),),
-                        )
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Image.asset(
-                          'assets/images/acu.png',
-                          height: 100,
-                          width: 150,
-                          fit: BoxFit.fill,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
-                          child: Text("Acupuncture",
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        children: [
+                          Image.asset(
+                            'assets/images/fitness.png',
+                            height: 100,
+                            width: 150,
+                            fit: BoxFit.fill,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
+                            child: Text("Fitness",
                             style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w500,
-                                fontSize: 15.0
+                              color: Colors.white,
+                              fontWeight: FontWeight.w500,
+                              fontSize: 15.0
                             ),),
-                        )
-                      ],
-                    )
-                  ],
-                ),
-              )
-            ],
+                          )
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Image.asset(
+                            'assets/images/acu.png',
+                            height: 100,
+                            width: 150,
+                            fit: BoxFit.fill,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
+                            child: Text("Acupuncture",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 15.0
+                              ),),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
         ),
     );

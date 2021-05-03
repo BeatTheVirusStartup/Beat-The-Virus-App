@@ -30,10 +30,13 @@ class _DrawerItemsState extends State<DrawerItems> {
                   title:
                       Text('Welcome Guest', style: TextStyle(fontSize: 20))))),
       ListTile(
-        onTap: () => Navigator.of(context)
-            .push(MaterialPageRoute(builder: (ctc) => Home())),
-        leading: FaIcon(FontAwesomeIcons.home, color: Colors.black),
-        title: Text('HOME')),
+          // onTap: () => Navigator.of(context)
+          //     .push(MaterialPageRoute(builder: (ctc) => Home())),
+          onTap: () {
+            // Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+          },
+          leading: FaIcon(FontAwesomeIcons.home, color: Colors.black),
+          title: Text('HOME')),
       ListTile(
           onTap: () => Navigator.of(context)
               .push(MaterialPageRoute(builder: (ctc) => AboutUs())),
