@@ -1,5 +1,5 @@
 import 'package:beat_the_virus/screens/Careers.dart';
-import 'package:beat_the_virus/screens/Products.dart';
+import 'package:beat_the_virus/screens/ProductsPage.dart';
 import 'package:flutter/material.dart';
 import 'package:beat_the_virus/main.dart';
 import 'package:beat_the_virus/screens/Services.dart';
