@@ -1,4 +1,5 @@
 import 'package:beat_the_virus/screens/Careers.dart';
+import 'package:beat_the_virus/screens/ProductsPage.dart';
 import 'package:flutter/material.dart';
 import 'package:beat_the_virus/main.dart';
 import 'package:beat_the_virus/screens/Services.dart';
@@ -61,7 +62,8 @@ class _DrawerItemsState extends State<DrawerItems> {
           leading: FaIcon(FontAwesomeIcons.userGraduate, color: Colors.black),
           title: Text('CAREERS')),
       ListTile(
-          onTap: () {},
+          onTap: () => Navigator.of(context)
+              .push(MaterialPageRoute(builder: (ctc) => Products())),
           leading: FaIcon(FontAwesomeIcons.shoppingCart, color: Colors.black),
           title: Text('PRODUCT')),
       ListTile(

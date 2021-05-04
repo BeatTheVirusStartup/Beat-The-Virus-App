@@ -74,13 +74,13 @@ class _BlogState extends State<Blog> {
                         ),
                         Text(dateTime,
                             style:
-                                TextStyle(color: Colors.grey, fontSize: 18.0)),
+                            TextStyle(color: Colors.grey, fontSize: 18.0)),
                         Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
                               Row(
                                   mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
+                                  MainAxisAlignment.spaceEvenly,
                                   children: <Widget>[
                                     IconButton(
                                         icon: Icon(Icons.visibility_outlined),
@@ -89,12 +89,12 @@ class _BlogState extends State<Blog> {
                                   ]),
                               Row(
                                   mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
+                                  MainAxisAlignment.spaceEvenly,
                                   children: <Widget>[
                                     IconButton(
                                         onPressed: () {},
                                         icon:
-                                            Icon(Icons.thumb_up_alt_outlined)),
+                                        Icon(Icons.thumb_up_alt_outlined)),
                                     IconButton(
                                         onPressed: () {},
                                         icon: Icon(Icons.more_vert))
