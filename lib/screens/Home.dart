@@ -11,6 +11,9 @@ class _HomePage extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        drawer: Drawer(
+          child: DrawerItems(),
+        ),
         appBar: AppBar(
             title: Text(
               "Beat The Virus",

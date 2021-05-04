@@ -12,10 +12,11 @@ class BeatTheVirus extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: Scaffold(
-            drawer: Drawer(
-              child: DrawerItems(),
-            ),
+        home: Home(),
+        // home: Scaffold(
+        //     drawer: Drawer(
+        //       child: DrawerItems(),
+        //     ),
             // appBar: AppBar(
             //     title: Text("Beat The Virus"),
             //     backgroundColor: Colors.blue[300],
@@ -36,10 +37,10 @@ class BeatTheVirus extends StatelessWidget {
             //         onPressed: () => Scaffold.of(context).openDrawer(),
             //       );
             //     })),
-          body: SafeArea(
-            child: Home(),
-          ),
-        )
+          // body: SafeArea(
+          //   child: Home(),
+          // ),
+        // )
     );
   }
 }
