@@ -129,7 +129,7 @@ class _ProductsState extends State<Products> {
               ])),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text(" results found in '$chosenValue'"),
+            child: Text(" Results found in $chosenValue :-"),
           ),
           Expanded(
             child: GridView.builder(
