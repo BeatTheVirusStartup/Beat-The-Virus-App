@@ -1,10 +1,10 @@
-import 'package:beat_the_virus/screens/Careers.dart';
-import 'package:beat_the_virus/screens/ProductsPage.dart';
 import 'package:flutter/material.dart';
+import 'package:beat_the_virus/screens/Careers.dart';
+import 'package:beat_the_virus/screens/ContactUs.dart';
+import 'package:beat_the_virus/screens/ProductsPage.dart';
 import 'package:beat_the_virus/main.dart';
 import 'package:beat_the_virus/screens/Services.dart';
 import 'package:beat_the_virus/screens/AboutUs.dart';
-import 'package:beat_the_virus/screens/ContactUs.dart';
 import 'package:beat_the_virus/screens/Blog.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
