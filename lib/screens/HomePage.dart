@@ -64,9 +64,12 @@ class _HomePageState extends State<HomePage> {
                     Column(children: [
                       ClipRRect(
                           borderRadius: BorderRadius.circular(10),
-                          child: Image.asset('assets/images/meditation.jpg',
-                              width: 150, height: 150, fit: BoxFit.cover)),
-                      Text('Meditation',
+                          child: Image.asset(
+                              'assets/images/mentalAwareness.jpg',
+                              width: 150,
+                              height: 150,
+                              fit: BoxFit.cover)),
+                      Text('Mental Awareness',
                           style: TextStyle(color: Colors.white, fontSize: 16.0))
                     ]),
                   ]),
@@ -87,9 +90,9 @@ class _HomePageState extends State<HomePage> {
                     Column(children: [
                       ClipRRect(
                           borderRadius: BorderRadius.circular(10),
-                          child: Image.asset('assets/images/accupuncture.jpg',
+                          child: Image.asset('assets/images/meditation.jpg',
                               width: 150, height: 150, fit: BoxFit.cover)),
-                      Text('Accupuncture',
+                      Text('Meditation',
                           style: TextStyle(color: Colors.white, fontSize: 16.0))
                     ]),
                   ]),
