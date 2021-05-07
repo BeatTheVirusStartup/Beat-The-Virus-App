@@ -1,3 +1,4 @@
+import 'package:beat_the_virus/utility/Size_Config.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -10,6 +11,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Stack(
       children: [
         Container(
@@ -21,7 +23,7 @@ class _HomePageState extends State<HomePage> {
                 Stack(children: [
                   Container(
                     width: double.infinity,
-                    height: MediaQuery.of(context).size.height * 0.40,
+                    height: SizeConfig.safeBlockVertical * 40,
                     alignment: Alignment.centerRight,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -30,8 +32,12 @@ class _HomePageState extends State<HomePage> {
                         children: [
                           Text('Welcome',
                               style: TextStyle(
-                                  fontFamily: 'Vivaldi', fontSize: 60.0)),
+                                  fontFamily: 'Vivaldi',
+                                  fontSize:
+                                      SizeConfig.safeBlockHorizontal * 15)),
                           Image.asset('assets/images/Group 3.png',
+                              width: SizeConfig.safeBlockHorizontal * 40,
+                              height: SizeConfig.safeBlockVertical * 30,
                               fit: BoxFit.cover),
                         ],
                       ),
@@ -51,7 +57,9 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         Text(
                           'What we Offer ?',
-                          style: TextStyle(fontSize: 25.0, color: Colors.white),
+                          style: TextStyle(
+                              fontSize: SizeConfig.safeBlockHorizontal * 7,
+                              color: Colors.white),
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -63,24 +71,38 @@ class _HomePageState extends State<HomePage> {
                                       borderRadius: BorderRadius.circular(10),
                                       child: Image.asset(
                                           'assets/images/yoga.jpg',
-                                          width: 150,
-                                          height: 150,
+                                          width:
+                                              SizeConfig.safeBlockHorizontal *
+                                                  40,
+                                          height:
+                                              SizeConfig.safeBlockVertical * 16,
                                           fit: BoxFit.cover)),
-                                  Text('Yoga',
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 16.0))
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text('Yoga',
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 16.0)),
+                                  )
                                 ]),
                                 Column(children: [
                                   ClipRRect(
                                       borderRadius: BorderRadius.circular(10),
                                       child: Image.asset(
                                           'assets/images/mentalAwareness.jpg',
-                                          width: 150,
-                                          height: 150,
+                                          width:
+                                              SizeConfig.safeBlockHorizontal *
+                                                  40,
+                                          height:
+                                              SizeConfig.safeBlockVertical * 16,
                                           fit: BoxFit.cover)),
-                                  Text('Mental Awareness',
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 16.0))
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text('Mental Awareness',
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 16.0)),
+                                  )
                                 ]),
                               ]),
                         ),
@@ -94,24 +116,38 @@ class _HomePageState extends State<HomePage> {
                                       borderRadius: BorderRadius.circular(10),
                                       child: Image.asset(
                                           'assets/images/fitness.jpg',
-                                          width: 150,
-                                          height: 150,
+                                          width:
+                                              SizeConfig.safeBlockHorizontal *
+                                                  40,
+                                          height:
+                                              SizeConfig.safeBlockVertical * 16,
                                           fit: BoxFit.cover)),
-                                  Text('Fitness',
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 16.0))
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text('Fitness',
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 16.0)),
+                                  )
                                 ]),
                                 Column(children: [
                                   ClipRRect(
                                       borderRadius: BorderRadius.circular(10),
                                       child: Image.asset(
                                           'assets/images/meditation.jpg',
-                                          width: 150,
-                                          height: 150,
+                                          width:
+                                              SizeConfig.safeBlockHorizontal *
+                                                  40,
+                                          height:
+                                              SizeConfig.safeBlockVertical * 16,
                                           fit: BoxFit.cover)),
-                                  Text('Meditation',
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 16.0))
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text('Meditation',
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 16.0)),
+                                  )
                                 ]),
                               ]),
                         )
