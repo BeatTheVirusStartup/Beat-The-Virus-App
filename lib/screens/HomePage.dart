@@ -12,6 +12,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
+
     return Stack(
       children: [
         Container(
@@ -20,34 +21,46 @@ class _HomePageState extends State<HomePage> {
           child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Stack(children: [
+                Stack(alignment: Alignment.centerRight, children: [
                   Container(
                     width: double.infinity,
                     height: SizeConfig.safeBlockVertical * 40,
-                    alignment: Alignment.centerRight,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text('Welcome',
-                              style: TextStyle(
-                                  fontFamily: 'Vivaldi',
-                                  fontSize:
-                                      SizeConfig.safeBlockHorizontal * 15)),
-                          Image.asset('assets/images/Group 3.png',
-                              width: SizeConfig.safeBlockHorizontal * 40,
-                              height: SizeConfig.safeBlockVertical * 30,
-                              fit: BoxFit.cover),
-                        ],
-                      ),
-                    ),
+                    alignment: Alignment.centerLeft,
+                    child: Image.asset('assets/images/Group 3.png',
+                        width: 100,
+                        height: 50,
+                        // width: SizeConfig.safeBlockHorizontal * 40,
+                        // height: SizeConfig.safeBlockVertical * 30,
+                        fit: BoxFit.cover),
+                    // child: Padding(
+                    //   padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    //   child: Row(
+                    //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //     children: [
+                    // Text('Welcome',
+                    //     style: TextStyle(
+                    //         fontFamily: 'Vivaldi',
+                    //         fontSize:
+                    //             SizeConfig.safeBlockHorizontal * 15)),
+                    // Image.asset('assets/images/Group 3.png',
+                    //     width: 100,
+                    //     height: 50,
+                    //     // width: SizeConfig.safeBlockHorizontal * 40,
+                    //     // height: SizeConfig.safeBlockVertical * 30,
+                    //     fit: BoxFit.cover),
+                    //     ],
+                    //   ),
+                    // ),
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.only(
                             bottomLeft: Radius.circular(200.0),
                             bottomRight: Radius.circular(200.0))),
                   ),
+                  Text('Welcome',
+                      style: TextStyle(
+                          fontFamily: 'Vivaldi',
+                          fontSize: SizeConfig.safeBlockHorizontal * 15)),
                 ]),
                 Padding(
                   padding: const EdgeInsets.symmetric(

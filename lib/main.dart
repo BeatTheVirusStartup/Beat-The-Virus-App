@@ -1,4 +1,5 @@
-import 'package:beat_the_virus/screens/HomePage.dart';
+//import 'package:beat_the_virus/screens/HomePage.dart';
+import 'package:beat_the_virus/screens/HomePageNew.dart';
 import 'package:beat_the_virus/widgets/DrawerItems.dart';
 import 'package:flutter/material.dart';
 import 'widgets/DrawerItems.dart';
