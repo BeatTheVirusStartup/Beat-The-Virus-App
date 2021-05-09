@@ -23,6 +23,7 @@ class _CareersState extends State<Careers> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Text('Careers', style: TextStyle(color: Colors.black)),
         backgroundColor: Colors.white,
         elevation: 0,
         leading: InkWell(
@@ -67,85 +68,83 @@ class _Form1State extends State<Form1> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return Container(
-      width: double.infinity,
-      height: double.infinity,
-      color: Colors.transparent,
-      child: Stack(children: [
-        Align(
-          alignment: Alignment.center,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 35.0),
-            child: Column(mainAxisSize: MainAxisSize.min, children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
-                child: TextField(
-                    controller: nameTED,
-                    keyboardType: TextInputType.name,
-                    decoration: InputDecoration(
-                        labelText: 'Name',
-                        labelStyle: TextStyle(color: Colors.blue))),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
-                child: TextField(
-                    controller: nameTED,
-                    decoration: InputDecoration(
-                        labelText: 'University/College',
-                        labelStyle: TextStyle(color: Colors.blue))),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
-                child: TextField(
-                    controller: nameTED,
-                    keyboardType: TextInputType.emailAddress,
-                    decoration: InputDecoration(
-                        labelText: 'Email',
-                        labelStyle: TextStyle(color: Colors.blue))),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
-                child: TextField(
-                    controller: nameTED,
-                    keyboardType: TextInputType.number,
-                    decoration: InputDecoration(
-                        labelText: 'Phone Number',
-                        labelStyle: TextStyle(color: Colors.blue))),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10.0),
-                child: SizedBox(
-                  width: SizeConfig.safeBlockVertical * 15,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15.0))),
-                    child: Text(
-                      'Next',
-                      style: TextStyle(
-                          fontSize: SizeConfig.safeBlockHorizontal * 6),
-                    ),
-                    onPressed: nextPage,
-                  ),
-                ),
-              )
-            ]),
-          ),
-        ),
-        Align(
-          alignment: Alignment.topCenter,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 35.0),
-            child: Text(
-              'Careers',
-              style: TextStyle(
-                  fontSize: SizeConfig.safeBlockHorizontal * 10,
-                  fontWeight: FontWeight.bold),
-            ),
-          ),
-        )
-      ]),
-    );
+    return Column(
+        //mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Expanded(
+              child: Container(
+                  alignment: Alignment.center,
+                  child: Text(
+                    'Come\nJoin the Team',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: SizeConfig.safeBlockHorizontal * 10,
+                        fontWeight: FontWeight.bold),
+                  ))),
+          Expanded(
+              flex: 3,
+              child: ListView(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 35.0, vertical: 20.0),
+                  children: [
+                    Column(children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 8.0),
+                        child: TextField(
+                            controller: nameTED,
+                            keyboardType: TextInputType.name,
+                            decoration: InputDecoration(
+                                prefixIcon: Icon(Icons.person),
+                                labelText: 'Name',
+                                labelStyle: TextStyle(color: Colors.blue))),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 8.0),
+                        child: TextField(
+                            controller: nameTED,
+                            decoration: InputDecoration(
+                                prefixIcon: Icon(Icons.school),
+                                labelText: 'University/College',
+                                labelStyle: TextStyle(color: Colors.blue))),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 8.0),
+                        child: TextField(
+                            controller: nameTED,
+                            keyboardType: TextInputType.emailAddress,
+                            decoration: InputDecoration(
+                                prefixIcon: Icon(Icons.email_rounded),
+                                labelText: 'Email',
+                                labelStyle: TextStyle(color: Colors.blue))),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 8.0),
+                        child: TextField(
+                            controller: nameTED,
+                            keyboardType: TextInputType.number,
+                            decoration: InputDecoration(
+                                prefixIcon: Icon(Icons.phone),
+                                labelText: 'Phone Number',
+                                labelStyle: TextStyle(color: Colors.blue))),
+                      ),
+                      Container(
+                        width: SizeConfig.safeBlockVertical * 15,
+                        padding: const EdgeInsets.symmetric(vertical: 10.0),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15.0))),
+                          child: Text(
+                            'Next',
+                            style: TextStyle(
+                                fontSize: SizeConfig.safeBlockHorizontal * 6),
+                          ),
+                          onPressed: nextPage,
+                        ),
+                      ),
+                    ]),
+                  ])),
+        ]);
   }
 
   void nextPage() {
@@ -181,67 +180,75 @@ class _Form2State extends State<Form2> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 35.0),
             child: Column(mainAxisSize: MainAxisSize.min, children: [
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                Text(
-                  'Whatwould you like to join us as ?',
-                  style: TextStyle(
-                      fontSize: SizeConfig.safeBlockHorizontal * 4.5,
-                      color: Colors.blue),
-                ),
-                Row(
-                  children: [
-                    Radio(
-                      value: RadioType.consultant,
-                      groupValue: _site,
-                      onChanged: (RadioType value) {
-                        setState(() {
-                          _site = value;
-                        });
-                      },
-                    ),
-                    Text('Consultant',
-                        style: TextStyle(
-                            fontSize: SizeConfig.safeBlockHorizontal * 3.5,
-                            color: Colors.blue))
-                  ],
-                ),
-                Row(
-                  children: [
-                    Radio(
-                      value: RadioType.partner,
-                      groupValue: _site,
-                      onChanged: (RadioType value) {
-                        setState(() {
-                          _site = value;
-                        });
-                      },
-                    ),
-                    Text('Partner',
-                        style: TextStyle(
-                            fontSize: SizeConfig.safeBlockHorizontal * 3.5,
-                            color: Colors.blue))
-                  ],
-                ),
-                Row(
-                  children: [
-                    Radio(
-                      value: RadioType.intern,
-                      groupValue: _site,
-                      onChanged: (RadioType value) {
-                        setState(() {
-                          _site = value;
-                        });
-                      },
-                    ),
-                    Text('Intern',
-                        style: TextStyle(
-                            fontSize: SizeConfig.safeBlockHorizontal * 3.5,
-                            color: Colors.blue))
-                  ],
-                ),
-              ]),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                padding: const EdgeInsets.symmetric(vertical: 10.0),
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Whatwould you like to join us as ?',
+                        style: TextStyle(
+                            fontSize: SizeConfig.safeBlockHorizontal * 4.5,
+                            color: Colors.blue),
+                      ),
+                      Row(
+                        children: [
+                          Radio(
+                            value: RadioType.consultant,
+                            groupValue: _site,
+                            onChanged: (RadioType value) {
+                              setState(() {
+                                _site = value;
+                              });
+                            },
+                          ),
+                          Text('Consultant',
+                              style: TextStyle(
+                                  fontSize:
+                                      SizeConfig.safeBlockHorizontal * 3.5,
+                                  color: Colors.blue))
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Radio(
+                            value: RadioType.partner,
+                            groupValue: _site,
+                            onChanged: (RadioType value) {
+                              setState(() {
+                                _site = value;
+                              });
+                            },
+                          ),
+                          Text('Partner',
+                              style: TextStyle(
+                                  fontSize:
+                                      SizeConfig.safeBlockHorizontal * 3.5,
+                                  color: Colors.blue))
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Radio(
+                            value: RadioType.intern,
+                            groupValue: _site,
+                            onChanged: (RadioType value) {
+                              setState(() {
+                                _site = value;
+                              });
+                            },
+                          ),
+                          Text('Intern',
+                              style: TextStyle(
+                                  fontSize:
+                                      SizeConfig.safeBlockHorizontal * 3.5,
+                                  color: Colors.blue))
+                        ],
+                      ),
+                    ]),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10.0),
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -282,7 +289,7 @@ class _Form2State extends State<Form2> {
                     ]),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                padding: const EdgeInsets.symmetric(vertical: 10.0),
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -366,7 +373,8 @@ class _Form2State extends State<Form2> {
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 35.0),
             child: Text(
-              'Careers',
+              'Come\nJoin the Team',
+              textAlign: TextAlign.center,
               style: TextStyle(
                   fontSize: SizeConfig.safeBlockHorizontal * 10,
                   fontWeight: FontWeight.bold),
@@ -420,10 +428,11 @@ class _Form3State extends State<Form3> {
         Align(
             alignment: Alignment.center,
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 35.0),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 35.0, vertical: 25.0),
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -631,7 +640,8 @@ class _Form3State extends State<Form3> {
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 20.0),
             child: Text(
-              'Careers',
+              'Come\nJoin the Team',
+              textAlign: TextAlign.center,
               style: TextStyle(
                   fontSize: SizeConfig.safeBlockHorizontal * 10,
                   fontWeight: FontWeight.bold),
