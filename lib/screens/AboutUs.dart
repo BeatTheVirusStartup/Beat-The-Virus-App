@@ -89,34 +89,37 @@ class _AboutUsState extends State<AboutUs> {
                         width: MediaQuery.of(context).size.width * 0.80,
                         decoration: BoxDecoration(
                             borderRadius:
-                            BorderRadius.all(Radius.circular(20.0))),
+                                BorderRadius.all(Radius.circular(20.0))),
                         child: Card(
                           shape: RoundedRectangleBorder(
                               borderRadius:
-                              BorderRadius.all(Radius.circular(20.0))),
-                          child: ListView.builder(
-                              shrinkWrap: true,
-                              itemCount: aboutUsLS.length,
-                              itemBuilder: (ctx, index) {
-                                return Padding(
-                                  padding: EdgeInsets.all(10.0),
-                                  child: Text(
-                                    aboutUsLS[index],
-                                    style: TextStyle(fontSize: 20),
-                                  ),
-                                );
-                              }),
+                                  BorderRadius.all(Radius.circular(20.0))),
+                          child: Center(
+                            child: ListView.builder(
+                                shrinkWrap: true,
+                                itemCount: aboutUsLS.length,
+                                itemBuilder: (ctx, index) {
+                                  return Padding(
+                                    padding: EdgeInsets.all(10.0),
+                                    child: Text(
+                                      aboutUsLS[index],
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(fontSize: 20),
+                                    ),
+                                  );
+                                }),
+                          ),
                         ),
                       ),
                       Container(
                         width: MediaQuery.of(context).size.width * 0.80,
                         decoration: BoxDecoration(
                             borderRadius:
-                            BorderRadius.all(Radius.circular(20.0))),
+                                BorderRadius.all(Radius.circular(20.0))),
                         child: Card(
                           shape: RoundedRectangleBorder(
                               borderRadius:
-                              BorderRadius.all(Radius.circular(20.0))),
+                                  BorderRadius.all(Radius.circular(20.0))),
                           child: ListView.builder(
                               shrinkWrap: true,
                               itemCount: privacyPolicyLS.length,
@@ -135,11 +138,11 @@ class _AboutUsState extends State<AboutUs> {
                         width: MediaQuery.of(context).size.width * 0.80,
                         decoration: BoxDecoration(
                             borderRadius:
-                            BorderRadius.all(Radius.circular(20.0))),
+                                BorderRadius.all(Radius.circular(20.0))),
                         child: Card(
                           shape: RoundedRectangleBorder(
                               borderRadius:
-                              BorderRadius.all(Radius.circular(20.0))),
+                                  BorderRadius.all(Radius.circular(20.0))),
                           child: ListView.builder(
                               shrinkWrap: true,
                               itemCount: tcLS.length,
@@ -148,7 +151,7 @@ class _AboutUsState extends State<AboutUs> {
                                   padding: EdgeInsets.all(10.0),
                                   child: Column(
                                     crossAxisAlignment:
-                                    CrossAxisAlignment.start,
+                                        CrossAxisAlignment.start,
                                     children: <Widget>[
                                       Text(
                                         tcLS[index][0],
