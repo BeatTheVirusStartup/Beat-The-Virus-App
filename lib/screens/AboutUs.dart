@@ -80,8 +80,9 @@ class _AboutUsState extends State<AboutUs> {
               child: Container(
             alignment: Alignment.center,
             child: Text(titleLS[currentPos],
-                style: GoogleFonts.poppins(
-                    fontSize: SizeConfig.safeBlockHorizontal * 10)),
+                style: TextStyle(
+                    fontFamily: 'Vivaldi',
+                    fontSize: SizeConfig.safeBlockHorizontal * 15)),
           )),
           Expanded(
               flex: 6,

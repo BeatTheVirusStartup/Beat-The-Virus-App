@@ -1,7 +1,7 @@
 import 'package:beat_the_virus/utility/Size_Config.dart';
 import 'package:flutter/material.dart';
 
-PageController _pageController = PageController(initialPage: 0);
+enum RadioType { consultant, partner, intern }
 
 class Careers extends StatefulWidget {
   Careers({Key key}) : super(key: key);
@@ -10,12 +10,18 @@ class Careers extends StatefulWidget {
   _CareersState createState() => _CareersState();
 }
 
-enum RadioType { consultant, partner, intern }
-
 class _CareersState extends State<Careers> {
+  PageController pageController;
+
+  @override
+  void initState() {
+    super.initState();
+    pageController = PageController(initialPage: 0);
+  }
+
   @override
   void dispose() {
-    _pageController.dispose();
+    pageController.dispose();
     super.dispose();
   }
 
@@ -30,22 +36,30 @@ class _CareersState extends State<Careers> {
           child: Image.asset('assets/images/Group 27.png')),
       PageView(
         physics: NeverScrollableScrollPhysics(),
-        controller: _pageController,
+        controller: pageController,
         scrollDirection: Axis.horizontal,
-        children: [Form1(), Form2(), Form3()],
+        children: [
+          Form1(pageController: pageController),
+          Form2(pageController: pageController),
+          Form3(pageController: pageController)
+        ],
       ),
     ]);
   }
 }
 
 class Form1 extends StatefulWidget {
-  Form1({Key key}) : super(key: key);
+  final PageController pageController;
+  Form1({Key key, this.pageController}) : super(key: key);
 
   @override
-  _Form1State createState() => _Form1State();
+  _Form1State createState() => _Form1State(pageController);
 }
 
 class _Form1State extends State<Form1> {
+  PageController pageController;
+  _Form1State(this.pageController);
+
   TextEditingController nameTED = TextEditingController(),
       uniCollgNameTED = TextEditingController(),
       emailTED = TextEditingController(),
@@ -66,7 +80,8 @@ class _Form1State extends State<Form1> {
                 'Come\nJoin the Team !',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                    fontSize: SizeConfig.safeBlockHorizontal * 10,
+                    fontFamily: 'Vivaldi',
+                    fontSize: SizeConfig.safeBlockHorizontal * 15,
                     fontWeight: FontWeight.bold),
               ))),
       Expanded(
@@ -136,20 +151,24 @@ class _Form1State extends State<Form1> {
   }
 
   void nextPage() {
-    _pageController.animateToPage(_pageController.page.toInt() + 1,
+    pageController.animateToPage(pageController.page.toInt() + 1,
         duration: Duration(milliseconds: 400), curve: Curves.easeInCubic);
   }
 }
 
 class Form2 extends StatefulWidget {
-  Form2({Key key}) : super(key: key);
+  final PageController pageController;
+  Form2({Key key, this.pageController}) : super(key: key);
 
   @override
-  _Form2State createState() => _Form2State();
+  _Form2State createState() => _Form2State(pageController);
 }
 
 class _Form2State extends State<Form2> {
+  PageController pageController;
   RadioType _site = RadioType.consultant;
+
+  _Form2State(this.pageController);
 
   String commuValue = 'First';
   List<String> communicationLS = ['First', 'Second', 'Third'];
@@ -166,7 +185,8 @@ class _Form2State extends State<Form2> {
           'Come\nJoin the Team !',
           textAlign: TextAlign.center,
           style: TextStyle(
-              fontSize: SizeConfig.safeBlockHorizontal * 10,
+              fontFamily: 'Vivaldi',
+              fontSize: SizeConfig.safeBlockHorizontal * 15,
               fontWeight: FontWeight.bold),
         ),
       )),
@@ -373,24 +393,29 @@ class _Form2State extends State<Form2> {
   }
 
   void nextPage() {
-    _pageController.animateToPage(_pageController.page.toInt() + 1,
+    pageController.animateToPage(pageController.page.toInt() + 1,
         duration: Duration(milliseconds: 400), curve: Curves.easeInCubic);
   }
 
   void previousPage() {
-    _pageController.animateToPage(_pageController.page.toInt() - 1,
+    pageController.animateToPage(pageController.page.toInt() - 1,
         duration: Duration(milliseconds: 400), curve: Curves.easeInCubic);
   }
 }
 
 class Form3 extends StatefulWidget {
-  Form3({Key key}) : super(key: key);
+  final PageController pageController;
+  Form3({Key key, this.pageController}) : super(key: key);
 
   @override
-  _Form3State createState() => _Form3State();
+  _Form3State createState() => _Form3State(pageController);
 }
 
 class _Form3State extends State<Form3> {
+  PageController pageController;
+
+  _Form3State(this.pageController);
+
   String commitValue = 'First';
   List<String> commitLS = ['First', 'Second', 'Third'];
 
@@ -416,7 +441,8 @@ class _Form3State extends State<Form3> {
             'Come\nJoin the Team !',
             textAlign: TextAlign.center,
             style: TextStyle(
-                fontSize: SizeConfig.safeBlockHorizontal * 10,
+                fontFamily: 'Vivaldi',
+                fontSize: SizeConfig.safeBlockHorizontal * 15,
                 fontWeight: FontWeight.bold),
           ),
         )),
@@ -642,7 +668,7 @@ class _Form3State extends State<Form3> {
   }
 
   void previousPage() {
-    _pageController.animateToPage(_pageController.page.toInt() - 1,
+    pageController.animateToPage(pageController.page.toInt() - 1,
         duration: Duration(milliseconds: 400), curve: Curves.easeInCubic);
   }
 }

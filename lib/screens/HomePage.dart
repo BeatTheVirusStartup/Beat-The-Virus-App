@@ -24,30 +24,27 @@ class _HomePageState extends State<HomePage> {
       color: Colors.white,
       child: Stack(
         children: [
-          Expanded(
-            child: Column(
-              children: [
-                Expanded(
-                    child: Stack(children: [
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 10.0),
+          Column(
+            children: [
+              Expanded(
+                  child: Stack(children: [
+                Container(
+                  margin: EdgeInsets.symmetric(vertical: 10.0),
+                  width: double.infinity,
+                  alignment: Alignment.topLeft,
+                  child: Image.asset('assets/images/Group 3.png'),
+                )
+              ])),
+              Expanded(
+                  child: Stack(children: [
+                Container(
                     width: double.infinity,
-                    alignment: Alignment.topLeft,
-                    child: Image.asset('assets/images/Group 3.png'),
-                  )
-                ])),
-                Expanded(
-                    child: Stack(children: [
-                  Container(
-                      width: double.infinity,
-                      alignment: Alignment.centerRight,
-                      child: Image.asset('assets/images/Group 1.png'))
-                ])),
-              ],
-            ),
+                    alignment: Alignment.centerRight,
+                    child: Image.asset('assets/images/Group 1.png'))
+              ])),
+            ],
           ),
-          Expanded(
-              child: Column(
+          Column(
             //mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -68,16 +65,18 @@ class _HomePageState extends State<HomePage> {
                         color: Colors.black)),
               ),
               Expanded(
+                flex: 2,
                 child: GridView.builder(
                     //shrinkWrap: true,
                     padding: EdgeInsets.all(8.0),
                     itemCount: imgLS.length,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        childAspectRatio: SizeConfig.screenWidth /
-                            (SizeConfig.screenHeight / 2.25),
-                        crossAxisSpacing: 10.0,
-                        mainAxisSpacing: 5.0),
+                      crossAxisCount: 2,
+                      // childAspectRatio: SizeConfig.screenWidth /
+                      //     (SizeConfig.screenHeight / 2.25),
+                      crossAxisSpacing: 10.0,
+                      // mainAxisSpacing: 5.0,
+                    ),
                     itemBuilder: (BuildContext context, int index) {
                       return Column(children: [
                         ClipRRect(
@@ -90,13 +89,15 @@ class _HomePageState extends State<HomePage> {
                           padding: const EdgeInsets.all(8.0),
                           child: Text(titleLS[index],
                               style: TextStyle(
-                                  color: Colors.black, fontSize: 16.0)),
+                                  color: Colors.black,
+                                  fontSize:
+                                      SizeConfig.safeBlockHorizontal * 4)),
                         )
                       ]);
                     }),
               ),
             ],
-          )),
+          ),
         ],
       ),
     );

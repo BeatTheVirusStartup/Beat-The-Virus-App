@@ -46,7 +46,6 @@ class _StartPageState extends State<StartPage> {
   //   MaterialPageRoute(builder: (ctx) => ContactUs())
   // ];
 
-  ScrollController _scrollController = ScrollController();
   PageController _pageController;
   int _page = 0;
 
@@ -93,30 +92,24 @@ class _StartPageState extends State<StartPage> {
                           fontSize: SizeConfig.safeBlockHorizontal * 5)))),
         ),
         Expanded(
-            flex: 3,
-            child: RawScrollbar(
-              thumbColor: Colors.grey,
-              controller: _scrollController,
-              radius: Radius.circular(8.0),
-              thickness: 6.0,
-              isAlwaysShown: true,
-              child: ListView.separated(
-                  separatorBuilder: (ct, i) {
-                    return Divider();
+          flex: 3,
+          child: ListView.separated(
+              separatorBuilder: (ct, i) {
+                return Divider();
+              },
+              physics: BouncingScrollPhysics(),
+              itemCount: menuLS.length,
+              itemBuilder: (ctx, index) {
+                return ListTile(
+                  leading: menuIconsLS[index],
+                  title: Text(menuLS[index]),
+                  onTap: () {
+                    Navigator.pop(context);
+                    _pageController.jumpToPage(index);
                   },
-                  physics: BouncingScrollPhysics(),
-                  itemCount: menuLS.length,
-                  itemBuilder: (ctx, index) {
-                    return ListTile(
-                      leading: menuIconsLS[index],
-                      title: Text(menuLS[index]),
-                      onTap: () {
-                        Navigator.pop(context);
-                        _pageController.jumpToPage(index);
-                      },
-                    );
-                  }),
-            )),
+                );
+              }),
+        ),
         Expanded(
           flex: 2,
           child: Container(
