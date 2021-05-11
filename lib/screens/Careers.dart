@@ -21,30 +21,20 @@ class _CareersState extends State<Careers> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Careers', style: TextStyle(color: Colors.black)),
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: InkWell(
-            onTap: () => Navigator.of(context).pop(),
-            child: Icon(Icons.arrow_back, color: Colors.black, size: 30.0)),
+    return Stack(children: [
+      Align(
+          alignment: Alignment.centerRight,
+          child: Image.asset('assets/images/Ellipse 7.png')),
+      Align(
+          alignment: Alignment.bottomLeft,
+          child: Image.asset('assets/images/Group 27.png')),
+      PageView(
+        physics: NeverScrollableScrollPhysics(),
+        controller: _pageController,
+        scrollDirection: Axis.horizontal,
+        children: [Form1(), Form2(), Form3()],
       ),
-      body: Stack(children: [
-        Align(
-            alignment: Alignment.centerRight,
-            child: Image.asset('assets/images/Ellipse 7.png')),
-        Align(
-            alignment: Alignment.bottomLeft,
-            child: Image.asset('assets/images/Group 27.png')),
-        PageView(
-          physics: NeverScrollableScrollPhysics(),
-          controller: _pageController,
-          scrollDirection: Axis.horizontal,
-          children: [Form1(), Form2(), Form3()],
-        ),
-      ]),
-    );
+    ]);
   }
 }
 

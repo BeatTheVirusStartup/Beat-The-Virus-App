@@ -1,3 +1,5 @@
+import 'package:beat_the_virus/screens/HomePage.dart';
+import 'package:beat_the_virus/utility/Size_Config.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:beat_the_virus/screens/ContactUs.dart';
@@ -16,122 +18,124 @@ class DrawerItems extends StatefulWidget {
 }
 
 class _DrawerItemsState extends State<DrawerItems> {
+  List<String> menuLS = [
+    'HOME',
+    'BLOG',
+    'PRODUCT',
+    'SERVICES',
+    'CAREERS',
+    'ABOUT',
+    'CONTACT'
+  ];
+  List<FaIcon> menuIconsLS = [
+    FaIcon(FontAwesomeIcons.home, color: Colors.black),
+    FaIcon(FontAwesomeIcons.blog, color: Colors.black),
+    FaIcon(FontAwesomeIcons.shoppingCart, color: Colors.black),
+    FaIcon(FontAwesomeIcons.handHoldingHeart, color: Colors.black),
+    FaIcon(FontAwesomeIcons.userGraduate, color: Colors.black),
+    FaIcon(FontAwesomeIcons.addressCard, color: Colors.black),
+    FaIcon(FontAwesomeIcons.addressBook, color: Colors.black)
+  ];
+
+  List<MaterialPageRoute> pageRouteLS = [
+    MaterialPageRoute(builder: (ctx) => HomePage()),
+    MaterialPageRoute(builder: (ctx) => Blog()),
+    MaterialPageRoute(builder: (ctx) => Products()),
+    MaterialPageRoute(builder: (ctx) => Services()),
+    MaterialPageRoute(builder: (ctx) => Careers()),
+    MaterialPageRoute(builder: (ctx) => AboutUs()),
+    MaterialPageRoute(builder: (ctx) => ContactUs())
+  ];
+
+  ScrollController _scrollController = ScrollController();
+
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return SafeArea(
-        child: ListView(padding: EdgeInsets.zero, children: <Widget>[
-      Container(
-          padding: EdgeInsets.symmetric(horizontal: 5.0),
-          height: 100,
-          decoration: BoxDecoration(color: Colors.blue[300]),
-          child: Center(
-              child: ListTile(
-                  leading: FaIcon(FontAwesomeIcons.user,
-                      size: 45, color: Colors.grey[800]),
-                  title:
-                      Text('Welcome Guest', style: TextStyle(fontSize: 20))))),
-      ListTile(
-        onTap: () {
-          Navigator.of(context).pop();
-          Navigator.of(context).pushReplacement(
-              MaterialPageRoute(builder: (ctx) => BeatTheVirus()));
-        },
-        leading: FaIcon(FontAwesomeIcons.home, color: Colors.black),
-        title: Text('HOME'),
+        child: Column(children: <Widget>[
+      Expanded(
+        child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 5.0),
+            alignment: Alignment.center,
+            decoration: BoxDecoration(color: Colors.blue[300]),
+            child: ListTile(
+                leading: FaIcon(FontAwesomeIcons.user,
+                    size: SizeConfig.safeBlockVertical * 7,
+                    color: Colors.grey[800]),
+                title: Text('Welcome Guest',
+                    style: TextStyle(
+                        fontSize: SizeConfig.safeBlockHorizontal * 5)))),
       ),
-      ListTile(
-          onTap: () {
-            Navigator.of(context).pop();
-            Navigator.of(context)
-                .push(MaterialPageRoute(builder: (ctc) => AboutUs()));
-          },
-          leading: FaIcon(FontAwesomeIcons.addressCard, color: Colors.black),
-          title: Text('ABOUT')),
-      ListTile(
-          onTap: () {},
-          leading: FaIcon(FontAwesomeIcons.users, color: Colors.black),
-          title: Text('TEAM')),
-      ListTile(
-          onTap: () {
-            Navigator.of(context).pop();
-            Navigator.of(context)
-                .push(MaterialPageRoute(builder: (ctc) => Services()));
-          },
-          leading:
-              FaIcon(FontAwesomeIcons.handHoldingHeart, color: Colors.black),
-          title: Text('SERVICES')),
-      ListTile(
-          onTap: () {
-            Navigator.of(context).pop();
-            Navigator.of(context)
-                .push(MaterialPageRoute(builder: (ctc) => ContactUs()));
-          },
-          leading: FaIcon(FontAwesomeIcons.addressBook, color: Colors.black),
-          title: Text('CONTACT')),
-      ListTile(
-          onTap: () {
-            Navigator.of(context).pop();
-            Navigator.of(context)
-                .push(MaterialPageRoute(builder: (ctc) => Careers()));
-          },
-          leading: FaIcon(FontAwesomeIcons.userGraduate, color: Colors.black),
-          title: Text('CAREERS')),
-      ListTile(
-          onTap: () {
-            Navigator.of(context).pop();
-            Navigator.of(context)
-                .push(MaterialPageRoute(builder: (ctc) => Products()));
-          },
-          leading: FaIcon(FontAwesomeIcons.shoppingCart, color: Colors.black),
-          title: Text('PRODUCT')),
-      ListTile(
-          onTap: () {
-            Navigator.of(context).pop();
-            Navigator.of(context)
-                .push(MaterialPageRoute(builder: (ctc) => Blog()));
-          },
-          leading: FaIcon(FontAwesomeIcons.blog, color: Colors.black),
-          title: Text('BLOG')),
-      Divider(color: Colors.grey, height: 1.0),
-      Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Column(children: <Widget>[
-              Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text('Connect With Us',
-                      style: TextStyle(fontSize: 20, color: Colors.grey),
-                      textAlign: TextAlign.center)),
-              Padding(
-                  padding: const EdgeInsets.only(top: 5.0, bottom: 8.0),
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: <Widget>[
-                        IconButton(
-                            padding: EdgeInsets.zero,
-                            icon: FaIcon(FontAwesomeIcons.facebook, size: 48),
-                            onPressed: () {}),
-                        IconButton(
-                            padding: EdgeInsets.zero,
-                            icon: FaIcon(FontAwesomeIcons.instagramSquare,
-                                size: 48),
-                            onPressed: () {}),
-                        IconButton(
-                            padding: EdgeInsets.zero,
-                            icon: FaIcon(FontAwesomeIcons.youtube, size: 48),
-                            onPressed: () {}),
-                        IconButton(
-                            padding: EdgeInsets.zero,
-                            icon: FaIcon(FontAwesomeIcons.twitter, size: 48),
-                            onPressed: () {}),
-                        IconButton(
-                            padding: EdgeInsets.zero,
-                            icon: FaIcon(FontAwesomeIcons.google, size: 48),
-                            onPressed: () {})
-                      ]))
-            ]),
-            Image(image: AssetImage('assets/icons/btvlogolow.png'), height: 120)
-          ])
+      Expanded(
+          flex: 3,
+          child: RawScrollbar(
+            thumbColor: Colors.grey,
+            controller: _scrollController,
+            radius: Radius.circular(8.0),
+            thickness: 6.0,
+            isAlwaysShown: true,
+            child: ListView.separated(
+                separatorBuilder: (ct, i) {
+                  return Divider();
+                },
+                physics: BouncingScrollPhysics(),
+                itemCount: menuLS.length,
+                itemBuilder: (ctx, index) {
+                  return ListTile(
+                    leading: menuIconsLS[index],
+                    title: Text(menuLS[index]),
+                    onTap: () {
+                      setState(() {
+                        Navigator.of(context).pop();
+                        Navigator.of(context).push(pageRouteLS[index]);
+                      });
+                    },
+                  );
+                }),
+          )),
+      Expanded(
+        flex: 2,
+        child: Container(
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                Text('Connect With Us',
+                    style: TextStyle(
+                        fontSize: SizeConfig.safeBlockHorizontal * 5,
+                        color: Colors.grey),
+                    textAlign: TextAlign.center),
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      IconButton(
+                          padding: EdgeInsets.zero,
+                          icon: FaIcon(FontAwesomeIcons.facebook, size: 48),
+                          onPressed: () {}),
+                      IconButton(
+                          padding: EdgeInsets.zero,
+                          icon: FaIcon(FontAwesomeIcons.instagramSquare,
+                              size: 48),
+                          onPressed: () {}),
+                      IconButton(
+                          padding: EdgeInsets.zero,
+                          icon: FaIcon(FontAwesomeIcons.youtube, size: 48),
+                          onPressed: () {}),
+                      IconButton(
+                          padding: EdgeInsets.zero,
+                          icon: FaIcon(FontAwesomeIcons.twitter, size: 48),
+                          onPressed: () {}),
+                      IconButton(
+                          padding: EdgeInsets.zero,
+                          icon: FaIcon(FontAwesomeIcons.google, size: 48),
+                          onPressed: () {})
+                    ]),
+                Image(
+                    image: AssetImage('assets/icons/btvlogolow.png'),
+                    height: 120)
+              ]),
+        ),
+      )
     ]));
   }
 }

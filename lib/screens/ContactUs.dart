@@ -13,180 +13,166 @@ class _ContactUsState extends State<ContactUs> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: InkWell(
-            onTap: () => Navigator.of(context).pop(),
-            child: Icon(Icons.arrow_back, color: Colors.black, size: 30.0)),
-      ),
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        color: Colors.white,
-        child: Stack(
-          children: [
-            Column(
-              children: [
-                Expanded(
-                    child: Container(
-                  alignment: Alignment.topLeft,
-                  child: Image.asset('assets/images/Group 3.png'),
-                )),
-                Expanded(
-                    child: Container(
-                        alignment: Alignment.centerRight,
-                        child: Image.asset('assets/images/Group 1.png'))),
-              ],
-            ),
-            Column(
-              children: [
-                Expanded(
+    return Container(
+      width: double.infinity,
+      height: double.infinity,
+      color: Colors.white,
+      child: Stack(
+        children: [
+          Column(
+            children: [
+              Expanded(
                   child: Container(
-                    alignment: Alignment.center,
-                    child: Text('Contact Us',
-                        style: TextStyle(
-                            fontSize: SizeConfig.safeBlockHorizontal * 10,
-                            fontWeight: FontWeight.bold)),
-                  ),
+                alignment: Alignment.topLeft,
+                child: Image.asset('assets/images/Group 3.png'),
+              )),
+              Expanded(
+                  child: Container(
+                      alignment: Alignment.centerRight,
+                      child: Image.asset('assets/images/Group 1.png'))),
+            ],
+          ),
+          Column(
+            children: [
+              Expanded(
+                child: Container(
+                  alignment: Alignment.center,
+                  child: Text('Contact Us',
+                      style: TextStyle(
+                          fontSize: SizeConfig.safeBlockHorizontal * 10,
+                          fontWeight: FontWeight.bold)),
                 ),
-                Expanded(
-                  flex: 5,
-                  child: ListView(
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                        child: Column(children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 8.0),
-                            child: TextField(
-                              decoration: InputDecoration(
-                                  labelText: 'Name',
-                                  prefixIcon: Icon(Icons.person)),
-                            ),
+              ),
+              Expanded(
+                flex: 5,
+                child: ListView(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      child: Column(children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 8.0),
+                          child: TextField(
+                            decoration: InputDecoration(
+                                labelText: 'Name',
+                                prefixIcon: Icon(Icons.person)),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 8.0),
-                            child: TextField(
-                              decoration: InputDecoration(
-                                  labelText: 'Email',
-                                  prefixIcon: Icon(Icons.email)),
-                            ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 8.0),
+                          child: TextField(
+                            decoration: InputDecoration(
+                                labelText: 'Email',
+                                prefixIcon: Icon(Icons.email)),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 8.0),
-                            child: TextField(
-                              decoration: InputDecoration(
-                                  labelText: 'Subject',
-                                  prefixIcon: Icon(Icons.subject)),
-                            ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 8.0),
+                          child: TextField(
+                            decoration: InputDecoration(
+                                labelText: 'Subject',
+                                prefixIcon: Icon(Icons.subject)),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 8.0),
-                            child: TextField(
-                              decoration: InputDecoration(
-                                  labelText: 'Message',
-                                  prefixIcon: Icon(Icons.message)),
-                            ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 8.0),
+                          child: TextField(
+                            decoration: InputDecoration(
+                                labelText: 'Message',
+                                prefixIcon: Icon(Icons.message)),
                           ),
-                          ElevatedButton(
+                        ),
+                        ElevatedButton(
+                            onPressed: () {},
+                            child: Text("Submit"),
+                            style: ButtonStyle(
+                                shape: MaterialStateProperty.all<
+                                        RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(18.0),
+                                        side: BorderSide(color: Colors.blue)))))
+                      ]),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 15.0),
+                      child: Column(children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 8.0),
+                          child: Column(children: [
+                            Text(
+                              "BEAT THE VIRUS",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                                color: Colors.black,
+                              ),
+                            ),
+                            Text(
+                              "Beat The Virus By Increasing Your Immunity",
+                              style: TextStyle(
+                                fontStyle: FontStyle.italic,
+                                fontSize: 20,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ]),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 8.0),
+                          child: Column(children: [
+                            Image(
+                              image: AssetImage("assets/icons/btvlogo.png"),
+                              height: 50,
+                              width: 50,
+                            ),
+                            Text(
+                              '© 2021 Beat The Virus',
+                              style: TextStyle(
+                                color: Colors.black,
+                              ),
+                            )
+                          ]),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            IconButton(
                               onPressed: () {},
-                              child: Text("Submit"),
-                              style: ButtonStyle(
-                                  shape: MaterialStateProperty.all<
-                                          RoundedRectangleBorder>(
-                                      RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(18.0),
-                                          side:
-                                              BorderSide(color: Colors.blue)))))
-                        ]),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 15.0),
-                        child: Column(children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 8.0),
-                            child: Column(children: [
-                              Text(
-                                "BEAT THE VIRUS",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20,
-                                  color: Colors.black,
-                                ),
-                              ),
-                              Text(
-                                "Beat The Virus By Increasing Your Immunity",
-                                style: TextStyle(
-                                  fontStyle: FontStyle.italic,
-                                  fontSize: 20,
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ]),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 8.0),
-                            child: Column(children: [
-                              Image(
-                                image: AssetImage("assets/icons/btvlogo.png"),
-                                height: 50,
-                                width: 50,
-                              ),
-                              Text(
-                                '© 2021 Beat The Virus',
-                                style: TextStyle(
-                                  color: Colors.black,
-                                ),
-                              )
-                            ]),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              IconButton(
-                                onPressed: () {},
-                                icon:
-                                    FaIcon(FontAwesomeIcons.linkedin, size: 30),
-                              ),
-                              IconButton(
-                                onPressed: () {},
-                                icon:
-                                    FaIcon(FontAwesomeIcons.youtube, size: 30),
-                              ),
-                              IconButton(
-                                onPressed: () {},
-                                icon: FaIcon(FontAwesomeIcons.instagram,
-                                    size: 30),
-                              ),
-                              IconButton(
-                                onPressed: () {},
-                                icon:
-                                    FaIcon(FontAwesomeIcons.twitter, size: 30),
-                              ),
-                              IconButton(
-                                onPressed: () {},
-                                icon:
-                                    FaIcon(FontAwesomeIcons.facebook, size: 30),
-                              ),
-                              IconButton(
-                                onPressed: () {},
-                                icon: FaIcon(FontAwesomeIcons.pinterest,
-                                    size: 30),
-                              ),
-                            ],
-                          )
-                        ]),
-                      )
-                    ],
-                  ),
+                              icon: FaIcon(FontAwesomeIcons.linkedin, size: 30),
+                            ),
+                            IconButton(
+                              onPressed: () {},
+                              icon: FaIcon(FontAwesomeIcons.youtube, size: 30),
+                            ),
+                            IconButton(
+                              onPressed: () {},
+                              icon:
+                                  FaIcon(FontAwesomeIcons.instagram, size: 30),
+                            ),
+                            IconButton(
+                              onPressed: () {},
+                              icon: FaIcon(FontAwesomeIcons.twitter, size: 30),
+                            ),
+                            IconButton(
+                              onPressed: () {},
+                              icon: FaIcon(FontAwesomeIcons.facebook, size: 30),
+                            ),
+                            IconButton(
+                              onPressed: () {},
+                              icon:
+                                  FaIcon(FontAwesomeIcons.pinterest, size: 30),
+                            ),
+                          ],
+                        )
+                      ]),
+                    )
+                  ],
                 ),
-              ],
-            )
-          ],
-        ),
+              ),
+            ],
+          )
+        ],
       ),
     );
   }

@@ -1,3 +1,4 @@
+import 'package:beat_the_virus/utility/Size_Config.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -62,156 +63,163 @@ class _AboutUsState extends State<AboutUs> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('About Us'),
-        elevation: 0,
-        backgroundColor: Colors.blue[300],
-      ),
-      body: Stack(
-        children: [
-          Container(
-            height: MediaQuery.of(context).size.height * 0.50,
-            width: double.infinity,
-            decoration: BoxDecoration(
-                color: Colors.blue[300],
-                borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(150),
-                    bottomRight: Radius.circular(150))),
-          ),
-          Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                CarouselSlider(
-                    items: [
-                      Container(
-                        width: MediaQuery.of(context).size.width * 0.80,
-                        decoration: BoxDecoration(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(20.0))),
-                        child: Card(
-                          shape: RoundedRectangleBorder(
+    SizeConfig().init(context);
+    return Stack(
+      children: [
+        Container(
+          height: SizeConfig.screenHeight * 0.50,
+          width: double.infinity,
+          decoration: BoxDecoration(
+              color: Colors.blue[300],
+              borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(150),
+                  bottomRight: Radius.circular(150))),
+        ),
+        Column(children: [
+          Expanded(
+              child: Container(
+            alignment: Alignment.center,
+            child: Text(titleLS[currentPos],
+                style: GoogleFonts.poppins(
+                    fontSize: SizeConfig.safeBlockHorizontal * 10)),
+          )),
+          Expanded(
+              flex: 6,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CarouselSlider(
+                      items: [
+                        Container(
+                          width: SizeConfig.screenWidth * 0.80,
+                          decoration: BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(20.0))),
-                          child: Center(
+                          child: Card(
+                            shape: RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20.0))),
+                            child: Center(
+                              child: ListView.builder(
+                                  shrinkWrap: true,
+                                  itemCount: aboutUsLS.length,
+                                  itemBuilder: (ctx, index) {
+                                    return Padding(
+                                      padding: EdgeInsets.all(10.0),
+                                      child: Text(
+                                        aboutUsLS[index],
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            fontSize:
+                                                SizeConfig.safeBlockHorizontal *
+                                                    5),
+                                      ),
+                                    );
+                                  }),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          width: SizeConfig.screenWidth * 0.80,
+                          decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20.0))),
+                          child: Card(
+                            shape: RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20.0))),
                             child: ListView.builder(
                                 shrinkWrap: true,
-                                itemCount: aboutUsLS.length,
+                                itemCount: privacyPolicyLS.length,
                                 itemBuilder: (ctx, index) {
                                   return Padding(
                                     padding: EdgeInsets.all(10.0),
                                     child: Text(
-                                      aboutUsLS[index],
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(fontSize: 20),
+                                      privacyPolicyLS[index],
+                                      style: TextStyle(
+                                          fontSize:
+                                              SizeConfig.safeBlockHorizontal *
+                                                  5),
                                     ),
                                   );
                                 }),
                           ),
                         ),
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width * 0.80,
-                        decoration: BoxDecoration(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(20.0))),
-                        child: Card(
-                          shape: RoundedRectangleBorder(
+                        Container(
+                          width: SizeConfig.screenWidth * 0.80,
+                          decoration: BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(20.0))),
-                          child: ListView.builder(
-                              shrinkWrap: true,
-                              itemCount: privacyPolicyLS.length,
-                              itemBuilder: (ctx, index) {
-                                return Padding(
-                                  padding: EdgeInsets.all(10.0),
-                                  child: Text(
-                                    privacyPolicyLS[index],
-                                    style: TextStyle(fontSize: 20),
-                                  ),
-                                );
-                              }),
-                        ),
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width * 0.80,
-                        decoration: BoxDecoration(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(20.0))),
-                        child: Card(
-                          shape: RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20.0))),
-                          child: ListView.builder(
-                              shrinkWrap: true,
-                              itemCount: tcLS.length,
-                              itemBuilder: (ctx, index) {
-                                return Padding(
-                                  padding: EdgeInsets.all(10.0),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: <Widget>[
-                                      Text(
-                                        tcLS[index][0],
-                                        style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        tcLS[index][1],
-                                        style: TextStyle(fontSize: 20),
-                                      )
-                                    ],
-                                  ),
-                                );
-                              }),
-                        ),
-                      )
-                    ],
-                    options: CarouselOptions(
-                        initialPage: 0,
-                        enlargeCenterPage: true,
-                        height: MediaQuery.of(context).size.height * 0.60,
-                        onPageChanged: (index, reason) {
-                          setState(() {
-                            currentPos = index;
-                          });
-                        })),
-                Container(
-                  height: 40,
-                  child: ListView.builder(
-                      shrinkWrap: true,
-                      scrollDirection: Axis.horizontal,
-                      physics: NeverScrollableScrollPhysics(),
-                      itemCount: 3,
-                      itemBuilder: (ctx, index) {
-                        return Container(
-                            width: 8.0,
-                            height: 8.0,
-                            margin: EdgeInsets.symmetric(
-                                vertical: 10.0, horizontal: 2.0),
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: currentPos == index
-                                  ? Colors.blue
-                                  : Color.fromRGBO(0, 0, 0, 0.4),
-                            ));
-                      }),
-                )
-              ],
-            ),
-          ),
-          Align(
-              alignment: AlignmentDirectional.topCenter,
-              child: Padding(
-                padding: const EdgeInsets.only(top: 8.0),
-                child: Text(titleLS[currentPos],
-                    style: GoogleFonts.poppins(fontSize: 35)),
+                          child: Card(
+                            shape: RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20.0))),
+                            child: ListView.builder(
+                                shrinkWrap: true,
+                                itemCount: tcLS.length,
+                                itemBuilder: (ctx, index) {
+                                  return Padding(
+                                    padding: EdgeInsets.all(10.0),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: <Widget>[
+                                        Text(
+                                          tcLS[index][0],
+                                          style: TextStyle(
+                                              fontSize: SizeConfig
+                                                      .safeBlockHorizontal *
+                                                  5,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        Text(
+                                          tcLS[index][1],
+                                          style: TextStyle(
+                                              fontSize: SizeConfig
+                                                      .safeBlockHorizontal *
+                                                  5),
+                                        )
+                                      ],
+                                    ),
+                                  );
+                                }),
+                          ),
+                        )
+                      ],
+                      options: CarouselOptions(
+                          initialPage: 0,
+                          enlargeCenterPage: true,
+                          height: SizeConfig.screenHeight * 0.60,
+                          onPageChanged: (index, reason) {
+                            setState(() {
+                              currentPos = index;
+                            });
+                          })),
+                  Container(
+                    height: SizeConfig.safeBlockVertical * 5,
+                    child: ListView.builder(
+                        shrinkWrap: true,
+                        scrollDirection: Axis.horizontal,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: 3,
+                        itemBuilder: (ctx, index) {
+                          return Container(
+                              width: 8.0,
+                              height: 8.0,
+                              margin: EdgeInsets.symmetric(
+                                  vertical: 10.0, horizontal: 2.0),
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: currentPos == index
+                                    ? Colors.blue
+                                    : Color.fromRGBO(0, 0, 0, 0.4),
+                              ));
+                        }),
+                  )
+                ],
               ))
-        ],
-      ),
+        ]),
+      ],
     );
   }
 }

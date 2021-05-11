@@ -1,3 +1,4 @@
+import 'package:beat_the_virus/utility/Size_Config.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -34,79 +35,97 @@ class _BlogState extends State<Blog> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Blog"),
-        elevation: 0,
-        backgroundColor: Colors.blue[300],
-        actions: [
-          IconButton(
-            icon: Icon(Icons.search_rounded),
-            onPressed: () {},
+    SizeConfig().init(context);
+    return Column(
+      children: [
+        Expanded(
+            child: Container(
+          color: Colors.white,
+          alignment: Alignment.center,
+          child: Text(
+            'Blog Page',
+            style: TextStyle(fontSize: SizeConfig.safeBlockHorizontal * 10),
           ),
-        ],
-      ),
-      body: ListView.builder(
-          itemCount: imgLS.length,
-          itemBuilder: (ctx, index) {
-            return Card(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(15.0))),
-              child: Column(
-                children: <Widget>[
-                  ClipRRect(
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(15.0),
-                          topRight: Radius.circular(15.0)),
-                      child: Image.asset(imgLS[index], fit: BoxFit.cover)),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
+        )),
+        Expanded(
+          flex: 6,
+          child: Container(
+            color: Colors.white,
+            child: ListView.builder(
+                itemCount: imgLS.length,
+                itemBuilder: (ctx, index) {
+                  return Card(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(15.0))),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Text(titleLS[index],
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 25.0)),
+                        ClipRRect(
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(15.0),
+                                topRight: Radius.circular(15.0)),
+                            child:
+                                Image.asset(imgLS[index], fit: BoxFit.cover)),
                         Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 8.0),
-                          child: Text(contentLS[index],
-                              style: TextStyle(fontSize: 20.0)),
-                        ),
-                        Text(dateTime,
-                            style:
-                            TextStyle(color: Colors.grey, fontSize: 18.0)),
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
+                              Text(titleLS[index],
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize:
+                                          SizeConfig.safeBlockHorizontal * 5)),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 8.0),
+                                child: Text(contentLS[index],
+                                    style: TextStyle(
+                                        fontSize:
+                                            SizeConfig.safeBlockHorizontal *
+                                                4)),
+                              ),
+                              Text(dateTime,
+                                  style: TextStyle(
+                                      color: Colors.grey,
+                                      fontSize:
+                                          SizeConfig.safeBlockHorizontal * 3)),
                               Row(
                                   mainAxisAlignment:
-                                  MainAxisAlignment.spaceEvenly,
+                                      MainAxisAlignment.spaceBetween,
                                   children: <Widget>[
-                                    IconButton(
-                                        icon: Icon(Icons.visibility_outlined),
-                                        onPressed: () {}),
-                                    Text('12')
-                                  ]),
-                              Row(
-                                  mainAxisAlignment:
-                                  MainAxisAlignment.spaceEvenly,
-                                  children: <Widget>[
-                                    IconButton(
-                                        onPressed: () {},
-                                        icon:
-                                        Icon(Icons.thumb_up_alt_outlined)),
-                                    IconButton(
-                                        onPressed: () {},
-                                        icon: Icon(Icons.more_vert))
-                                  ]),
-                            ])
+                                    Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: <Widget>[
+                                          IconButton(
+                                              icon: Icon(
+                                                  Icons.visibility_outlined),
+                                              onPressed: () {}),
+                                          Text('12')
+                                        ]),
+                                    Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: <Widget>[
+                                          IconButton(
+                                              onPressed: () {},
+                                              icon: Icon(
+                                                  Icons.thumb_up_alt_outlined)),
+                                          IconButton(
+                                              onPressed: () {},
+                                              icon: Icon(Icons.more_vert))
+                                        ]),
+                                  ])
+                            ],
+                          ),
+                        )
                       ],
                     ),
-                  )
-                ],
-              ),
-            );
-          }),
+                  );
+                }),
+          ),
+        ),
+      ],
     );
   }
 }
