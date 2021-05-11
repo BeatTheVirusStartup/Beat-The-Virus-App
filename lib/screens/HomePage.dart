@@ -24,78 +24,79 @@ class _HomePageState extends State<HomePage> {
       color: Colors.white,
       child: Stack(
         children: [
-          Column(
-            children: [
-              Expanded(
-                  child: Stack(children: [
-                Container(
-                  margin: EdgeInsets.symmetric(vertical: 10.0),
-                  width: double.infinity,
-                  alignment: Alignment.topLeft,
-                  child: Image.asset('assets/images/Group 3.png'),
-                )
-              ])),
-              Expanded(
-                  child: Stack(children: [
-                Container(
-                    width: double.infinity,
-                    alignment: Alignment.centerRight,
-                    child: Image.asset('assets/images/Group 1.png'))
-              ])),
-            ],
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
+          Expanded(
             child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(
-                    child: Container(
-                  alignment: Alignment.center,
-                  child: Text('Welcome',
-                      style: TextStyle(
-                          fontFamily: 'Vivaldi',
-                          fontSize: SizeConfig.safeBlockHorizontal * 15)),
-                )),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 8.0, horizontal: 10.0),
-                  child: Text('What we Offer ?',
-                      style: TextStyle(
-                          fontSize: SizeConfig.safeBlockHorizontal * 7,
-                          color: Colors.black)),
-                ),
+                    child: Stack(children: [
+                  Container(
+                    margin: EdgeInsets.symmetric(vertical: 10.0),
+                    width: double.infinity,
+                    alignment: Alignment.topLeft,
+                    child: Image.asset('assets/images/Group 3.png'),
+                  )
+                ])),
                 Expanded(
-                  child: GridView.builder(
-                      //shrinkWrap: true,
-                      padding: EdgeInsets.all(8.0),
-                      itemCount: imgLS.length,
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          childAspectRatio: 3.3 / 3,
-                          crossAxisSpacing: 10.0,
-                          mainAxisSpacing: 5.0),
-                      itemBuilder: (BuildContext context, int index) {
-                        return Column(children: [
-                          ClipRRect(
-                              borderRadius: BorderRadius.circular(10),
-                              child: Image.asset(imgLS[index],
-                                  width: SizeConfig.safeBlockHorizontal * 40,
-                                  height: SizeConfig.safeBlockVertical * 16,
-                                  fit: BoxFit.cover)),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(titleLS[index],
-                                style: TextStyle(
-                                    color: Colors.black, fontSize: 16.0)),
-                          )
-                        ]);
-                      }),
-                ),
+                    child: Stack(children: [
+                  Container(
+                      width: double.infinity,
+                      alignment: Alignment.centerRight,
+                      child: Image.asset('assets/images/Group 1.png'))
+                ])),
               ],
             ),
-          )
+          ),
+          Expanded(
+              child: Column(
+            //mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                  child: Container(
+                alignment: Alignment.center,
+                child: Text('Welcome',
+                    style: TextStyle(
+                        fontFamily: 'Vivaldi',
+                        fontSize: SizeConfig.safeBlockHorizontal * 15)),
+              )),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 8.0, horizontal: 10.0),
+                child: Text('What we Offer ?',
+                    style: TextStyle(
+                        fontSize: SizeConfig.safeBlockHorizontal * 7,
+                        color: Colors.black)),
+              ),
+              Expanded(
+                child: GridView.builder(
+                    //shrinkWrap: true,
+                    padding: EdgeInsets.all(8.0),
+                    itemCount: imgLS.length,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        childAspectRatio: SizeConfig.screenWidth /
+                            (SizeConfig.screenHeight / 2.25),
+                        crossAxisSpacing: 10.0,
+                        mainAxisSpacing: 5.0),
+                    itemBuilder: (BuildContext context, int index) {
+                      return Column(children: [
+                        ClipRRect(
+                            borderRadius: BorderRadius.circular(10),
+                            child: Image.asset(imgLS[index],
+                                width: SizeConfig.safeBlockHorizontal * 40,
+                                height: SizeConfig.safeBlockVertical * 16,
+                                fit: BoxFit.cover)),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(titleLS[index],
+                              style: TextStyle(
+                                  color: Colors.black, fontSize: 16.0)),
+                        )
+                      ]);
+                    }),
+              ),
+            ],
+          )),
         ],
       ),
     );
