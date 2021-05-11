@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:beat_the_virus/screens/Careers.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:beat_the_virus/screens/ContactUs.dart';
+import 'package:beat_the_virus/screens/Services.dart';
+import 'package:beat_the_virus/screens/Careers.dart';
 import 'package:beat_the_virus/screens/ProductsPage.dart';
 import 'package:beat_the_virus/main.dart';
-import 'package:beat_the_virus/screens/Services.dart';
 import 'package:beat_the_virus/screens/AboutUs.dart';
 import 'package:beat_the_virus/screens/Blog.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class DrawerItems extends StatefulWidget {
   DrawerItems({Key key}) : super(key: key);
@@ -31,14 +31,20 @@ class _DrawerItemsState extends State<DrawerItems> {
                   title:
                       Text('Welcome Guest', style: TextStyle(fontSize: 20))))),
       ListTile(
-        onTap: () => Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (ctx) => BeatTheVirus())),
+        onTap: () {
+          Navigator.of(context).pop();
+          Navigator.of(context).pushReplacement(
+              MaterialPageRoute(builder: (ctx) => BeatTheVirus()));
+        },
         leading: FaIcon(FontAwesomeIcons.home, color: Colors.black),
         title: Text('HOME'),
       ),
       ListTile(
-          onTap: () => Navigator.of(context)
-              .push(MaterialPageRoute(builder: (ctc) => AboutUs())),
+          onTap: () {
+            Navigator.of(context).pop();
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (ctc) => AboutUs()));
+          },
           leading: FaIcon(FontAwesomeIcons.addressCard, color: Colors.black),
           title: Text('ABOUT')),
       ListTile(
@@ -46,29 +52,44 @@ class _DrawerItemsState extends State<DrawerItems> {
           leading: FaIcon(FontAwesomeIcons.users, color: Colors.black),
           title: Text('TEAM')),
       ListTile(
-          onTap: () => Navigator.of(context)
-              .push(MaterialPageRoute(builder: (ctc) => Services())),
+          onTap: () {
+            Navigator.of(context).pop();
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (ctc) => Services()));
+          },
           leading:
               FaIcon(FontAwesomeIcons.handHoldingHeart, color: Colors.black),
           title: Text('SERVICES')),
       ListTile(
-          onTap: () => Navigator.of(context)
-              .push(MaterialPageRoute(builder: (ctc) => ContactUs())),
+          onTap: () {
+            Navigator.of(context).pop();
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (ctc) => ContactUs()));
+          },
           leading: FaIcon(FontAwesomeIcons.addressBook, color: Colors.black),
           title: Text('CONTACT')),
       ListTile(
-          onTap: () => Navigator.of(context)
-              .push(MaterialPageRoute(builder: (ctc) => Careers())),
+          onTap: () {
+            Navigator.of(context).pop();
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (ctc) => Careers()));
+          },
           leading: FaIcon(FontAwesomeIcons.userGraduate, color: Colors.black),
           title: Text('CAREERS')),
       ListTile(
-          onTap: () => Navigator.of(context)
-              .push(MaterialPageRoute(builder: (ctc) => Products())),
+          onTap: () {
+            Navigator.of(context).pop();
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (ctc) => Products()));
+          },
           leading: FaIcon(FontAwesomeIcons.shoppingCart, color: Colors.black),
           title: Text('PRODUCT')),
       ListTile(
-          onTap: () => Navigator.of(context)
-              .push(MaterialPageRoute(builder: (ctc) => Blog())),
+          onTap: () {
+            Navigator.of(context).pop();
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (ctc) => Blog()));
+          },
           leading: FaIcon(FontAwesomeIcons.blog, color: Colors.black),
           title: Text('BLOG')),
       Divider(color: Colors.grey, height: 1.0),

@@ -1,3 +1,4 @@
+import 'package:beat_the_virus/utility/Size_Config.dart';
 import 'package:flutter/material.dart';
 
 class Products extends StatefulWidget {
@@ -41,6 +42,7 @@ class _ProductsState extends State<Products> {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
         appBar: AppBar(
           title: Text("Products Page"),
@@ -66,7 +68,11 @@ class _ProductsState extends State<Products> {
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
                                       Text('Choose Country',
-                                          style: TextStyle(fontSize: 25.0)),
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: SizeConfig
+                                                      .safeBlockHorizontal *
+                                                  5)),
                                       ListView.builder(
                                           shrinkWrap: true,
                                           itemCount: countryLS.length,
@@ -100,10 +106,10 @@ class _ProductsState extends State<Products> {
                     child: Text('Sort By -:'),
                   ),
                   Container(
-                      height: 35.0,
+                      height: SizeConfig.blockSizeVertical * 5,
                       padding: EdgeInsets.all(8.0),
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15.0),
+                          borderRadius: BorderRadius.circular(10.0),
                           border: Border.all(
                               color: Colors.grey,
                               style: BorderStyle.solid,
@@ -117,7 +123,10 @@ class _ProductsState extends State<Products> {
                                   value: value,
                                   child: Text(value,
                                       style: TextStyle(
-                                          color: Colors.black, fontSize: 13.0)),
+                                          color: Colors.black,
+                                          fontSize:
+                                              SizeConfig.safeBlockHorizontal *
+                                                  3.5)),
                                 );
                               }).toList(),
                               onChanged: (value) {
@@ -137,7 +146,8 @@ class _ProductsState extends State<Products> {
                 itemCount: 10,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    childAspectRatio: 3.5 / 3,
+                    childAspectRatio: SizeConfig.screenWidth /
+                        (SizeConfig.screenHeight / 2.5),
                     crossAxisSpacing: 10.0,
                     mainAxisSpacing: 5.0),
                 itemBuilder: (BuildContext context, int index) {
@@ -150,7 +160,8 @@ class _ProductsState extends State<Products> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Icon(Icons.shopping_cart,
-                              color: Colors.grey[400], size: 90.0),
+                              color: Colors.grey[400],
+                              size: SizeConfig.blockSizeHorizontal * 20),
                           Align(
                               alignment: Alignment.centerLeft,
                               child: Text('Product Name')),

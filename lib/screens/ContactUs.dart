@@ -1,3 +1,4 @@
+import 'package:beat_the_virus/utility/Size_Config.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -11,6 +12,7 @@ class ContactUs extends StatefulWidget {
 class _ContactUsState extends State<ContactUs> {
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -28,180 +30,160 @@ class _ContactUsState extends State<ContactUs> {
             Column(
               children: [
                 Expanded(
-                    child: Stack(children: [
-                  Container(
-                    width: double.infinity,
-                    alignment: Alignment.topLeft,
-                    child: Image.asset('assets/images/Group 3.png'),
-                  )
-                ])),
+                    child: Container(
+                  alignment: Alignment.topLeft,
+                  child: Image.asset('assets/images/Group 3.png'),
+                )),
                 Expanded(
-                    child: Stack(children: [
-                  Container(
-                      width: double.infinity,
-                      alignment: Alignment.centerRight,
-                      child: Image.asset('assets/images/Group 1.png'))
-                ])),
+                    child: Container(
+                        alignment: Alignment.centerRight,
+                        child: Image.asset('assets/images/Group 1.png'))),
               ],
             ),
-            Align(
-                alignment: Alignment.center,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Column(
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.all(5),
-                          child: Column(
-                            children: <Widget>[
-                              ListTile(
-                                leading: const Icon(Icons.person),
-                                title: TextField(
-                                  decoration: InputDecoration(
-                                    hintText: "Name",
-                                  ),
+            Column(
+              children: [
+                Expanded(
+                  child: Container(
+                    alignment: Alignment.center,
+                    child: Text('Contact Us',
+                        style: TextStyle(
+                            fontSize: SizeConfig.safeBlockHorizontal * 10,
+                            fontWeight: FontWeight.bold)),
+                  ),
+                ),
+                Expanded(
+                  flex: 5,
+                  child: ListView(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                        child: Column(children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8.0),
+                            child: TextField(
+                              decoration: InputDecoration(
+                                  labelText: 'Name',
+                                  prefixIcon: Icon(Icons.person)),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8.0),
+                            child: TextField(
+                              decoration: InputDecoration(
+                                  labelText: 'Email',
+                                  prefixIcon: Icon(Icons.email)),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8.0),
+                            child: TextField(
+                              decoration: InputDecoration(
+                                  labelText: 'Subject',
+                                  prefixIcon: Icon(Icons.subject)),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8.0),
+                            child: TextField(
+                              decoration: InputDecoration(
+                                  labelText: 'Message',
+                                  prefixIcon: Icon(Icons.message)),
+                            ),
+                          ),
+                          ElevatedButton(
+                              onPressed: () {},
+                              child: Text("Submit"),
+                              style: ButtonStyle(
+                                  shape: MaterialStateProperty.all<
+                                          RoundedRectangleBorder>(
+                                      RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(18.0),
+                                          side:
+                                              BorderSide(color: Colors.blue)))))
+                        ]),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 15.0),
+                        child: Column(children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8.0),
+                            child: Column(children: [
+                              Text(
+                                "BEAT THE VIRUS",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                  color: Colors.black,
                                 ),
                               ),
-                              ListTile(
-                                leading: const Icon(Icons.email),
-                                title: TextField(
-                                  decoration: InputDecoration(
-                                    hintText: "Email",
-                                  ),
+                              Text(
+                                "Beat The Virus By Increasing Your Immunity",
+                                style: TextStyle(
+                                  fontStyle: FontStyle.italic,
+                                  fontSize: 20,
+                                  color: Colors.black,
                                 ),
                               ),
-                              ListTile(
-                                leading: const Icon(Icons.subject),
-                                title: TextField(
-                                  decoration: InputDecoration(
-                                    hintText: "Subject",
-                                  ),
-                                ),
+                            ]),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8.0),
+                            child: Column(children: [
+                              Image(
+                                image: AssetImage("assets/icons/btvlogo.png"),
+                                height: 50,
+                                width: 50,
                               ),
-                              ListTile(
-                                leading: const Icon(Icons.message),
-                                title: TextField(
-                                  decoration: InputDecoration(
-                                    hintText: "Message",
-                                  ),
+                              Text(
+                                '© 2021 Beat The Virus',
+                                style: TextStyle(
+                                  color: Colors.black,
                                 ),
+                              )
+                            ]),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              IconButton(
+                                onPressed: () {},
+                                icon:
+                                    FaIcon(FontAwesomeIcons.linkedin, size: 30),
+                              ),
+                              IconButton(
+                                onPressed: () {},
+                                icon:
+                                    FaIcon(FontAwesomeIcons.youtube, size: 30),
+                              ),
+                              IconButton(
+                                onPressed: () {},
+                                icon: FaIcon(FontAwesomeIcons.instagram,
+                                    size: 30),
+                              ),
+                              IconButton(
+                                onPressed: () {},
+                                icon:
+                                    FaIcon(FontAwesomeIcons.twitter, size: 30),
+                              ),
+                              IconButton(
+                                onPressed: () {},
+                                icon:
+                                    FaIcon(FontAwesomeIcons.facebook, size: 30),
+                              ),
+                              IconButton(
+                                onPressed: () {},
+                                icon: FaIcon(FontAwesomeIcons.pinterest,
+                                    size: 30),
                               ),
                             ],
-                          ),
-                        )
-                      ],
-                    ),
-                    SizedBox(height: 10),
-                    Column(
-                      children: [
-                        ElevatedButton(
-                            onPressed: () {},
-                            child: Text("Submit"),
-                            style: ButtonStyle(
-                                shape: MaterialStateProperty.all<
-                                        RoundedRectangleBorder>(
-                                    RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(18.0),
-                                        side:
-                                            BorderSide(color: Colors.blue))))),
-                      ],
-                    ),
-                    SizedBox(height: 30),
-                    Column(
-                      children: [
-                        Text(
-                          "BEAT THE VIRUS",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 10),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Beat The Virus By Increasing Your Immunity",
-                          style: TextStyle(
-                            fontStyle: FontStyle.italic,
-                            fontSize: 20,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 10),
-                    Column(
-                      children: [
-                        Image(
-                          image: AssetImage("assets/icons/btvlogo.png"),
-                          height: 50,
-                          width: 50,
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 10),
-                    Column(
-                      children: [
-                        Text(
-                          '© 2021 Beat The Virus',
-                          style: TextStyle(
-                            color: Colors.black,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 10),
-                    Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            IconButton(
-                              onPressed: () {},
-                              icon: FaIcon(FontAwesomeIcons.linkedin, size: 30),
-                            ),
-                            IconButton(
-                              onPressed: () {},
-                              icon: FaIcon(FontAwesomeIcons.youtube, size: 30),
-                            ),
-                            IconButton(
-                              onPressed: () {},
-                              icon:
-                                  FaIcon(FontAwesomeIcons.instagram, size: 30),
-                            ),
-                            IconButton(
-                              onPressed: () {},
-                              icon: FaIcon(FontAwesomeIcons.twitter, size: 30),
-                            ),
-                            IconButton(
-                              onPressed: () {},
-                              icon: FaIcon(FontAwesomeIcons.facebook, size: 30),
-                            ),
-                            IconButton(
-                              onPressed: () {},
-                              icon:
-                                  FaIcon(FontAwesomeIcons.pinterest, size: 30),
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
-                  ],
-                )),
-            Align(
-              alignment: Alignment.topCenter,
-              child: Padding(
-                padding: const EdgeInsets.only(top: 20.0),
-                child: Text('Contact Us',
-                    style:
-                        TextStyle(fontSize: 35.0, fontWeight: FontWeight.bold)),
-              ),
+                          )
+                        ]),
+                      )
+                    ],
+                  ),
+                ),
+              ],
             )
           ],
         ),
