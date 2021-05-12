@@ -44,7 +44,9 @@ class _BlogState extends State<Blog> {
           alignment: Alignment.center,
           child: Text(
             'Blog Page',
-            style: TextStyle(fontSize: SizeConfig.safeBlockHorizontal * 10),
+            style: TextStyle(
+                fontFamily: 'Vivaldi',
+                fontSize: SizeConfig.safeBlockHorizontal * 15),
           ),
         )),
         Expanded(

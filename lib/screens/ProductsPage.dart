@@ -51,7 +51,9 @@ class _ProductsState extends State<Products> {
           alignment: Alignment.center,
           child: Text(
             'Products Page',
-            style: TextStyle(fontSize: SizeConfig.safeBlockHorizontal * 10),
+            style: TextStyle(
+                fontFamily: 'Vivaldi',
+                fontSize: SizeConfig.safeBlockHorizontal * 15),
           ),
         )),
         Expanded(
@@ -164,11 +166,12 @@ class _ProductsState extends State<Products> {
                           itemCount: 10,
                           gridDelegate:
                               SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 2,
-                                  childAspectRatio: SizeConfig.screenWidth /
-                                      (SizeConfig.screenHeight / 2.5),
-                                  crossAxisSpacing: 10.0,
-                                  mainAxisSpacing: 5.0),
+                            crossAxisCount: 2,
+                            // childAspectRatio: SizeConfig.screenWidth /
+                            //     (SizeConfig.screenHeight / 2.5),
+                            crossAxisSpacing: 10.0,
+                            // mainAxisSpacing: 5.0,
+                          ),
                           itemBuilder: (BuildContext context, int index) {
                             return Card(
                               shape: RoundedRectangleBorder(
@@ -177,7 +180,7 @@ class _ProductsState extends State<Products> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Column(
                                   mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                      MainAxisAlignment.spaceEvenly,
                                   children: [
                                     Icon(Icons.shopping_cart,
                                         color: Colors.grey[400],
@@ -194,7 +197,7 @@ class _ProductsState extends State<Products> {
                               ),
                             );
                           }),
-                    )
+                    ),
                   ]),
             )),
       ],

@@ -39,7 +39,8 @@ class _ContactUsState extends State<ContactUs> {
                   alignment: Alignment.center,
                   child: Text('Contact Us',
                       style: TextStyle(
-                          fontSize: SizeConfig.safeBlockHorizontal * 10,
+                          fontFamily: 'Vivaldi',
+                          fontSize: SizeConfig.safeBlockHorizontal * 15,
                           fontWeight: FontWeight.bold)),
                 ),
               ),

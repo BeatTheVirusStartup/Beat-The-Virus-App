@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:beat_the_virus/screens/StarPage.dart';
+import 'package:beat_the_virus/screens/StartPage.dart';
 
 void main() {
   runApp(BeatTheVirus()); //Appbar Created
