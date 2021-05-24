@@ -23,25 +23,28 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.0
-  google_fonts: ^2.0.0
+  amplify_api: ^0.1.5
+  amplify_auth_cognito: ^0.1.5
+  amplify_core: ^0.1.5
+  amplify_datastore: ^0.1.5
+  amplify_datastore_plugin_interface: ^0.1.5
+  amplify_flutter: ^0.1.5
+  amplify_storage_s3: ^0.1.5
   carousel_slider: ^3.0.0
+  cupertino_icons: ^1.0.0
+  email_validator: ^2.0.1
   font_awesome_flutter: ^9.0.0
+  google_fonts: ^2.0.0
   intl: ^0.17.0
+  provider: ^5.0.0
   url_launcher: ^6.0.3
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
-
 # The following section is specific to Flutter.
 flutter:
 
@@ -56,13 +59,10 @@ flutter:
     - assets/icons/
     - assets/blog/
   #   - images/a_dot_ham.jpeg
-
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
-
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/assets-and-images/#from-packages
-
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a
@@ -72,7 +72,7 @@ flutter:
     - family: Forte
       fonts:
         - asset: assets/fonts/forte.ttf
-    - family : Vivaldi
+    - family: Vivaldi
       fonts:
         - asset: assets/fonts/vivaldi.ttf
   #         style: italic

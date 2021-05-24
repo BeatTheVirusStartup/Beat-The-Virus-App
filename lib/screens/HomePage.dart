@@ -52,18 +52,13 @@ class _HomePageState extends State<HomePage> {
                   child: Container(
                 alignment: Alignment.center,
                 child: Text('Welcome',
-                    style: TextStyle(
-                        fontFamily: 'Vivaldi',
-                        fontSize: SizeConfig.safeBlockHorizontal * 15)),
+                    style: Theme.of(context).textTheme.headline6),
               )),
               Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 8.0, horizontal: 10.0),
-                child: Text('What we Offer ?',
-                    style: TextStyle(
-                        fontSize: SizeConfig.safeBlockHorizontal * 7,
-                        color: Colors.black)),
-              ),
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 8.0, horizontal: 10.0),
+                  child: Text('What we Offer ?',
+                      style: Theme.of(context).textTheme.bodyText1)),
               Expanded(
                 flex: 2,
                 child: GridView.builder(
@@ -88,10 +83,7 @@ class _HomePageState extends State<HomePage> {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(titleLS[index],
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize:
-                                      SizeConfig.safeBlockHorizontal * 4)),
+                              style: Theme.of(context).textTheme.bodyText2),
                         )
                       ]);
                     }),

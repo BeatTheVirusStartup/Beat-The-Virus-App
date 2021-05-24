@@ -79,10 +79,7 @@ class _Form1State extends State<Form1> {
               child: Text(
                 'Come\nJoin the Team !',
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontFamily: 'Vivaldi',
-                    fontSize: SizeConfig.safeBlockHorizontal * 15,
-                    fontWeight: FontWeight.bold),
+                style: Theme.of(context).textTheme.headline6,
               ))),
       Expanded(
           flex: 3,
@@ -139,8 +136,7 @@ class _Form1State extends State<Form1> {
                               borderRadius: BorderRadius.circular(15.0))),
                       child: Text(
                         'Next',
-                        style: TextStyle(
-                            fontSize: SizeConfig.safeBlockHorizontal * 6),
+                        style: Theme.of(context).textTheme.button,
                       ),
                       onPressed: nextPage,
                     ),
@@ -184,10 +180,7 @@ class _Form2State extends State<Form2> {
         child: Text(
           'Come\nJoin the Team !',
           textAlign: TextAlign.center,
-          style: TextStyle(
-              fontFamily: 'Vivaldi',
-              fontSize: SizeConfig.safeBlockHorizontal * 15,
-              fontWeight: FontWeight.bold),
+          style: Theme.of(context).textTheme.headline6,
         ),
       )),
       Expanded(
@@ -202,12 +195,8 @@ class _Form2State extends State<Form2> {
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          'Whatwould you like to join us as ?',
-                          style: TextStyle(
-                              fontSize: SizeConfig.safeBlockHorizontal * 4.5,
-                              color: Colors.blue),
-                        ),
+                        Text('Whatwould you like to join us as ?',
+                            style: Theme.of(context).textTheme.bodyText1),
                         Row(
                           children: [
                             Radio(
@@ -220,10 +209,7 @@ class _Form2State extends State<Form2> {
                               },
                             ),
                             Text('Consultant',
-                                style: TextStyle(
-                                    fontSize:
-                                        SizeConfig.safeBlockHorizontal * 3.5,
-                                    color: Colors.blue))
+                                style: Theme.of(context).textTheme.bodyText2)
                           ],
                         ),
                         Row(
@@ -238,10 +224,7 @@ class _Form2State extends State<Form2> {
                               },
                             ),
                             Text('Partner',
-                                style: TextStyle(
-                                    fontSize:
-                                        SizeConfig.safeBlockHorizontal * 3.5,
-                                    color: Colors.blue))
+                                style: Theme.of(context).textTheme.bodyText2)
                           ],
                         ),
                         Row(
@@ -256,10 +239,7 @@ class _Form2State extends State<Form2> {
                               },
                             ),
                             Text('Intern',
-                                style: TextStyle(
-                                    fontSize:
-                                        SizeConfig.safeBlockHorizontal * 3.5,
-                                    color: Colors.blue))
+                                style: Theme.of(context).textTheme.bodyText2)
                           ],
                         ),
                       ]),
@@ -290,14 +270,11 @@ class _Form2State extends State<Form2> {
                                         .map<DropdownMenuItem<String>>(
                                             (String value) {
                                       return DropdownMenuItem<String>(
-                                        value: value,
-                                        child: Text(value,
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: SizeConfig
-                                                        .safeBlockHorizontal *
-                                                    4)),
-                                      );
+                                          value: value,
+                                          child: Text(value,
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .subtitle1));
                                     }).toList(),
                                     onChanged: (value) {
                                       setState(() {
@@ -312,10 +289,7 @@ class _Form2State extends State<Form2> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text('Team Work',
-                            style: TextStyle(
-                                color: Colors.blue,
-                                fontSize:
-                                    SizeConfig.safeBlockHorizontal * 4.5)),
+                            style: Theme.of(context).textTheme.bodyText1),
                         Container(
                             margin: EdgeInsets.symmetric(vertical: 5.0),
                             height: 35.0,
@@ -334,11 +308,9 @@ class _Form2State extends State<Form2> {
                                       return DropdownMenuItem<String>(
                                         value: value,
                                         child: Text(value,
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: SizeConfig
-                                                        .safeBlockHorizontal *
-                                                    4)),
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .subtitle1),
                                       );
                                     }).toList(),
                                     onChanged: (value) {
@@ -361,8 +333,7 @@ class _Form2State extends State<Form2> {
                                     borderRadius: BorderRadius.circular(15.0))),
                             child: Text(
                               'Back',
-                              style: TextStyle(
-                                  fontSize: SizeConfig.safeBlockHorizontal * 6),
+                              style: Theme.of(context).textTheme.button,
                             ),
                             onPressed: previousPage,
                           ),
@@ -378,8 +349,7 @@ class _Form2State extends State<Form2> {
                                     borderRadius: BorderRadius.circular(15.0))),
                             child: Text(
                               'Next',
-                              style: TextStyle(
-                                  fontSize: SizeConfig.safeBlockHorizontal * 6),
+                              style: Theme.of(context).textTheme.button,
                             ),
                             onPressed: nextPage,
                           ),
@@ -437,14 +407,9 @@ class _Form3State extends State<Form3> {
         Expanded(
             child: Container(
           alignment: Alignment.center,
-          child: Text(
-            'Come\nJoin the Team !',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-                fontFamily: 'Vivaldi',
-                fontSize: SizeConfig.safeBlockHorizontal * 15,
-                fontWeight: FontWeight.bold),
-          ),
+          child: Text('Come\nJoin the Team !',
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.headline6),
         )),
         Expanded(
             flex: 4,
@@ -459,10 +424,7 @@ class _Form3State extends State<Form3> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text('Commitment',
-                                style: TextStyle(
-                                    color: Colors.blue,
-                                    fontSize:
-                                        SizeConfig.safeBlockHorizontal * 4.5)),
+                                style: Theme.of(context).textTheme.bodyText1),
                             Container(
                                 margin: EdgeInsets.symmetric(vertical: 10.0),
                                 height: 35.0,
@@ -481,11 +443,9 @@ class _Form3State extends State<Form3> {
                                           return DropdownMenuItem<String>(
                                             value: value,
                                             child: Text(value,
-                                                style: TextStyle(
-                                                    color: Colors.black,
-                                                    fontSize: SizeConfig
-                                                            .safeBlockHorizontal *
-                                                        4)),
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .subtitle1),
                                           );
                                         }).toList(),
                                         onChanged: (value) {
@@ -501,10 +461,7 @@ class _Form3State extends State<Form3> {
                               padding:
                                   const EdgeInsets.symmetric(vertical: 10.0),
                               child: Text('Submit your cover letter or resume',
-                                  style: TextStyle(
-                                      color: Colors.blue,
-                                      fontSize: SizeConfig.safeBlockHorizontal *
-                                          4.5)),
+                                  style: Theme.of(context).textTheme.bodyText1),
                             ),
                             TextButton.icon(
                                 style: TextButton.styleFrom(
@@ -523,10 +480,7 @@ class _Form3State extends State<Form3> {
                               padding: const EdgeInsets.only(top: 25.0),
                               child: Text(
                                   'Which Teams(s) are you interested in ?',
-                                  style: TextStyle(
-                                      color: Colors.blue,
-                                      fontSize: SizeConfig.safeBlockHorizontal *
-                                          4.5)),
+                                  style: Theme.of(context).textTheme.bodyText1),
                             ),
                             Container(
                                 margin: EdgeInsets.symmetric(vertical: 10.0),
@@ -546,11 +500,9 @@ class _Form3State extends State<Form3> {
                                           return DropdownMenuItem<String>(
                                             value: value,
                                             child: Text(value,
-                                                style: TextStyle(
-                                                    color: Colors.black,
-                                                    fontSize: SizeConfig
-                                                            .safeBlockHorizontal *
-                                                        4)),
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .subtitle1),
                                           );
                                         }).toList(),
                                         onChanged: (value) {
@@ -576,11 +528,9 @@ class _Form3State extends State<Form3> {
                                           return DropdownMenuItem<String>(
                                             value: value,
                                             child: Text(value,
-                                                style: TextStyle(
-                                                    color: Colors.black,
-                                                    fontSize: SizeConfig
-                                                            .safeBlockHorizontal *
-                                                        4)),
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .subtitle1),
                                           );
                                         }).toList(),
                                         onChanged: (value) {
@@ -592,10 +542,7 @@ class _Form3State extends State<Form3> {
                               padding: const EdgeInsets.only(top: 20.0),
                               child: Text(
                                 declaration,
-                                style: TextStyle(
-                                    fontSize:
-                                        SizeConfig.safeBlockHorizontal * 4.5,
-                                    color: Colors.black),
+                                style: Theme.of(context).textTheme.bodyText1,
                               ),
                             )
                           ]),
@@ -611,9 +558,7 @@ class _Form3State extends State<Form3> {
                                 }),
                             Text(
                               'Yes',
-                              style: TextStyle(
-                                  fontSize:
-                                      SizeConfig.safeBlockHorizontal * 3.5),
+                              style: Theme.of(context).textTheme.bodyText2,
                             )
                           ]),
                       Row(
@@ -631,9 +576,7 @@ class _Form3State extends State<Form3> {
                                               BorderRadius.circular(15.0))),
                                   child: Text(
                                     'Back',
-                                    style: TextStyle(
-                                        fontSize:
-                                            SizeConfig.safeBlockHorizontal * 6),
+                                    style: Theme.of(context).textTheme.button,
                                   ),
                                   onPressed: previousPage,
                                 ),
@@ -651,9 +594,7 @@ class _Form3State extends State<Form3> {
                                               BorderRadius.circular(15.0))),
                                   child: Text(
                                     'Submit',
-                                    style: TextStyle(
-                                        fontSize:
-                                            SizeConfig.safeBlockHorizontal * 6),
+                                    style: Theme.of(context).textTheme.button,
                                   ),
                                   onPressed: () {},
                                 ),

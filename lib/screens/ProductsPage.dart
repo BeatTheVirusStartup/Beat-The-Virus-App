@@ -49,12 +49,8 @@ class _ProductsState extends State<Products> {
             child: Container(
           color: Colors.white,
           alignment: Alignment.center,
-          child: Text(
-            'Products Page',
-            style: TextStyle(
-                fontFamily: 'Vivaldi',
-                fontSize: SizeConfig.safeBlockHorizontal * 15),
-          ),
+          child: Text('Products Page',
+              style: Theme.of(context).textTheme.headline6),
         )),
         Expanded(
             flex: 7,
@@ -82,12 +78,9 @@ class _ProductsState extends State<Products> {
                                               mainAxisSize: MainAxisSize.min,
                                               children: [
                                                 Text('Choose Country',
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        fontSize: SizeConfig
-                                                                .safeBlockHorizontal *
-                                                            5)),
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .bodyText1),
                                                 ListView.builder(
                                                     shrinkWrap: true,
                                                     itemCount: countryLS.length,
@@ -142,11 +135,9 @@ class _ProductsState extends State<Products> {
                                           return DropdownMenuItem<String>(
                                             value: value,
                                             child: Text(value,
-                                                style: TextStyle(
-                                                    color: Colors.black,
-                                                    fontSize: SizeConfig
-                                                            .safeBlockHorizontal *
-                                                        3.5)),
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyText2),
                                           );
                                         }).toList(),
                                         onChanged: (value) {

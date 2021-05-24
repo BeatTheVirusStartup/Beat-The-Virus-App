@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-beatthevirusapp-staging-92405-authRole",
+      "UnauthRoleArn": "arn:aws:iam::850477698020:role/amplify-beatthevirusapp-staging-92405-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::850477698020:role/amplify-beatthevirusapp-staging-92405-authRole",
+      "Region": "ap-south-1",
+      "DeploymentBucketName": "amplify-beatthevirusapp-staging-92405-deployment",
+      "UnauthRoleName": "amplify-beatthevirusapp-staging-92405-unauthRole",
+      "StackName": "amplify-beatthevirusapp-staging-92405",
+      "StackId": "arn:aws:cloudformation:ap-south-1:850477698020:stack/amplify-beatthevirusapp-staging-92405/a0a16f40-b6f1-11eb-a862-0699d6eba328",
+      "AmplifyAppId": "d27631idqwg1q5"
+    },
+    "categories": {
+      "auth": {
+        "beatthevirusapp19f3f613": {}
+      }
+    }
+  }
+}

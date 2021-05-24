@@ -1,13 +1,18 @@
-import 'package:beat_the_virus/screens/AboutUs.dart';
-import 'package:beat_the_virus/screens/Blog.dart';
-import 'package:beat_the_virus/screens/Careers.dart';
-import 'package:beat_the_virus/screens/ContactUs.dart';
-import 'package:beat_the_virus/screens/HomePage.dart';
-import 'package:beat_the_virus/screens/ProductsPage.dart';
-import 'package:beat_the_virus/screens/Services.dart';
+import 'package:beat_the_virus/main.dart';
+import 'package:beat_the_virus/provider/AuthenticateProvider.dart';
 import 'package:beat_the_virus/utility/Size_Config.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+
+import 'AboutUs.dart';
+import 'BlogsPage.dart';
+import 'Careers.dart';
+import 'ContactUs.dart';
+import 'HomePage.dart';
+import 'ProductsPage.dart';
+import 'Services.dart';
 
 class StartPage extends StatefulWidget {
   StartPage({Key key}) : super(key: key);
@@ -35,16 +40,6 @@ class _StartPageState extends State<StartPage> {
     FaIcon(FontAwesomeIcons.addressCard, color: Colors.black),
     FaIcon(FontAwesomeIcons.addressBook, color: Colors.black)
   ];
-
-  // List<MaterialPageRoute> pageRouteLS = [
-  //   MaterialPageRoute(builder: (ctx) => HomePage()),
-  //   MaterialPageRoute(builder: (ctx) => Blog()),
-  //   MaterialPageRoute(builder: (ctx) => Products()),
-  //   MaterialPageRoute(builder: (ctx) => Services()),
-  //   MaterialPageRoute(builder: (ctx) => Careers()),
-  //   MaterialPageRoute(builder: (ctx) => AboutUs()),
-  //   MaterialPageRoute(builder: (ctx) => ContactUs())
-  // ];
 
   PageController _pageController;
   int _page = 0;
@@ -163,8 +158,13 @@ class _StartPageState extends State<StartPage> {
                 icon: Icon(Icons.search),
                 onPressed: () => debugPrint("search pressed")),
             IconButton(
-                icon: Icon(Icons.help),
-                onPressed: () => debugPrint("help pressed")),
+                icon: Icon(Icons.logout),
+                onPressed: () =>
+                    Provider.of<AuthenticateProvider>(context, listen: false)
+                        .signOut()
+                // .then((value) => Navigator.of(context).pushReplacement(
+                //     MaterialPageRoute(builder: (_) => BeatTheVirus())))
+                ),
           ],
           leading: Builder(builder: (context) {
             return IconButton(
@@ -177,13 +177,107 @@ class _StartPageState extends State<StartPage> {
         controller: _pageController,
         onPageChanged: onPageChanged,
         children: [
-          HomePage(),
-          Blog(),
-          Products(),
-          Services(),
-          Careers(),
-          AboutUs(),
-          ContactUs()
+          Theme(
+              data: ThemeData(
+                  textTheme: TextTheme(
+                      headline6: TextStyle(
+                          fontFamily: 'Vivaldi',
+                          fontSize: SizeConfig.safeBlockHorizontal * 15),
+                      bodyText1: TextStyle(
+                          fontSize: SizeConfig.safeBlockHorizontal * 7,
+                          color: Colors.black),
+                      bodyText2: TextStyle(
+                          color: Colors.black,
+                          fontSize: SizeConfig.safeBlockHorizontal * 4))),
+              child: HomePage()),
+          Theme(
+              data: ThemeData(
+                  textTheme: TextTheme(
+                      headline6: TextStyle(
+                          fontFamily: 'Vivaldi',
+                          fontSize: SizeConfig.safeBlockHorizontal * 15),
+                      headline5: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: SizeConfig.safeBlockHorizontal * 5),
+                      bodyText1: TextStyle(
+                          fontSize: SizeConfig.safeBlockHorizontal * 4),
+                      bodyText2: TextStyle(
+                          color: Colors.grey,
+                          fontSize: SizeConfig.safeBlockHorizontal * 3))),
+              child: BlogsPage()),
+          Theme(
+              data: ThemeData(
+                  textTheme: TextTheme(
+                      headline6: TextStyle(
+                          fontFamily: 'Vivaldi',
+                          fontSize: SizeConfig.safeBlockHorizontal * 15),
+                      bodyText1: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: SizeConfig.safeBlockHorizontal * 5),
+                      bodyText2: TextStyle(
+                          color: Colors.black,
+                          fontSize: SizeConfig.safeBlockHorizontal * 3.5))),
+              child: Products()),
+          Theme(
+              data: ThemeData(
+                  textTheme: TextTheme(
+                      headline6: TextStyle(
+                          fontFamily: 'Vivaldi',
+                          fontSize: SizeConfig.safeBlockHorizontal * 15),
+                      headline5: TextStyle(
+                          fontSize: SizeConfig.safeBlockHorizontal * 15,
+                          fontFamily: 'Forte',
+                          color: Colors.white),
+                      bodyText1: GoogleFonts.poppins(
+                          color: Colors.white,
+                          fontSize: SizeConfig.safeBlockHorizontal * 5))),
+              child: Services()),
+          Theme(
+              data: ThemeData(
+                  textTheme: TextTheme(
+                headline6: TextStyle(
+                    fontFamily: 'Vivaldi',
+                    fontSize: SizeConfig.safeBlockHorizontal * 15,
+                    fontWeight: FontWeight.bold),
+                button: TextStyle(
+                    fontSize: SizeConfig.safeBlockHorizontal * 6,
+                    color: Colors.white),
+                bodyText1: TextStyle(
+                    fontSize: SizeConfig.safeBlockHorizontal * 4.5,
+                    color: Colors.blue),
+                bodyText2: TextStyle(
+                    fontSize: SizeConfig.safeBlockHorizontal * 3.5,
+                    color: Colors.blue),
+                subtitle1: TextStyle(
+                    color: Colors.black,
+                    fontSize: SizeConfig.safeBlockHorizontal * 4),
+              )),
+              child: Careers()),
+          Theme(
+              data: ThemeData(
+                  textTheme: TextTheme(
+                      headline6: TextStyle(
+                          fontFamily: 'Vivaldi',
+                          fontSize: SizeConfig.safeBlockHorizontal * 15),
+                      bodyText1: TextStyle(
+                          fontSize: SizeConfig.safeBlockHorizontal * 4),
+                      bodyText2: TextStyle(
+                          fontSize: SizeConfig.safeBlockHorizontal * 5,
+                          fontWeight: FontWeight.bold))),
+              child: AboutUs()),
+          Theme(
+              data: ThemeData(
+                  textTheme: TextTheme(
+                      headline6: TextStyle(
+                          fontFamily: 'Vivaldi',
+                          fontSize: SizeConfig.safeBlockHorizontal * 15,
+                          fontWeight: FontWeight.bold),
+                      headline5: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          color: Colors.black),
+                      bodyText1: TextStyle(color: Colors.black))),
+              child: ContactUs())
         ],
       ),
     );

@@ -31,12 +31,9 @@ class _ServicesState extends State<Services> {
           children: [
             Expanded(
                 child: Container(
-              alignment: Alignment.center,
-              child: Text('Services we offer',
-                  style: TextStyle(
-                      fontFamily: 'Vivaldi',
-                      fontSize: SizeConfig.safeBlockHorizontal * 15)),
-            )),
+                    alignment: Alignment.center,
+                    child: Text('Services we offer',
+                        style: Theme.of(context).textTheme.headline6))),
             Expanded(
               flex: 5,
               child: Column(
@@ -54,11 +51,7 @@ class _ServicesState extends State<Services> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text('Yoga',
-                                  style: TextStyle(
-                                      fontSize:
-                                          SizeConfig.safeBlockHorizontal * 15,
-                                      fontFamily: 'Forte',
-                                      color: Colors.white)),
+                                  style: Theme.of(context).textTheme.headline5),
                               OutlinedButton(
                                   style: OutlinedButton.styleFrom(
                                       side: BorderSide(
@@ -68,11 +61,9 @@ class _ServicesState extends State<Services> {
                                               Radius.circular(20)))),
                                   onPressed: () {},
                                   child: Text('EXPLORE +',
-                                      style: GoogleFonts.poppins(
-                                          color: Colors.white,
-                                          fontSize:
-                                              SizeConfig.safeBlockHorizontal *
-                                                  5)))
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyText1))
                             ]),
                       ),
                       Container(
@@ -87,11 +78,7 @@ class _ServicesState extends State<Services> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text('Meditation',
-                                  style: TextStyle(
-                                      fontSize:
-                                          SizeConfig.safeBlockHorizontal * 15,
-                                      fontFamily: 'Forte',
-                                      color: Colors.white)),
+                                  style: Theme.of(context).textTheme.headline5),
                               OutlinedButton(
                                   style: OutlinedButton.styleFrom(
                                       side: BorderSide(
@@ -101,11 +88,9 @@ class _ServicesState extends State<Services> {
                                               Radius.circular(20)))),
                                   onPressed: () {},
                                   child: Text('EXPLORE +',
-                                      style: GoogleFonts.poppins(
-                                          color: Colors.white,
-                                          fontSize:
-                                              SizeConfig.safeBlockHorizontal *
-                                                  5)))
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyText1))
                             ]),
                       ),
                       Container(
@@ -120,11 +105,7 @@ class _ServicesState extends State<Services> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text('Fitness',
-                                  style: TextStyle(
-                                      fontSize:
-                                          SizeConfig.safeBlockHorizontal * 15,
-                                      fontFamily: 'Forte',
-                                      color: Colors.white)),
+                                  style: Theme.of(context).textTheme.headline5),
                               OutlinedButton(
                                   style: OutlinedButton.styleFrom(
                                       side: BorderSide(
@@ -134,11 +115,9 @@ class _ServicesState extends State<Services> {
                                               Radius.circular(20)))),
                                   onPressed: () {},
                                   child: Text('EXPLORE +',
-                                      style: GoogleFonts.poppins(
-                                          color: Colors.white,
-                                          fontSize:
-                                              SizeConfig.safeBlockHorizontal *
-                                                  5)))
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyText1))
                             ]),
                       ),
                       Container(
@@ -153,11 +132,7 @@ class _ServicesState extends State<Services> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text('Serices',
-                                  style: TextStyle(
-                                      fontSize:
-                                          SizeConfig.safeBlockHorizontal * 15,
-                                      fontFamily: 'Forte',
-                                      color: Colors.white)),
+                                  style: Theme.of(context).textTheme.headline5),
                               OutlinedButton(
                                   style: OutlinedButton.styleFrom(
                                       side: BorderSide(
@@ -167,11 +142,9 @@ class _ServicesState extends State<Services> {
                                               Radius.circular(20)))),
                                   onPressed: () {},
                                   child: Text('EXPLORE +',
-                                      style: GoogleFonts.poppins(
-                                          color: Colors.white,
-                                          fontSize:
-                                              SizeConfig.safeBlockHorizontal *
-                                                  5)))
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyText1))
                             ]),
                       ),
                     ],
