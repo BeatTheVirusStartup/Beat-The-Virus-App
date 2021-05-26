@@ -5,10 +5,11 @@ import 'package:flutter/material.dart';
 class AuthenticateProvider with ChangeNotifier {
   bool isSignedIn = false;
 
-  Future<String> getCurrentUser() async {
+  Future<void> fetchUserSession() async {
     try {
-      final awsUser = await Amplify.Auth.getCurrentUser();
-      return awsUser.userId;
+      var res = await Amplify.Auth.fetchAuthSession();
+      isSignedIn = res.isSignedIn;
+      notifyListeners();
     } catch (e, s) {
       print(e);
       print(s);
@@ -46,7 +47,7 @@ class AuthenticateProvider with ChangeNotifier {
 
   Future<void> signIn(String email, String password) async {
     try {
-      await Amplify.Auth.signIn(username: email, password: password);
+      Amplify.Auth.signIn(username: email, password: password);
       isSignedIn = true;
       notifyListeners();
     } on AuthException catch (e, s) {
@@ -57,7 +58,7 @@ class AuthenticateProvider with ChangeNotifier {
 
   Future<void> signOut() async {
     try {
-      await Amplify.Auth.signOut();
+      Amplify.Auth.signOut();
       isSignedIn = false;
       notifyListeners();
     } on AuthException catch (e, s) {

@@ -28,10 +28,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return regExp.hasMatch(value);
   }
 
-  void createAccount(BuildContext context) async {
+  Future<void> createAccount(BuildContext context) async {
     if (_formKey.currentState.validate()) {
       FocusScope.of(context).unfocus();
-      await Provider.of<AuthenticateProvider>(context, listen: false)
+      Provider.of<AuthenticateProvider>(context, listen: false)
           .registerWithEmaillAndPassword(emailTED.text.trim(), passwordTED.text)
           .then((SignUpResult result) {
         if (result.isSignUpComplete)
@@ -43,6 +43,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
           );
       });
     }
+  }
+
+  @override
+  void dispose() {
+    emailTED.dispose();
+    passwordTED.dispose();
+    super.dispose();
   }
 
   @override
@@ -132,7 +139,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             OutlinedButton(
                                 //     _createAccountOnPressed(context)
                                 onPressed: () => createAccount(context),
-                                child: Text('Create Account')),
+                                child: Text('New Account')),
                           ],
                         )
                       ],

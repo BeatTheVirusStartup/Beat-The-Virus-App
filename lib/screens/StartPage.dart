@@ -1,5 +1,6 @@
 import 'package:beat_the_virus/main.dart';
 import 'package:beat_the_virus/provider/AuthenticateProvider.dart';
+import 'package:beat_the_virus/provider/BlogsProvider.dart';
 import 'package:beat_the_virus/utility/Size_Config.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -159,12 +160,14 @@ class _StartPageState extends State<StartPage> {
                 onPressed: () => debugPrint("search pressed")),
             IconButton(
                 icon: Icon(Icons.logout),
-                onPressed: () =>
-                    Provider.of<AuthenticateProvider>(context, listen: false)
-                        .signOut()
-                // .then((value) => Navigator.of(context).pushReplacement(
-                //     MaterialPageRoute(builder: (_) => BeatTheVirus())))
-                ),
+                onPressed: () async {
+                  Provider.of<AuthenticateProvider>(context, listen: false)
+                      .signOut();
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Text('Successfully Signed Out ...!!'),
+                    duration: Duration(seconds: 2),
+                  ));
+                }),
           ],
           leading: Builder(builder: (context) {
             return IconButton(
@@ -190,21 +193,24 @@ class _StartPageState extends State<StartPage> {
                           color: Colors.black,
                           fontSize: SizeConfig.safeBlockHorizontal * 4))),
               child: HomePage()),
-          Theme(
-              data: ThemeData(
-                  textTheme: TextTheme(
-                      headline6: TextStyle(
-                          fontFamily: 'Vivaldi',
-                          fontSize: SizeConfig.safeBlockHorizontal * 15),
-                      headline5: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: SizeConfig.safeBlockHorizontal * 5),
-                      bodyText1: TextStyle(
-                          fontSize: SizeConfig.safeBlockHorizontal * 4),
-                      bodyText2: TextStyle(
-                          color: Colors.grey,
-                          fontSize: SizeConfig.safeBlockHorizontal * 3))),
-              child: BlogsPage()),
+          ChangeNotifierProvider.value(
+            value: Blogs(),
+            child: Theme(
+                data: ThemeData(
+                    textTheme: TextTheme(
+                        headline6: TextStyle(
+                            fontFamily: 'Vivaldi',
+                            fontSize: SizeConfig.safeBlockHorizontal * 15),
+                        headline5: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: SizeConfig.safeBlockHorizontal * 5),
+                        bodyText1: TextStyle(
+                            fontSize: SizeConfig.safeBlockHorizontal * 4),
+                        bodyText2: TextStyle(
+                            color: Colors.grey,
+                            fontSize: SizeConfig.safeBlockHorizontal * 3))),
+                child: BlogsPage()),
+          ),
           Theme(
               data: ThemeData(
                   textTheme: TextTheme(

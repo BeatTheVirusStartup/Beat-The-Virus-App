@@ -1,14 +1,8 @@
-type BlogImages @model @auth(rules: [{allow: public}]) {
-  id: ID!
-  imageKey: String
-}
-
 type Blog @model @auth(rules: [{allow: public}]) {
   id: ID!
   title: String!
   content: String!
   views: Int
-  imageKey: String!
-  BlogToBlogImage: BlogImages @connection
+  imageUrl: String!
 }
  

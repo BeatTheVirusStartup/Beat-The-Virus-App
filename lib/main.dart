@@ -40,21 +40,33 @@ Future<void> configureAmplify() async {
   }
 }
 
-class BeatTheVirus extends StatelessWidget {
+class BeatTheVirus extends StatefulWidget {
+  @override
+  _BeatTheVirusState createState() => _BeatTheVirusState();
+}
+
+class _BeatTheVirusState extends State<BeatTheVirus> {
+  var _isInit = true;
+
+  @override
+  void didChangeDependencies() {
+    if (_isInit) {
+      Provider.of<AuthenticateProvider>(context).fetchUserSession();
+    }
+    _isInit = false;
+
+    super.didChangeDependencies();
+  }
+
   @override
   Widget build(BuildContext context) {
-    final auth = Provider.of<AuthenticateProvider>(context).isSignedIn;
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: auth ? StartPage() : LoginScreen(),
-      // FutureBuilder(
-      //     future: Amplify.Auth.getCurrentUser(),
-      //     builder: (BuildContext context, AsyncSnapshot<AuthUser> snapshot) {
-      //       if (snapshot != null && snapshot.hasData) {
-      //         return StartPage();
-      //       }
-      //       return LoginScreen();
-      //     }),
+    return Consumer<AuthenticateProvider>(
+      builder: (ctx, auth, _) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: auth.isSignedIn ? StartPage() : LoginScreen(),
+        );
+      },
     );
   }
 }

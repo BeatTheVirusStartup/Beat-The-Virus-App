@@ -15,7 +15,6 @@
 
 // ignore_for_file: public_member_api_docs
 
-import 'ModelProvider.dart';
 import 'package:amplify_datastore_plugin_interface/amplify_datastore_plugin_interface.dart';
 import 'package:flutter/foundation.dart';
 
@@ -27,8 +26,7 @@ class Blog extends Model {
   final String title;
   final String content;
   final int views;
-  final String imageKey;
-  final BlogImages BlogToBlogImage;
+  final String imageUrl;
 
   @override
   getInstanceType() => classType;
@@ -43,23 +41,20 @@ class Blog extends Model {
       @required this.title,
       @required this.content,
       this.views,
-      @required this.imageKey,
-      this.BlogToBlogImage});
+      @required this.imageUrl});
 
   factory Blog(
       {String id,
       @required String title,
       @required String content,
       int views,
-      @required String imageKey,
-      BlogImages BlogToBlogImage}) {
+      @required String imageUrl}) {
     return Blog._internal(
         id: id == null ? UUID.getUUID() : id,
         title: title,
         content: content,
         views: views,
-        imageKey: imageKey,
-        BlogToBlogImage: BlogToBlogImage);
+        imageUrl: imageUrl);
   }
 
   bool equals(Object other) {
@@ -74,8 +69,7 @@ class Blog extends Model {
         title == other.title &&
         content == other.content &&
         views == other.views &&
-        imageKey == other.imageKey &&
-        BlogToBlogImage == other.BlogToBlogImage;
+        imageUrl == other.imageUrl;
   }
 
   @override
@@ -90,28 +84,20 @@ class Blog extends Model {
     buffer.write("title=" + "$title" + ", ");
     buffer.write("content=" + "$content" + ", ");
     buffer.write("views=" + (views != null ? views.toString() : "null") + ", ");
-    buffer.write("imageKey=" + "$imageKey" + ", ");
-    buffer.write("BlogToBlogImage=" +
-        (BlogToBlogImage != null ? BlogToBlogImage.toString() : "null"));
+    buffer.write("imageUrl=" + "$imageUrl");
     buffer.write("}");
 
     return buffer.toString();
   }
 
   Blog copyWith(
-      {String id,
-      String title,
-      String content,
-      int views,
-      String imageKey,
-      BlogImages BlogToBlogImage}) {
+      {String id, String title, String content, int views, String imageUrl}) {
     return Blog(
         id: id ?? this.id,
         title: title ?? this.title,
         content: content ?? this.content,
         views: views ?? this.views,
-        imageKey: imageKey ?? this.imageKey,
-        BlogToBlogImage: BlogToBlogImage ?? this.BlogToBlogImage);
+        imageUrl: imageUrl ?? this.imageUrl);
   }
 
   Blog.fromJson(Map<String, dynamic> json)
@@ -119,30 +105,21 @@ class Blog extends Model {
         title = json['title'],
         content = json['content'],
         views = json['views'],
-        imageKey = json['imageKey'],
-        BlogToBlogImage = json['BlogToBlogImage'] != null
-            ? BlogImages.fromJson(
-                new Map<String, dynamic>.from(json['BlogToBlogImage']))
-            : null;
+        imageUrl = json['imageUrl'];
 
   Map<String, dynamic> toJson() => {
         'id': id,
         'title': title,
         'content': content,
         'views': views,
-        'imageKey': imageKey,
-        'BlogToBlogImage': BlogToBlogImage?.toJson()
+        'imageUrl': imageUrl
       };
 
   static final QueryField ID = QueryField(fieldName: "blog.id");
   static final QueryField TITLE = QueryField(fieldName: "title");
   static final QueryField CONTENT = QueryField(fieldName: "content");
   static final QueryField VIEWS = QueryField(fieldName: "views");
-  static final QueryField IMAGEKEY = QueryField(fieldName: "imageKey");
-  static final QueryField BLOGTOBLOGIMAGE = QueryField(
-      fieldName: "BlogToBlogImage",
-      fieldType: ModelFieldType(ModelFieldTypeEnum.model,
-          ofModelName: (BlogImages).toString()));
+  static final QueryField IMAGEURL = QueryField(fieldName: "imageUrl");
   static var schema =
       Model.defineSchema(define: (ModelSchemaDefinition modelSchemaDefinition) {
     modelSchemaDefinition.name = "Blog";
@@ -175,15 +152,9 @@ class Blog extends Model {
         ofType: ModelFieldType(ModelFieldTypeEnum.int)));
 
     modelSchemaDefinition.addField(ModelFieldDefinition.field(
-        key: Blog.IMAGEKEY,
+        key: Blog.IMAGEURL,
         isRequired: true,
         ofType: ModelFieldType(ModelFieldTypeEnum.string)));
-
-    modelSchemaDefinition.addField(ModelFieldDefinition.belongsTo(
-        key: Blog.BLOGTOBLOGIMAGE,
-        isRequired: false,
-        targetName: "blogBlogToBlogImageId",
-        ofModelName: (BlogImages).toString()));
   });
 }
 

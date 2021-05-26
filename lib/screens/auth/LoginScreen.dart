@@ -26,7 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
   void _login(BuildContext context) async {
     if (_formKey.currentState.validate()) {
       FocusScope.of(context).unfocus();
-      await Provider.of<AuthenticateProvider>(context, listen: false)
+      Provider.of<AuthenticateProvider>(context, listen: false)
           .signIn(emailTED.text.trim(), passwordTED.text)
           .then((value) => ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
@@ -34,6 +34,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     duration: Duration(seconds: 2)),
               ));
     }
+  }
+
+  @override
+  void dispose() {
+    emailTED.dispose();
+    passwordTED.dispose();
+    super.dispose();
   }
 
   @override

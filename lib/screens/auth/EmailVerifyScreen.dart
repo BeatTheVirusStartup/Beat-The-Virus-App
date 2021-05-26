@@ -29,6 +29,12 @@ class _EmailConfirmationScreenState extends State<EmailConfirmationScreen> {
   _EmailConfirmationScreenState(this.email);
 
   @override
+  void dispose() {
+    _confirmationCodeController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
@@ -105,18 +111,26 @@ class _EmailConfirmationScreenState extends State<EmailConfirmationScreen> {
                                           ? "The confirmation code is invalid"
                                           : null,
                                     ),
-                                    ElevatedButton(
-                                      onPressed: () => _submitCode(context),
-                                      child: Text("CONFIRM"),
+                                    Row(
+                                      children: [
+                                        TextButton.icon(
+                                            onPressed: () {},
+                                            icon: Icon(Icons.refresh),
+                                            label: Text('Resend Code')),
+                                        ElevatedButton(
+                                          onPressed: () => _submitCode(context),
+                                          child: Text("CONFIRM"),
+                                        ),
+                                      ],
                                     )
                                   ])))))
             ])));
   }
 
-  void _submitCode(BuildContext context) async {
+  Future<void> _submitCode(BuildContext context) async {
     if (_formKey.currentState.validate()) {
       FocusScope.of(context).unfocus();
-      await Provider.of<AuthenticateProvider>(context, listen: false)
+      Provider.of<AuthenticateProvider>(context, listen: false)
           .confirmRegisterWithCode(email, _confirmationCodeController.text)
           .then((SignUpResult result) {
         if (result.isSignUpComplete)
@@ -125,6 +139,20 @@ class _EmailConfirmationScreenState extends State<EmailConfirmationScreen> {
       });
     }
   }
+
+  // void _resendCode(BuildContext context) async {
+  //   if (_formKey.currentState.validate()) {
+  //     FocusScope.of(context).unfocus();
+  //     await Provider.of<AuthenticateProvider>(context, listen: false)
+  //         .resendCode(email)
+  //         .then((ResendSignUpCodeResult result) {
+  //       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+  //         content: Text('Code Sent Successfully'),
+  //         duration: Duration(seconds: 2),
+  //       ));
+  //     });
+  //   }
+  // }
 }
 
 // Future<void> _submitCode(BuildContext context) async {
