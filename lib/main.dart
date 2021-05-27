@@ -3,6 +3,7 @@ import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
 import 'package:amplify_datastore/amplify_datastore.dart';
 import 'package:amplify_flutter/amplify.dart';
 import 'package:amplify_storage_s3/amplify_storage_s3.dart';
+import 'package:beat_the_virus/utility/Size_Config.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -47,14 +48,20 @@ class BeatTheVirus extends StatefulWidget {
 
 class _BeatTheVirusState extends State<BeatTheVirus> {
   var _isInit = true;
+  var _isLoading = true;
 
   @override
   void didChangeDependencies() {
     if (_isInit) {
-      Provider.of<AuthenticateProvider>(context).fetchUserSession();
+      Provider.of<AuthenticateProvider>(context)
+          .fetchUserSession()
+          .then((value) {
+        setState(() {
+          _isLoading = false;
+        });
+      });
     }
     _isInit = false;
-
     super.didChangeDependencies();
   }
 
@@ -64,9 +71,67 @@ class _BeatTheVirusState extends State<BeatTheVirus> {
       builder: (ctx, auth, _) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: auth.isSignedIn ? StartPage() : LoginScreen(),
+          home: _isLoading
+              ? SplashScreen()
+              : auth.isSignedIn
+                  ? StartPage()
+                  : LoginScreen(),
         );
       },
     );
+  }
+}
+
+class SplashScreen extends StatelessWidget {
+  const SplashScreen({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    SizeConfig().init(context);
+    return Container(
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+              Color(0xFF3d8fa5),
+              Color(0xFF76e2ff),
+            ])),
+        child: Scaffold(
+          backgroundColor: Colors.transparent,
+          body: Column(
+            children: [
+              Expanded(
+                  child: Container(
+                alignment: Alignment.bottomCenter,
+                child: Image.asset(
+                  'assets/icons/btvlogolow.png',
+                  width: SizeConfig.screenWidth * 0.6,
+                ),
+              )),
+              Expanded(
+                  child: Container(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                        width: SizeConfig.blockSizeHorizontal * 16,
+                        height: SizeConfig.blockSizeVertical * 7,
+                        child: CircularProgressIndicator(color: Colors.white)),
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text('Loading....',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: SizeConfig.safeBlockHorizontal * 5)),
+                    )
+                  ],
+                ),
+              ))
+            ],
+          ),
+        ));
   }
 }

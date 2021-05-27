@@ -20,6 +20,7 @@ class EmailConfirmationScreen extends StatefulWidget {
 }
 
 class _EmailConfirmationScreenState extends State<EmailConfirmationScreen> {
+  bool _isLoading = false;
   String email;
   final TextEditingController _confirmationCodeController =
       TextEditingController();
@@ -111,33 +112,75 @@ class _EmailConfirmationScreenState extends State<EmailConfirmationScreen> {
                                           ? "The confirmation code is invalid"
                                           : null,
                                     ),
-                                    Row(
-                                      children: [
-                                        TextButton.icon(
-                                            onPressed: () {},
-                                            icon: Icon(Icons.refresh),
-                                            label: Text('Resend Code')),
-                                        ElevatedButton(
-                                          onPressed: () => _submitCode(context),
-                                          child: Text("CONFIRM"),
-                                        ),
-                                      ],
-                                    )
+                                    if (_isLoading)
+                                      CircularProgressIndicator()
+                                    else
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          TextButton.icon(
+                                              onPressed: () {},
+                                              icon: Icon(Icons.refresh),
+                                              label: Text('Resend Code')),
+                                          ElevatedButton(
+                                            onPressed: () =>
+                                                _submitCode(context),
+                                            child: Text("CONFIRM"),
+                                          ),
+                                        ],
+                                      )
                                   ])))))
             ])));
   }
 
   Future<void> _submitCode(BuildContext context) async {
-    if (_formKey.currentState.validate()) {
-      FocusScope.of(context).unfocus();
-      Provider.of<AuthenticateProvider>(context, listen: false)
-          .confirmRegisterWithCode(email, _confirmationCodeController.text)
-          .then((SignUpResult result) {
-        if (result.isSignUpComplete)
+    if (!_formKey.currentState.validate()) {
+      // Invalid
+      return;
+    }
+    _formKey.currentState.save();
+    setState(() {
+      _isLoading = true;
+    });
+    AuthenticateProvider auth =
+        Provider.of<AuthenticateProvider>(context, listen: false);
+    FocusScope.of(context).unfocus();
+    auth
+        .confirmRegisterWithCode(email, _confirmationCodeController.text)
+        .then((SignUpResult result) {
+      if (auth.authError == null || auth.authError.isEmpty) {
+        if (result.isSignUpComplete) {
+          setState(() {
+            _isLoading = false;
+          });
           Navigator.pushReplacement(
               context, MaterialPageRoute(builder: (_) => LoginScreen()));
-      });
-    }
+        }
+      } else
+        _showErrorDialog(auth.authError);
+    });
+  }
+
+  void _showErrorDialog(String message) {
+    showDialog(
+        context: context,
+        builder: (ctx) => AlertDialog(
+                title: Row(
+                  children: [
+                    Text('An Error Occured!'),
+                    Icon(Icons.report_problem, color: Colors.red),
+                  ],
+                ),
+                content: Text(message),
+                actions: <Widget>[
+                  ElevatedButton(
+                      child: Text('Okay'),
+                      onPressed: () {
+                        _confirmationCodeController.clear();
+                        Navigator.of(ctx).pop();
+                      })
+                ]));
   }
 
   // void _resendCode(BuildContext context) async {

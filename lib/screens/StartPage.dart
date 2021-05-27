@@ -83,9 +83,14 @@ class _StartPageState extends State<StartPage> {
                   leading: FaIcon(FontAwesomeIcons.user,
                       size: SizeConfig.safeBlockVertical * 7,
                       color: Colors.grey[800]),
-                  title: Text('Welcome Guest',
-                      style: TextStyle(
-                          fontSize: SizeConfig.safeBlockHorizontal * 5)))),
+                  title: Consumer<AuthenticateProvider>(
+                    builder: (ctx, auth, _) {
+                      return Text(auth.userId,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: SizeConfig.safeBlockHorizontal * 4));
+                    },
+                  ))),
         ),
         Expanded(
           flex: 3,
@@ -158,16 +163,19 @@ class _StartPageState extends State<StartPage> {
             IconButton(
                 icon: Icon(Icons.search),
                 onPressed: () => debugPrint("search pressed")),
-            IconButton(
-                icon: Icon(Icons.logout),
-                onPressed: () async {
-                  Provider.of<AuthenticateProvider>(context, listen: false)
-                      .signOut();
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    content: Text('Successfully Signed Out ...!!'),
-                    duration: Duration(seconds: 2),
-                  ));
-                }),
+            Consumer<AuthenticateProvider>(
+              builder: (ctx, auth, _) {
+                return IconButton(
+                    icon: Icon(Icons.logout),
+                    onPressed: () async {
+                      auth.signOut().then((value) =>
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            content: Text('Logged Out..!!'),
+                            duration: Duration(seconds: 2),
+                          )));
+                    });
+              },
+            ),
           ],
           leading: Builder(builder: (context) {
             return IconButton(

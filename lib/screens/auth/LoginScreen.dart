@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:beat_the_virus/provider/AuthenticateProvider.dart';
 import 'package:beat_the_virus/utility/Size_Config.dart';
 import 'package:email_validator/email_validator.dart';
@@ -14,6 +16,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  bool _isLoading = false;
   final _formKey = GlobalKey<FormState>();
   TextEditingController emailTED = TextEditingController(),
       passwordTED = TextEditingController();
@@ -23,17 +26,52 @@ class _LoginScreenState extends State<LoginScreen> {
         .push(MaterialPageRoute(builder: (_) => SignUpScreen()));
   }
 
-  void _login(BuildContext context) async {
-    if (_formKey.currentState.validate()) {
-      FocusScope.of(context).unfocus();
-      Provider.of<AuthenticateProvider>(context, listen: false)
-          .signIn(emailTED.text.trim(), passwordTED.text)
-          .then((value) => ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                    content: Text('Successfully Logged In..!!'),
-                    duration: Duration(seconds: 2)),
-              ));
+  Future<void> _login(BuildContext context) async {
+    if (!_formKey.currentState.validate()) {
+      // Invalid
+      return;
     }
+    _formKey.currentState.save();
+    setState(() {
+      _isLoading = true;
+    });
+    FocusScope.of(context).unfocus();
+    AuthenticateProvider auth =
+        Provider.of<AuthenticateProvider>(context, listen: false);
+    auth.signIn(emailTED.text.trim(), passwordTED.text).then((value) {
+      if (auth.authError == null || auth.authError.isEmpty) {
+        setState(() {
+          _isLoading = false;
+        });
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text('Logged in..!!'),
+          duration: Duration(seconds: 2),
+        ));
+      } else
+        _showErrorDialog(auth.authError);
+    });
+  }
+
+  void _showErrorDialog(String message) {
+    showDialog(
+        context: context,
+        builder: (ctx) => AlertDialog(
+                title: Row(
+                  children: [
+                    Text('An Error Occured!'),
+                    Icon(Icons.report_problem, color: Colors.red),
+                  ],
+                ),
+                content: Text(message),
+                actions: <Widget>[
+                  ElevatedButton(
+                      child: Text('Okay'),
+                      onPressed: () {
+                        emailTED.clear();
+                        passwordTED.clear();
+                        Navigator.of(ctx).pop();
+                      })
+                ]));
   }
 
   @override
@@ -118,19 +156,24 @@ class _LoginScreenState extends State<LoginScreen> {
                           },
                         ),
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          ElevatedButton(
-                              onPressed:
-                                  // () => _loginButtonOnPressed(context)
-                                  () => _login(context),
-                              child: Text('Log in')),
-                          OutlinedButton(
-                              onPressed: () => _gotoSignUpScreen(context),
-                              child: Text('Create my Account'))
-                        ],
-                      )
+                      if (_isLoading)
+                        CircularProgressIndicator()
+                      else
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            ElevatedButton(
+                                onPressed:
+                                    // () => _loginButtonOnPressed(context)
+                                    () => _login(context),
+                                child: Text('Log in')),
+                            OutlinedButton(
+                                onPressed: () {
+                                  _gotoSignUpScreen(context);
+                                },
+                                child: Text('New Account'))
+                          ],
+                        )
                     ],
                   ),
                 ),
