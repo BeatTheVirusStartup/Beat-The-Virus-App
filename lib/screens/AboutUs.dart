@@ -1,7 +1,6 @@
 import 'package:beat_the_virus/utility/Size_Config.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class AboutUs extends StatefulWidget {
   @override
@@ -79,10 +78,13 @@ class _AboutUsState extends State<AboutUs> {
           Expanded(
               child: Container(
             alignment: Alignment.center,
-            child: Text(titleLS[currentPos],
-                style: TextStyle(
-                    fontFamily: 'Vivaldi',
-                    fontSize: SizeConfig.safeBlockHorizontal * 15)),
+            child: Text(
+              titleLS[currentPos],
+              style: Theme.of(context).textTheme.headline6,
+              // TextStyle(
+              //     fontFamily: 'Vivaldi',
+              //     fontSize: SizeConfig.safeBlockHorizontal * 15)
+            ),
           )),
           Expanded(
               flex: 6,
@@ -110,10 +112,9 @@ class _AboutUsState extends State<AboutUs> {
                                       child: Text(
                                         aboutUsLS[index],
                                         textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                            fontSize:
-                                                SizeConfig.safeBlockHorizontal *
-                                                    5),
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyText1,
                                       ),
                                     );
                                   }),
@@ -137,10 +138,12 @@ class _AboutUsState extends State<AboutUs> {
                                     padding: EdgeInsets.all(10.0),
                                     child: Text(
                                       privacyPolicyLS[index],
-                                      style: TextStyle(
-                                          fontSize:
-                                              SizeConfig.safeBlockHorizontal *
-                                                  5),
+                                      style:
+                                          Theme.of(context).textTheme.bodyText1,
+                                      //  TextStyle(
+                                      //     fontSize:
+                                      //         SizeConfig.safeBlockHorizontal *
+                                      //             5),
                                     ),
                                   );
                                 }),
@@ -167,18 +170,24 @@ class _AboutUsState extends State<AboutUs> {
                                       children: <Widget>[
                                         Text(
                                           tcLS[index][0],
-                                          style: TextStyle(
-                                              fontSize: SizeConfig
-                                                      .safeBlockHorizontal *
-                                                  5,
-                                              fontWeight: FontWeight.bold),
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyText2,
+                                          // TextStyle(
+                                          //     fontSize: SizeConfig
+                                          //             .safeBlockHorizontal *
+                                          //         5,
+                                          //     fontWeight: FontWeight.bold),
                                         ),
                                         Text(
                                           tcLS[index][1],
-                                          style: TextStyle(
-                                              fontSize: SizeConfig
-                                                      .safeBlockHorizontal *
-                                                  5),
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyText1,
+                                          // TextStyle(
+                                          //     fontSize: SizeConfig
+                                          //             .safeBlockHorizontal *
+                                          //         5),
                                         )
                                       ],
                                     ),

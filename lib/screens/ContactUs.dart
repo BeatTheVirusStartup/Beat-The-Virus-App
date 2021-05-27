@@ -38,10 +38,7 @@ class _ContactUsState extends State<ContactUs> {
                 child: Container(
                   alignment: Alignment.center,
                   child: Text('Contact Us',
-                      style: TextStyle(
-                          fontFamily: 'Vivaldi',
-                          fontSize: SizeConfig.safeBlockHorizontal * 15,
-                          fontWeight: FontWeight.bold)),
+                      style: Theme.of(context).textTheme.headline6),
                 ),
               ),
               Expanded(
@@ -101,21 +98,11 @@ class _ContactUsState extends State<ContactUs> {
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 8.0),
                           child: Column(children: [
-                            Text(
-                              "BEAT THE VIRUS",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                                color: Colors.black,
-                              ),
-                            ),
+                            Text("BEAT THE VIRUS",
+                                style: Theme.of(context).textTheme.headline5),
                             Text(
                               "Beat The Virus By Increasing Your Immunity",
-                              style: TextStyle(
-                                fontStyle: FontStyle.italic,
-                                fontSize: 20,
-                                color: Colors.black,
-                              ),
+                              style: Theme.of(context).textTheme.headline5,
                             ),
                           ]),
                         ),
@@ -127,12 +114,8 @@ class _ContactUsState extends State<ContactUs> {
                               height: 50,
                               width: 50,
                             ),
-                            Text(
-                              '© 2021 Beat The Virus',
-                              style: TextStyle(
-                                color: Colors.black,
-                              ),
-                            )
+                            Text('© 2021 Beat The Virus',
+                                style: Theme.of(context).textTheme.bodyText1)
                           ]),
                         ),
                         Row(
