@@ -180,6 +180,7 @@ class _EmailConfirmationScreenState extends State<EmailConfirmationScreen> {
                       child: Text('Okay'),
                       onPressed: () {
                         _confirmationCodeController.clear();
+                        _isLoading = false;
                         Navigator.of(ctx).pop();
                       })
                 ]));

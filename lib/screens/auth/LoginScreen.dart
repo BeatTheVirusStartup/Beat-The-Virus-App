@@ -69,6 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       onPressed: () {
                         emailTED.clear();
                         passwordTED.clear();
+                        _isLoading = false;
                         Navigator.of(ctx).pop();
                       })
                 ]));

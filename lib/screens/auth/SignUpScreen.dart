@@ -77,6 +77,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       onPressed: () {
                         emailTED.clear();
                         passwordTED.clear();
+                        setState(() {
+                          _isLoading = false;
+                        });
                         Navigator.of(ctx).pop();
                       })
                 ]));
