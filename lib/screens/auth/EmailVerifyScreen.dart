@@ -104,8 +104,10 @@ class _EmailConfirmationScreenState extends State<EmailConfirmationScreen> {
                                             ])),
                                     TextFormField(
                                       keyboardType: TextInputType.number,
+                                      maxLength: 6,
                                       controller: _confirmationCodeController,
                                       decoration: InputDecoration(
+                                          counterText: '',
                                           border: OutlineInputBorder(),
                                           labelText: "Enter Confirmation Code"),
                                       validator: (value) => value.length != 6
