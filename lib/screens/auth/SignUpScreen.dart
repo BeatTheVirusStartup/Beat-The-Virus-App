@@ -38,30 +38,30 @@ class _SignUpScreenState extends State<SignUpScreen> {
     setState(() {
       _isLoading = true;
     });
+    FocusScope.of(context).unfocus();
     AuthenticateProvider auth =
         Provider.of<AuthenticateProvider>(context, listen: false);
-    FocusScope.of(context).unfocus();
-    auth
-        .registerWithEmaillAndPassword(emailTED.text.trim(), passwordTED.text)
-        .then((SignUpResult result) {
-      if (auth.authError == null || auth.authError.isEmpty) {
-        if (result.isSignUpComplete)
-          setState(() {
-            _isLoading = false;
-          });
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (_) =>
-                  EmailConfirmationScreen(email: emailTED.text.trim())),
-        );
-      } else
-        _showErrorDialog(auth.authError);
-    });
+    try {
+      SignUpResult result = await auth.registerWithEmaillAndPassword(
+          emailTED.text.trim(), passwordTED.text);
+      if (result.isSignUpComplete)
+        setState(() {
+          _isLoading = false;
+        });
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (_) =>
+                EmailConfirmationScreen(email: emailTED.text.trim())),
+      );
+    } catch (e) {
+      _showErrorDialog(e.message);
+    }
   }
 
   void _showErrorDialog(String message) {
     showDialog(
+        barrierDismissible: false,
         context: context,
         builder: (ctx) => AlertDialog(
                 title: Row(

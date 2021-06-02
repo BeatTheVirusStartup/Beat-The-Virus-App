@@ -1,3 +1,11 @@
+type Products @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String!
+  description: String!
+  category: String!
+  country: String!
+}
+
 type Blog @model @auth(rules: [{allow: public}]) {
   id: ID!
   title: String!

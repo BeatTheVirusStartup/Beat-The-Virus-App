@@ -148,24 +148,24 @@ class _EmailConfirmationScreenState extends State<EmailConfirmationScreen> {
     AuthenticateProvider auth =
         Provider.of<AuthenticateProvider>(context, listen: false);
     FocusScope.of(context).unfocus();
-    auth
-        .confirmRegisterWithCode(email, _confirmationCodeController.text)
-        .then((SignUpResult result) {
-      if (auth.authError == null || auth.authError.isEmpty) {
-        if (result.isSignUpComplete) {
-          setState(() {
-            _isLoading = false;
-          });
-          Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (_) => LoginScreen()));
-        }
-      } else
-        _showErrorDialog(auth.authError);
-    });
+    try {
+      SignUpResult result = await auth.confirmRegisterWithCode(
+          email, _confirmationCodeController.text);
+      if (result.isSignUpComplete) {
+        setState(() {
+          _isLoading = false;
+        });
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (_) => LoginScreen()));
+      }
+    } catch (e) {
+      _showErrorDialog(e.message);
+    }
   }
 
   void _showErrorDialog(String message) {
     showDialog(
+        barrierDismissible: false,
         context: context,
         builder: (ctx) => AlertDialog(
                 title: Row(

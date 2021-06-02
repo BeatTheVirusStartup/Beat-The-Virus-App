@@ -48,18 +48,19 @@ class BeatTheVirus extends StatefulWidget {
 
 class _BeatTheVirusState extends State<BeatTheVirus> {
   var _isInit = true;
-  var _isLoading = true;
+  var _isLoading = false;
 
   @override
   void didChangeDependencies() {
     if (_isInit) {
-      Provider.of<AuthenticateProvider>(context)
-          .fetchUserSession()
-          .then((value) {
+      setState(() {
+        _isLoading = true;
+      });
+      Provider.of<AuthenticateProvider>(context).fetchUserSession().then((_) {
         setState(() {
           _isLoading = false;
         });
-      });
+      }).catchError((onError) => print(onError));
     }
     _isInit = false;
     super.didChangeDependencies();
@@ -73,7 +74,7 @@ class _BeatTheVirusState extends State<BeatTheVirus> {
           debugShowCheckedModeBanner: false,
           home: _isLoading
               ? SplashScreen()
-              : auth.isSignedIn
+              : auth.isSigneIn
                   ? StartPage()
                   : LoginScreen(),
         );

@@ -1,6 +1,8 @@
 import 'dart:io';
 
+import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
 import 'package:beat_the_virus/provider/AuthenticateProvider.dart';
+import 'package:beat_the_virus/screens/auth/EmailVerifyScreen.dart';
 import 'package:beat_the_virus/utility/Size_Config.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
@@ -38,22 +40,23 @@ class _LoginScreenState extends State<LoginScreen> {
     FocusScope.of(context).unfocus();
     AuthenticateProvider auth =
         Provider.of<AuthenticateProvider>(context, listen: false);
-    auth.signIn(emailTED.text.trim(), passwordTED.text).then((value) {
-      if (auth.authError == null || auth.authError.isEmpty) {
-        setState(() {
-          _isLoading = false;
-        });
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text('Logged in..!!'),
-          duration: Duration(seconds: 2),
-        ));
-      } else
-        _showErrorDialog(auth.authError);
-    });
+    try {
+      await auth.signIn(emailTED.text.trim(), passwordTED.text);
+      setState(() {
+        _isLoading = false;
+      });
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text('Logged in..!!'),
+        duration: Duration(seconds: 2),
+      ));
+    } catch (e) {
+      _showErrorDialog(e.message);
+    }
   }
 
   void _showErrorDialog(String message) {
     showDialog(
+        barrierDismissible: false,
         context: context,
         builder: (ctx) => AlertDialog(
                 title: Row(
@@ -69,7 +72,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       onPressed: () {
                         emailTED.clear();
                         passwordTED.clear();
-                        _isLoading = false;
+                        setState(() {
+                          _isLoading = false;
+                        });
                         Navigator.of(ctx).pop();
                       })
                 ]));

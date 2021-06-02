@@ -3,34 +3,40 @@ import 'package:amplify_flutter/amplify.dart';
 import 'package:flutter/material.dart';
 
 class AuthenticateProvider with ChangeNotifier {
-  bool isSignedIn = false;
-  String authError = '';
+  bool _isSignedIn = false;
   String _userId = '';
 
   String get userId {
     return _userId;
   }
 
-  Future<void> _getCurrentUser() async {
+  bool get isSigneIn {
+    return _isSignedIn;
+  }
+
+  Future<void> getUser() async {
     try {
-      var user = await Amplify.Auth.getCurrentUser();
-      _userId = user.username;
+      AuthUser user = await Amplify.Auth.getCurrentUser();
+      _userId = user.userId;
+      print('USER_ID: ' + user.userId);
     } on AuthException catch (e, s) {
       print(e);
       print(s);
-      authError = e.message;
+      throw e;
     }
   }
 
   Future<void> fetchUserSession() async {
     try {
-      var res = await Amplify.Auth.fetchAuthSession();
-      isSignedIn = res.isSignedIn;
+      AuthSession res = await Amplify.Auth.fetchAuthSession();
+      print('Fetch User Seesion: ' + res.isSignedIn.toString());
+
+      _isSignedIn = res.isSignedIn;
       notifyListeners();
     } on AuthException catch (e, s) {
       print(e);
       print(s);
-      authError = e.message;
+      throw e;
     }
   }
 
@@ -47,7 +53,7 @@ class AuthenticateProvider with ChangeNotifier {
     } on AuthException catch (e, s) {
       print(e);
       print(s);
-      authError = e.message;
+      throw e;
     }
   }
 
@@ -61,7 +67,7 @@ class AuthenticateProvider with ChangeNotifier {
     } on AuthException catch (e, s) {
       print(e);
       print(s);
-      authError = e.message;
+      throw e;
     }
   }
 
@@ -69,24 +75,35 @@ class AuthenticateProvider with ChangeNotifier {
     try {
       SignInResult res =
           await Amplify.Auth.signIn(username: email, password: password);
-      await _getCurrentUser();
-      isSignedIn = res.isSignedIn;
+
+      _isSignedIn = res.isSignedIn;
       notifyListeners();
     } on AuthException catch (e) {
-      print('TestError: ' + e.message);
-      authError = e.message;
+      print(e.message);
+      throw e;
+    }
+  }
+
+  Future<void> reConfirmAccount(String email) async {
+    try {
+      ResendUserAttributeConfirmationCodeResult res =
+          await Amplify.Auth.resendUserAttributeConfirmationCode(
+              userAttributeKey: 'email');
+    } on AuthException catch (e) {
+      print(e.message);
+      throw e;
     }
   }
 
   Future<void> signOut() async {
     try {
-      Amplify.Auth.signOut();
-      isSignedIn = false;
+      await Amplify.Auth.signOut();
+      _isSignedIn = false;
       notifyListeners();
     } on AuthException catch (e, s) {
       print(e);
       print(s);
-      authError = e.message;
+      throw e;
     }
   }
 }

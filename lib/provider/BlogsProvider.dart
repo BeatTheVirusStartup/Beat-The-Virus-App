@@ -22,12 +22,14 @@ class Blogs with ChangeNotifier {
       _blogs = data;
       List<String> temp = [];
       for (Blog blog in data) {
-        var url = await Amplify.Storage.getUrl(key: blog.imageUrl);
+        var url = await Amplify.Storage.getUrl(
+            key: blog.imageUrl,
+            options: GetUrlOptions(accessLevel: StorageAccessLevel.guest));
         temp.add(url.url);
       }
       //print('ImgData: ' + temp.length.toString());
       _blogImgUrl = temp;
-      print('ImgData: ' + _blogImgUrl.length.toString());
+      //print('ImgData: ' + _blogImgUrl.toString());
       notifyListeners();
     } catch (e, s) {
       print(e);

@@ -1,6 +1,7 @@
 import 'package:beat_the_virus/main.dart';
 import 'package:beat_the_virus/provider/AuthenticateProvider.dart';
 import 'package:beat_the_virus/provider/BlogsProvider.dart';
+import 'package:beat_the_virus/provider/ProductsProvider.dart';
 import 'package:beat_the_virus/utility/Size_Config.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -23,6 +24,8 @@ class StartPage extends StatefulWidget {
 }
 
 class _StartPageState extends State<StartPage> {
+  var _isInit = true;
+
   List<String> menuLS = [
     'HOME',
     'BLOG',
@@ -56,6 +59,15 @@ class _StartPageState extends State<StartPage> {
   }
 
   @override
+  void didChangeDependencies() {
+    // if (_isInit) {
+    //   Provider.of<AuthenticateProvider>(context).getCurrentUser();
+    // }
+    // _isInit = false;
+    super.didChangeDependencies();
+  }
+
+  @override
   void dispose() {
     super.dispose();
     _pageController.dispose();
@@ -65,6 +77,10 @@ class _StartPageState extends State<StartPage> {
     setState(() {
       _page = page;
     });
+  }
+
+  Future<void> getCurrentUsr() async {
+    Provider.of<AuthenticateProvider>(context, listen: false).getUser();
   }
 
   @override
@@ -85,7 +101,7 @@ class _StartPageState extends State<StartPage> {
                       color: Colors.grey[800]),
                   title: Consumer<AuthenticateProvider>(
                     builder: (ctx, auth, _) {
-                      return Text(auth.userId,
+                      return Text('Welcome',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               fontSize: SizeConfig.safeBlockHorizontal * 4));
@@ -163,16 +179,17 @@ class _StartPageState extends State<StartPage> {
             IconButton(
                 icon: Icon(Icons.search),
                 onPressed: () => debugPrint("search pressed")),
+            //IconButton(onPressed: () => getCurrentUsr(), icon: Icon(Icons.tab)),
             Consumer<AuthenticateProvider>(
               builder: (ctx, auth, _) {
                 return IconButton(
                     icon: Icon(Icons.logout),
                     onPressed: () async {
-                      auth.signOut().then((value) =>
-                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                            content: Text('Logged Out..!!'),
-                            duration: Duration(seconds: 2),
-                          )));
+                      await auth.signOut();
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        content: Text('Logged Out..!!'),
+                        duration: Duration(seconds: 2),
+                      ));
                     });
               },
             ),
@@ -219,19 +236,22 @@ class _StartPageState extends State<StartPage> {
                             fontSize: SizeConfig.safeBlockHorizontal * 3))),
                 child: BlogsPage()),
           ),
-          Theme(
-              data: ThemeData(
-                  textTheme: TextTheme(
-                      headline6: TextStyle(
-                          fontFamily: 'Vivaldi',
-                          fontSize: SizeConfig.safeBlockHorizontal * 15),
-                      bodyText1: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: SizeConfig.safeBlockHorizontal * 5),
-                      bodyText2: TextStyle(
-                          color: Colors.black,
-                          fontSize: SizeConfig.safeBlockHorizontal * 3.5))),
-              child: Products()),
+          ChangeNotifierProvider.value(
+            value: ProductsProvider(),
+            child: Theme(
+                data: ThemeData(
+                    textTheme: TextTheme(
+                        headline6: TextStyle(
+                            fontFamily: 'Vivaldi',
+                            fontSize: SizeConfig.safeBlockHorizontal * 15),
+                        bodyText1: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: SizeConfig.safeBlockHorizontal * 5),
+                        bodyText2: TextStyle(
+                            color: Colors.black,
+                            fontSize: SizeConfig.safeBlockHorizontal * 3.5))),
+                child: Products()),
+          ),
           Theme(
               data: ThemeData(
                   textTheme: TextTheme(
