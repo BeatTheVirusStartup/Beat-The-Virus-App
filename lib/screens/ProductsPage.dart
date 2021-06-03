@@ -46,145 +46,139 @@ class _ProductsState extends State<Products> {
 
   @override
   void didChangeDependencies() {
-    if (_isInit) {
-      setState(() {
-        _isLoading = true;
-      });
-      Provider.of<ProductsProvider>(context).getProducts().then((_) {
-        setState(() {
-          _isLoading = false;
-        });
-      });
-    }
-    _isInit = false;
+    // if (_isInit) {
+    //   print('Current Region: ' + currentRegion);
+    //   setState(() {
+    //     _isLoading = true;
+    //   });
+    //   Provider.of<ProductsProvider>(context)
+    //       .getProductsByCountry(currentRegion)
+    //       .then((_) {
+    //     setState(() {
+    //       _isLoading = false;
+    //     });
+    //   });
+    // }
+    // _isInit = false;
     super.didChangeDependencies();
   }
 
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return _isLoading
-        ? Center(child: CircularProgressIndicator())
-        : Column(
-            children: [
-              Expanded(
-                  child: Container(
-                color: Colors.white,
-                alignment: Alignment.center,
-                child: Text('Products Page',
-                    style: Theme.of(context).textTheme.headline6),
-              )),
-              Expanded(
-                  flex: 7,
-                  child: Container(
-                    color: Colors.white,
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Column(children: [
-                                Row(children: [
-                                  Text('Region:'),
-                                  TextButton(
-                                      onPressed: () {
-                                        showDialog(
-                                            context: context,
-                                            builder: (ctx) => Dialog(
-                                                shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            10)),
-                                                child: Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(8.0),
-                                                  child: Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.min,
-                                                    children: [
-                                                      Text('Choose Country',
-                                                          style:
-                                                              Theme.of(context)
-                                                                  .textTheme
-                                                                  .bodyText1),
-                                                      ListView.builder(
-                                                          shrinkWrap: true,
-                                                          itemCount:
-                                                              countryLS.length,
-                                                          itemBuilder:
-                                                              (ctx, index) {
-                                                            return ListTile(
-                                                              onTap: () {
-                                                                setState(() {
-                                                                  currentRegion =
-                                                                      countryLS[
-                                                                          index];
-                                                                });
-                                                                Navigator.of(
-                                                                        context)
-                                                                    .pop();
-                                                              },
-                                                              leading: Image
-                                                                  .asset(flagLS[
-                                                                      index]),
-                                                              title: Text(
-                                                                  countryLS[
-                                                                      index]),
-                                                            );
-                                                          }),
-                                                      ElevatedButton(
-                                                          onPressed: () =>
-                                                              Navigator.of(
-                                                                      context)
-                                                                  .pop(),
-                                                          child: Text('CANCEL'))
-                                                    ],
-                                                  ),
-                                                )));
-                                      },
-                                      child: Text(currentRegion.toUpperCase()))
-                                ]),
-                                Row(children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 5.0),
-                                    child: Text('Sort By -:'),
-                                  ),
-                                  Container(
-                                      height: SizeConfig.blockSizeVertical * 5,
-                                      padding: EdgeInsets.all(8.0),
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(10.0),
-                                          border: Border.all(
-                                              color: Colors.grey,
-                                              style: BorderStyle.solid,
-                                              width: 0.80)),
-                                      child: DropdownButtonHideUnderline(
-                                          child: DropdownButton(
-                                              value: chosenValue,
-                                              items: sortLS.map<
-                                                      DropdownMenuItem<String>>(
-                                                  (String value) {
-                                                return DropdownMenuItem<String>(
-                                                  value: value,
-                                                  child: Text(value,
-                                                      style: Theme.of(context)
-                                                          .textTheme
-                                                          .bodyText2),
-                                                );
-                                              }).toList(),
-                                              onChanged: (value) {
-                                                setState(() {
-                                                  chosenValue = value;
-                                                });
-                                              })))
-                                ])
-                              ])),
-                          Expanded(
-                              child: ProductsGrid(chosenValue: chosenValue)),
-                        ]),
-                  )),
-            ],
-          );
+    Provider.of<ProductsProvider>(context).getProductsByCountry(currentRegion);
+
+    return Column(
+      children: [
+        Expanded(
+            child: Container(
+          color: Colors.white,
+          alignment: Alignment.center,
+          child: Text('Products Page',
+              style: Theme.of(context).textTheme.headline6),
+        )),
+        Expanded(
+            flex: 7,
+            child: Container(
+              color: Colors.white,
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(children: [
+                          Row(children: [
+                            Text('Region:'),
+                            TextButton(
+                                onPressed: () {
+                                  showDialog(
+                                      context: context,
+                                      builder: (ctx) => Dialog(
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(10)),
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                Text('Choose Country',
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .bodyText1),
+                                                ListView.builder(
+                                                    shrinkWrap: true,
+                                                    itemCount: countryLS.length,
+                                                    itemBuilder: (ctx, index) {
+                                                      return ListTile(
+                                                        onTap: () {
+                                                          setState(() {
+                                                            currentRegion =
+                                                                countryLS[
+                                                                    index];
+                                                            chosenValue = 'All';
+                                                          });
+                                                          Navigator.of(context)
+                                                              .pop();
+                                                        },
+                                                        leading: Image.asset(
+                                                            flagLS[index]),
+                                                        title: Text(
+                                                            countryLS[index]),
+                                                      );
+                                                    }),
+                                                ElevatedButton(
+                                                    onPressed: () =>
+                                                        Navigator.of(context)
+                                                            .pop(),
+                                                    child: Text('CANCEL'))
+                                              ],
+                                            ),
+                                          )));
+                                },
+                                child: Text(currentRegion.toUpperCase()))
+                          ]),
+                          Row(children: [
+                            Padding(
+                              padding: const EdgeInsets.only(right: 5.0),
+                              child: Text('Sort By -:'),
+                            ),
+                            Container(
+                                height: SizeConfig.blockSizeVertical * 5,
+                                padding: EdgeInsets.all(8.0),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                    border: Border.all(
+                                        color: Colors.grey,
+                                        style: BorderStyle.solid,
+                                        width: 0.80)),
+                                child: DropdownButtonHideUnderline(
+                                    child: DropdownButton(
+                                        value: chosenValue,
+                                        items: sortLS
+                                            .map<DropdownMenuItem<String>>(
+                                                (String value) {
+                                          return DropdownMenuItem<String>(
+                                            value: value,
+                                            child: Text(value,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyText2),
+                                          );
+                                        }).toList(),
+                                        onChanged: (value) {
+                                          setState(() {
+                                            chosenValue = value;
+                                          });
+                                        })))
+                          ])
+                        ])),
+                    Expanded(
+                        child: ProductsGrid(
+                            country: currentRegion, chosenValue: chosenValue)),
+                  ]),
+            )),
+      ],
+    );
   }
 }

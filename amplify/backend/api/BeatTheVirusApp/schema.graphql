@@ -4,6 +4,7 @@ type Products @model @auth(rules: [{allow: public}]) {
   description: String!
   category: String!
   country: String!
+  imageUrl: String
 }
 
 type Blog @model @auth(rules: [{allow: public}]) {

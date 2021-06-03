@@ -27,6 +27,7 @@ class Products extends Model {
   final String description;
   final String category;
   final String country;
+  final String imageUrl;
 
   @override
   getInstanceType() => classType;
@@ -41,20 +42,23 @@ class Products extends Model {
       @required this.name,
       @required this.description,
       @required this.category,
-      @required this.country});
+      @required this.country,
+      this.imageUrl});
 
   factory Products(
       {String id,
       @required String name,
       @required String description,
       @required String category,
-      @required String country}) {
+      @required String country,
+      String imageUrl}) {
     return Products._internal(
         id: id == null ? UUID.getUUID() : id,
         name: name,
         description: description,
         category: category,
-        country: country);
+        country: country,
+        imageUrl: imageUrl);
   }
 
   bool equals(Object other) {
@@ -69,7 +73,8 @@ class Products extends Model {
         name == other.name &&
         description == other.description &&
         category == other.category &&
-        country == other.country;
+        country == other.country &&
+        imageUrl == other.imageUrl;
   }
 
   @override
@@ -84,7 +89,8 @@ class Products extends Model {
     buffer.write("name=" + "$name" + ", ");
     buffer.write("description=" + "$description" + ", ");
     buffer.write("category=" + "$category" + ", ");
-    buffer.write("country=" + "$country");
+    buffer.write("country=" + "$country" + ", ");
+    buffer.write("imageUrl=" + "$imageUrl");
     buffer.write("}");
 
     return buffer.toString();
@@ -95,13 +101,15 @@ class Products extends Model {
       String name,
       String description,
       String category,
-      String country}) {
+      String country,
+      String imageUrl}) {
     return Products(
         id: id ?? this.id,
         name: name ?? this.name,
         description: description ?? this.description,
         category: category ?? this.category,
-        country: country ?? this.country);
+        country: country ?? this.country,
+        imageUrl: imageUrl ?? this.imageUrl);
   }
 
   Products.fromJson(Map<String, dynamic> json)
@@ -109,14 +117,16 @@ class Products extends Model {
         name = json['name'],
         description = json['description'],
         category = json['category'],
-        country = json['country'];
+        country = json['country'],
+        imageUrl = json['imageUrl'];
 
   Map<String, dynamic> toJson() => {
         'id': id,
         'name': name,
         'description': description,
         'category': category,
-        'country': country
+        'country': country,
+        'imageUrl': imageUrl
       };
 
   static final QueryField ID = QueryField(fieldName: "products.id");
@@ -124,6 +134,7 @@ class Products extends Model {
   static final QueryField DESCRIPTION = QueryField(fieldName: "description");
   static final QueryField CATEGORY = QueryField(fieldName: "category");
   static final QueryField COUNTRY = QueryField(fieldName: "country");
+  static final QueryField IMAGEURL = QueryField(fieldName: "imageUrl");
   static var schema =
       Model.defineSchema(define: (ModelSchemaDefinition modelSchemaDefinition) {
     modelSchemaDefinition.name = "Products";
@@ -158,6 +169,11 @@ class Products extends Model {
     modelSchemaDefinition.addField(ModelFieldDefinition.field(
         key: Products.COUNTRY,
         isRequired: true,
+        ofType: ModelFieldType(ModelFieldTypeEnum.string)));
+
+    modelSchemaDefinition.addField(ModelFieldDefinition.field(
+        key: Products.IMAGEURL,
+        isRequired: false,
         ofType: ModelFieldType(ModelFieldTypeEnum.string)));
   });
 }

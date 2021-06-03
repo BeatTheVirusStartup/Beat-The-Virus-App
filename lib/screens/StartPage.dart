@@ -59,28 +59,23 @@ class _StartPageState extends State<StartPage> {
   }
 
   @override
-  void didChangeDependencies() {
-    // if (_isInit) {
-    //   Provider.of<AuthenticateProvider>(context).getCurrentUser();
-    // }
-    // _isInit = false;
-    super.didChangeDependencies();
-  }
-
-  @override
   void dispose() {
     super.dispose();
     _pageController.dispose();
+  }
+
+  @override
+  void didChangeDependencies() {
+    if (_isInit) Provider.of<AuthenticateProvider>(context).getUser();
+
+    _isInit = false;
+    super.didChangeDependencies();
   }
 
   void onPageChanged(int page) {
     setState(() {
       _page = page;
     });
-  }
-
-  Future<void> getCurrentUsr() async {
-    Provider.of<AuthenticateProvider>(context, listen: false).getUser();
   }
 
   @override
@@ -101,7 +96,7 @@ class _StartPageState extends State<StartPage> {
                       color: Colors.grey[800]),
                   title: Consumer<AuthenticateProvider>(
                     builder: (ctx, auth, _) {
-                      return Text('Welcome',
+                      return Text(auth.userId,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               fontSize: SizeConfig.safeBlockHorizontal * 4));

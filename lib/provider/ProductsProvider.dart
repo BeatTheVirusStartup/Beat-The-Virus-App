@@ -10,10 +10,11 @@ class ProductsProvider with ChangeNotifier {
     return [..._allProducts];
   }
 
-  Future<void> getProducts() async {
+  Future<void> getProductsByCountry(String country) async {
     try {
       List<Products> products = await Amplify.DataStore.query(
           Products.classType,
+          where: Products.COUNTRY.eq(country),
           sortBy: [Products.NAME.ascending()]);
       _allProducts = products;
       notifyListeners();
@@ -22,7 +23,7 @@ class ProductsProvider with ChangeNotifier {
     }
   }
 
-  List<Products> filterByCategory(String cat) {
+  List<Products> filterByCategory(String country, String cat) {
     return [..._allProducts.where((Products prod) => prod.category == cat)];
   }
 }

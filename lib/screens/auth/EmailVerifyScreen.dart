@@ -200,24 +200,3 @@ class _EmailConfirmationScreenState extends State<EmailConfirmationScreen> {
   //   }
   // }
 }
-
-// Future<void> _submitCode(BuildContext context) async {
-//   if (_formKey.currentState.validate()) {
-//     final confirmationCode = _confirmationCodeController.text;
-//     try {
-//       final SignUpResult response = await Amplify.Auth.confirmSignUp(
-//         username: widget.email,
-//         confirmationCode: confirmationCode,
-//       );
-//       if (response.isSignUpComplete) {
-//         _gotoMainScreen(context);
-//       }
-//     } on AuthException catch (e) {
-//       print(e.message);
-//     }
-//   }
-// }
-// void _gotoMainScreen(BuildContext context) {
-//   Navigator.pushReplacement(
-//       context, MaterialPageRoute(builder: (_) => LoginScreen()));
-// }

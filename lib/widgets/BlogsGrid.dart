@@ -1,4 +1,5 @@
 import 'package:beat_the_virus/provider/BlogsProvider.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -13,13 +14,6 @@ class BlogsGrid extends StatefulWidget {
 class _BlogsGridState extends State<BlogsGrid> {
   String dateTime = DateFormat('dd,MMM, yyyy').format(DateTime.now());
 
-  List<String> imgLS = [
-    'assets/blog/blog3.webp',
-    'assets/blog/blog1.webp',
-    'assets/blog/blog2.webp',
-    'assets/blog/blog4.webp',
-    'assets/blog/blog.jpeg',
-  ];
   @override
   Widget build(BuildContext context) {
     return Column(children: [
@@ -52,8 +46,15 @@ class _BlogsGridState extends State<BlogsGrid> {
                                   borderRadius: BorderRadius.only(
                                       topLeft: Radius.circular(15.0),
                                       topRight: Radius.circular(15.0)),
-                                  child: Image.asset(imgLS[index],
-                                      fit: BoxFit.cover)),
+                                  child: CachedNetworkImage(
+                                    imageUrl: blogsData.blogs[index].imageUrl,
+                                    progressIndicatorBuilder: (context, url,
+                                            downloadProgress) =>
+                                        CircularProgressIndicator(
+                                            value: downloadProgress.progress),
+                                    errorWidget: (context, url, error) =>
+                                        Icon(Icons.error, color: Colors.red),
+                                  )),
                               Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Column(
@@ -68,7 +69,12 @@ class _BlogsGridState extends State<BlogsGrid> {
                                             padding: const EdgeInsets.symmetric(
                                                 vertical: 8.0),
                                             child: Text(
-                                                blogsData.blogs[index].content,
+                                                blogsData.blogs[index]
+                                                            .content !=
+                                                        null
+                                                    ? blogsData
+                                                        .blogs[index].content
+                                                    : 'NO DATA',
                                                 style: Theme.of(context)
                                                     .textTheme
                                                     .bodyText1)),

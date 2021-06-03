@@ -17,8 +17,7 @@ class AuthenticateProvider with ChangeNotifier {
   Future<void> getUser() async {
     try {
       AuthUser user = await Amplify.Auth.getCurrentUser();
-      _userId = user.userId;
-      print('USER_ID: ' + user.userId);
+      _userId = user.username;
     } on AuthException catch (e, s) {
       print(e);
       print(s);
@@ -32,6 +31,7 @@ class AuthenticateProvider with ChangeNotifier {
       print('Fetch User Seesion: ' + res.isSignedIn.toString());
 
       _isSignedIn = res.isSignedIn;
+
       notifyListeners();
     } on AuthException catch (e, s) {
       print(e);
