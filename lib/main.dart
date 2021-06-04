@@ -3,6 +3,7 @@ import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
 import 'package:amplify_datastore/amplify_datastore.dart';
 import 'package:amplify_flutter/amplify.dart';
 import 'package:amplify_storage_s3/amplify_storage_s3.dart';
+import 'package:beat_the_virus/screens/auth/EmailVerifyScreen.dart';
 import 'package:beat_the_virus/utility/Size_Config.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -107,7 +108,7 @@ class SplashScreen extends StatelessWidget {
                 alignment: Alignment.bottomCenter,
                 child: Image.asset(
                   'assets/icons/btvlogolow.png',
-                  width: SizeConfig.screenWidth * 0.6,
+                  width: SizeConfig.screenWidth * 0.5,
                 ),
               )),
               Expanded(

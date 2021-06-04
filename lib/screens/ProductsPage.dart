@@ -41,27 +41,6 @@ class _ProductsState extends State<Products> {
     'Beverages'
   ];
   String chosenValue = 'All';
-  var _isInit = true;
-  var _isLoading = false;
-
-  @override
-  void didChangeDependencies() {
-    // if (_isInit) {
-    //   print('Current Region: ' + currentRegion);
-    //   setState(() {
-    //     _isLoading = true;
-    //   });
-    //   Provider.of<ProductsProvider>(context)
-    //       .getProductsByCountry(currentRegion)
-    //       .then((_) {
-    //     setState(() {
-    //       _isLoading = false;
-    //     });
-    //   });
-    // }
-    // _isInit = false;
-    super.didChangeDependencies();
-  }
 
   @override
   Widget build(BuildContext context) {

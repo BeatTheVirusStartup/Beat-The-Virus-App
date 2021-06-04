@@ -24,6 +24,7 @@ class _EmailConfirmationScreenState extends State<EmailConfirmationScreen> {
   String email;
   final TextEditingController _confirmationCodeController =
       TextEditingController();
+  bool _isTimeOver = false;
 
   final _formKey = GlobalKey<FormState>();
 
@@ -38,102 +39,165 @@ class _EmailConfirmationScreenState extends State<EmailConfirmationScreen> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return Scaffold(
-        backgroundColor: Colors.blue[400],
-        body: Center(
-            child: ListView(
-                shrinkWrap: true,
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 20.0, vertical: 10.0),
-                children: [
-              Image.asset(
-                'assets/icons/btvlogolow.png',
-                height: SizeConfig.screenHeight * 0.25,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
-                child: Text('Email Confirmation',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontFamily: 'Vivaldi',
-                        fontSize: SizeConfig.safeBlockHorizontal * 15)),
-              ),
-              Container(
-                  width: SizeConfig.screenWidth * 0.70,
-                  height: SizeConfig.screenHeight * 0.30,
-                  decoration:
-                      BoxDecoration(borderRadius: BorderRadius.circular(20.0)),
-                  child: Card(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0)),
-                      child: Form(
-                          key: _formKey,
-                          child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 8.0, horizontal: 15.0),
-                              child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    RichText(
-                                        textAlign: TextAlign.center,
-                                        text: TextSpan(
-                                            text:
-                                                'An email confirmation code is sent to ',
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 16.0),
-                                            children: <TextSpan>[
-                                              TextSpan(
-                                                  text: "'" +
-                                                      widget.email +
-                                                      "' .",
-                                                  style: TextStyle(
-                                                      color: Colors.black,
-                                                      fontStyle:
-                                                          FontStyle.italic,
-                                                      fontWeight:
-                                                          FontWeight.bold)),
-                                              TextSpan(
-                                                  text:
-                                                      'Please type the code to confirm your email.',
-                                                  style: TextStyle(
-                                                      color: Colors.black,
-                                                      fontSize: 16.0))
-                                            ])),
-                                    TextFormField(
-                                      keyboardType: TextInputType.number,
-                                      maxLength: 6,
-                                      controller: _confirmationCodeController,
-                                      decoration: InputDecoration(
-                                          counterText: '',
-                                          border: OutlineInputBorder(),
-                                          labelText: "Enter Confirmation Code"),
-                                      validator: (value) => value.length != 6
-                                          ? "The confirmation code is invalid"
-                                          : null,
-                                    ),
-                                    if (_isLoading)
-                                      CircularProgressIndicator()
-                                    else
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceEvenly,
-                                        children: [
-                                          TextButton.icon(
-                                              onPressed: () {},
-                                              icon: Icon(Icons.refresh),
-                                              label: Text('Resend Code')),
-                                          ElevatedButton(
-                                            onPressed: () =>
-                                                _submitCode(context),
-                                            child: Text("CONFIRM"),
-                                          ),
-                                        ],
-                                      )
-                                  ])))))
-            ])));
+    return Container(
+      decoration: BoxDecoration(
+          gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+            Color(0xFF3d8fa5),
+            Color(0xFF76e2ff),
+          ])),
+      child: Scaffold(
+          backgroundColor: Colors.transparent,
+          body: Center(
+              child: ListView(
+                  shrinkWrap: true,
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 20.0, vertical: 10.0),
+                  children: [
+                Image.asset(
+                  'assets/icons/btvlogolow.png',
+                  height: SizeConfig.screenHeight * 0.25,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  child: Text('Email Confirmation',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: 'Vivaldi',
+                          fontSize: SizeConfig.safeBlockHorizontal * 15)),
+                ),
+                Container(
+                    width: SizeConfig.screenWidth * 0.70,
+                    height: SizeConfig.screenHeight * 0.30,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20.0)),
+                    child: Card(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0)),
+                        child: Form(
+                            key: _formKey,
+                            child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    vertical: 8.0, horizontal: 15.0),
+                                child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      RichText(
+                                          textAlign: TextAlign.center,
+                                          text: TextSpan(
+                                              text:
+                                                  'An email confirmation code is sent to ',
+                                              style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontSize: 16.0),
+                                              children: <TextSpan>[
+                                                TextSpan(
+                                                    text: "'" +
+                                                        widget.email +
+                                                        "' .",
+                                                    style: TextStyle(
+                                                        color: Colors.black,
+                                                        fontStyle:
+                                                            FontStyle.italic,
+                                                        fontWeight:
+                                                            FontWeight.bold)),
+                                                TextSpan(
+                                                    text:
+                                                        'Please type the code to confirm your email.',
+                                                    style: TextStyle(
+                                                        color: Colors.black,
+                                                        fontSize: 16.0))
+                                              ])),
+                                      TextFormField(
+                                        keyboardType: TextInputType.number,
+                                        maxLength: 6,
+                                        controller: _confirmationCodeController,
+                                        decoration: InputDecoration(
+                                            counterText: '',
+                                            border: OutlineInputBorder(),
+                                            labelText:
+                                                "Enter Confirmation Code"),
+                                        validator: (value) => value.length != 6
+                                            ? "The confirmation code is invalid"
+                                            : null,
+                                      ),
+                                      if (_isLoading)
+                                        CircularProgressIndicator()
+                                      else
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          children: [
+                                            _isTimeOver
+                                                ? TextButton.icon(
+                                                    onPressed: () {},
+                                                    icon: Icon(Icons.refresh),
+                                                    label: Text('Resend Code'))
+                                                : TweenAnimationBuilder<
+                                                        Duration>(
+                                                    tween: Tween(
+                                                        begin: Duration(
+                                                            minutes: 1),
+                                                        end: Duration.zero),
+                                                    duration:
+                                                        Duration(minutes: 1),
+                                                    onEnd: () {
+                                                      setState(() {
+                                                        _isTimeOver = true;
+                                                      });
+                                                    },
+                                                    builder:
+                                                        (BuildContext context,
+                                                            Duration value,
+                                                            Widget child) {
+                                                      final minutes =
+                                                          value.inMinutes;
+                                                      final seconds =
+                                                          value.inSeconds % 60;
+                                                      return RichText(
+                                                        text: TextSpan(
+                                                            style: TextStyle(
+                                                                color: Colors
+                                                                    .black),
+                                                            children: <
+                                                                TextSpan>[
+                                                              TextSpan(
+                                                                  text:
+                                                                      'Resend Code in',
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          SizeConfig.blockSizeHorizontal *
+                                                                              4)),
+                                                              TextSpan(
+                                                                  text:
+                                                                      '  $minutes:$seconds',
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          SizeConfig.blockSizeHorizontal *
+                                                                              4,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                      fontStyle:
+                                                                          FontStyle
+                                                                              .italic))
+                                                            ]),
+                                                      );
+                                                    }),
+                                            ElevatedButton(
+                                              onPressed: () =>
+                                                  _submitCode(context),
+                                              child: Text("CONFIRM"),
+                                            ),
+                                          ],
+                                        )
+                                    ])))))
+              ]))),
+    );
   }
 
   Future<void> _submitCode(BuildContext context) async {

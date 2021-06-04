@@ -51,7 +51,8 @@ class _BlogsGridState extends State<BlogsGrid> {
                                     progressIndicatorBuilder: (context, url,
                                             downloadProgress) =>
                                         CircularProgressIndicator(
-                                            value: downloadProgress.progress),
+                                            value: downloadProgress.progress,
+                                            color: Colors.grey),
                                     errorWidget: (context, url, error) =>
                                         Icon(Icons.error, color: Colors.red),
                                   )),
