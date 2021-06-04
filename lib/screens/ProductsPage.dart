@@ -1,5 +1,8 @@
+import 'package:beat_the_virus/provider/ProductsProvider.dart';
 import 'package:beat_the_virus/utility/Size_Config.dart';
+import 'package:beat_the_virus/widgets/ProductsGrid.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Products extends StatefulWidget {
   Products({Key key}) : super(key: key);
@@ -32,8 +35,7 @@ class _ProductsState extends State<Products> {
   List<String> sortLS = [
     'All',
     'Snacks',
-    'Immunity Boosting Food',
-    'Supplements',
+    'Immunity Boosting Food Supplements',
     'Drinking Water Supplements',
     'Herbs',
     'Beverages'
@@ -43,6 +45,8 @@ class _ProductsState extends State<Products> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
+    Provider.of<ProductsProvider>(context).getProductsByCountry(currentRegion);
+
     return Column(
       children: [
         Expanded(
@@ -91,6 +95,7 @@ class _ProductsState extends State<Products> {
                                                             currentRegion =
                                                                 countryLS[
                                                                     index];
+                                                            chosenValue = 'All';
                                                           });
                                                           Navigator.of(context)
                                                               .pop();
@@ -147,48 +152,9 @@ class _ProductsState extends State<Products> {
                                         })))
                           ])
                         ])),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(" Results found in $chosenValue :-"),
-                    ),
                     Expanded(
-                      child: GridView.builder(
-                          padding: EdgeInsets.all(8.0),
-                          itemCount: 10,
-                          gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            // childAspectRatio: SizeConfig.screenWidth /
-                            //     (SizeConfig.screenHeight / 2.5),
-                            crossAxisSpacing: 10.0,
-                            // mainAxisSpacing: 5.0,
-                          ),
-                          itemBuilder: (BuildContext context, int index) {
-                            return Card(
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10)),
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    Icon(Icons.shopping_cart,
-                                        color: Colors.grey[400],
-                                        size: SizeConfig.blockSizeHorizontal *
-                                            20),
-                                    Align(
-                                        alignment: Alignment.centerLeft,
-                                        child: Text('Product Name')),
-                                    Align(
-                                        alignment: Alignment.centerLeft,
-                                        child: Text('\u{20B9} 100'))
-                                  ],
-                                ),
-                              ),
-                            );
-                          }),
-                    ),
+                        child: ProductsGrid(
+                            country: currentRegion, chosenValue: chosenValue)),
                   ]),
             )),
       ],

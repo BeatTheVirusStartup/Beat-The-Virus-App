@@ -1,8 +1,8 @@
 {
-    "identityPoolName": "beatthevirusapp19f3f613_identitypool_19f3f613",
+    "identityPoolName": "beatthevirusapp924ac4d7_identitypool_924ac4d7",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "beatth19f3f613",
-    "userPoolName": "beatthevirusapp19f3f613_userpool_19f3f613",
+    "resourceNameTruncated": "beatth924ac4d7",
+    "userPoolName": "beatthevirusapp924ac4d7_userpool_924ac4d7",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -28,10 +28,10 @@
     "userpoolClientReadAttributes": [
         "email"
     ],
-    "userpoolClientLambdaRole": "beatth19f3f613_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "beatth924ac4d7_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "19f3f613",
-    "resourceName": "beatthevirusapp19f3f613",
+    "sharedId": "924ac4d7",
+    "resourceName": "beatthevirusapp924ac4d7",
     "authSelections": "identityPoolAndUserPool",
     "authRoleArn": {
         "Fn::GetAtt": [
