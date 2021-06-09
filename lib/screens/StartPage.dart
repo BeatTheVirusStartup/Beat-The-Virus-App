@@ -66,7 +66,10 @@ class _StartPageState extends State<StartPage> {
 
   @override
   void didChangeDependencies() {
-    if (_isInit) Provider.of<AuthenticateProvider>(context).getUser();
+    if (_isInit) {
+      Provider.of<AuthenticateProvider>(context).getUser();
+      Provider.of<AuthenticateProvider>(context).getUserCredentials();
+    }
 
     _isInit = false;
     super.didChangeDependencies();

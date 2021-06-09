@@ -6,34 +6,24 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class ProductsGrid extends StatefulWidget {
-  final String country, chosenValue;
+class ProductsGrid extends StatelessWidget {
+  final String chosenValue;
   ProductsGrid({
     Key key,
-    this.country,
     this.chosenValue,
   }) : super(key: key);
 
   @override
-  _ProductsGridState createState() =>
-      _ProductsGridState(country: country, chosenValue: chosenValue);
-}
-
-class _ProductsGridState extends State<ProductsGrid> {
-  final String country, chosenValue;
-
-  _ProductsGridState({this.country, this.chosenValue});
-  @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     final double itemHeight =
-        (SizeConfig.screenHeight - kToolbarHeight - 24) / 3;
+        (SizeConfig.screenHeight - kToolbarHeight - 24) / 2.75;
     final double itemWidth = SizeConfig.screenWidth / 2;
 
     final allProdData = Provider.of<ProductsProvider>(context);
-    final prodData = widget.chosenValue == 'All'
+    final prodData = chosenValue == 'All'
         ? allProdData.allProducts
-        : allProdData.filterByCategory(widget.country, widget.chosenValue);
+        : allProdData.filterByCategory(chosenValue);
 
     return Column(children: [
       Padding(
@@ -45,7 +35,7 @@ class _ProductsGridState extends State<ProductsGrid> {
                 style: TextStyle(
                     color: Colors.black, fontWeight: FontWeight.bold)),
             TextSpan(
-                text: " Results found in ${widget.chosenValue} :-",
+                text: " Results found in $chosenValue :-",
                 style: TextStyle(color: Colors.black))
           ]),
         ),
@@ -82,31 +72,40 @@ class _ProductsGridState extends State<ProductsGrid> {
                                               color: Colors.grey,
                                               value: downloadProgress.progress),
                                   errorWidget: (context, url, error) =>
-                                      Icon(Icons.error, color: Colors.red),
+                                      Image.asset(
+                                    'assets/images/noImage.png',
+                                    fit: BoxFit.cover,
+                                    width: SizeConfig.blockSizeHorizontal * 35,
+                                  ),
                                 )),
-                            Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Align(
-                                          alignment: Alignment.centerLeft,
+                            Expanded(
+                              child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 5.0, horizontal: 5.0),
+                                  child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        Align(
+                                            alignment: Alignment.centerLeft,
+                                            child: Text(
+                                              prodData[index].name != null
+                                                  ? prodData[index].name
+                                                  : 'NO DATA',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold),
+                                            )),
+                                        Flexible(
                                           child: Text(
-                                            prodData[index].name != null
-                                                ? prodData[index].name
-                                                : 'NO DATA',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold),
-                                          )),
-                                      Flexible(
-                                        child: Text(
-                                            prodData[index].description != null
-                                                ? prodData[index].description
-                                                : 'NO DATA',
-                                            maxLines: 3,
-                                            overflow: TextOverflow.ellipsis),
-                                      )
-                                    ]))
+                                              prodData[index].description !=
+                                                      null
+                                                  ? prodData[index].description
+                                                  : 'NO DATA',
+                                              maxLines: 3,
+                                              overflow: TextOverflow.ellipsis),
+                                        )
+                                      ])),
+                            ),
                           ]),
                     ));
               }))

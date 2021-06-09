@@ -1,4 +1,5 @@
 import 'package:beat_the_virus/provider/BlogsProvider.dart';
+import 'package:beat_the_virus/utility/Size_Config.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -16,6 +17,7 @@ class _BlogsGridState extends State<BlogsGrid> {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Column(children: [
       Expanded(
           child: Container(
@@ -54,7 +56,11 @@ class _BlogsGridState extends State<BlogsGrid> {
                                             value: downloadProgress.progress,
                                             color: Colors.grey),
                                     errorWidget: (context, url, error) =>
-                                        Icon(Icons.error, color: Colors.red),
+                                        Image.asset('assets/images/noImage.png',
+                                            fit: BoxFit.cover,
+                                            width:
+                                                SizeConfig.blockSizeHorizontal *
+                                                    40),
                                   )),
                               Padding(
                                   padding: const EdgeInsets.all(8.0),

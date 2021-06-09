@@ -40,6 +40,20 @@ class AuthenticateProvider with ChangeNotifier {
     }
   }
 
+  Future<void> getUserCredentials() async {
+    try {
+      CognitoAuthSession res = await Amplify.Auth.fetchAuthSession(
+          options: CognitoSessionOptions(getAWSCredentials: true));
+      print('Fetch User Seesion: ' + res.credentials.awsAccessKey);
+
+      notifyListeners();
+    } on AuthException catch (e, s) {
+      print(e);
+      print(s);
+      throw e;
+    }
+  }
+
   Future<SignUpResult> registerWithEmaillAndPassword(
       String email, String password) async {
     try {

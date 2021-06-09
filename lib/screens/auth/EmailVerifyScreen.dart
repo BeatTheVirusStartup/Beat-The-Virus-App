@@ -128,70 +128,82 @@ class _EmailConfirmationScreenState extends State<EmailConfirmationScreen> {
                                       if (_isLoading)
                                         CircularProgressIndicator()
                                       else
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceEvenly,
+                                        Column(
                                           children: [
-                                            _isTimeOver
-                                                ? TextButton.icon(
-                                                    onPressed: () {},
-                                                    icon: Icon(Icons.refresh),
-                                                    label: Text('Resend Code'))
-                                                : TweenAnimationBuilder<
-                                                        Duration>(
-                                                    tween: Tween(
-                                                        begin: Duration(
+                                            TextButton(
+                                                onPressed: () => Navigator.of(
+                                                        context)
+                                                    .pushReplacement(
+                                                        MaterialPageRoute(
+                                                            builder: (_) =>
+                                                                LoginScreen())),
+                                                child: Text(
+                                                    'Already Registered ?')),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceEvenly,
+                                              children: [
+                                                _isTimeOver
+                                                    ? TextButton.icon(
+                                                        onPressed: () {},
+                                                        icon:
+                                                            Icon(Icons.refresh),
+                                                        label:
+                                                            Text('Resend Code'))
+                                                    : TweenAnimationBuilder<
+                                                            Duration>(
+                                                        tween: Tween(
+                                                            begin: Duration(
+                                                                minutes: 1),
+                                                            end: Duration.zero),
+                                                        duration: Duration(
                                                             minutes: 1),
-                                                        end: Duration.zero),
-                                                    duration:
-                                                        Duration(minutes: 1),
-                                                    onEnd: () {
-                                                      setState(() {
-                                                        _isTimeOver = true;
-                                                      });
-                                                    },
-                                                    builder:
-                                                        (BuildContext context,
+                                                        onEnd: () {
+                                                          setState(() {
+                                                            _isTimeOver = true;
+                                                          });
+                                                        },
+                                                        builder: (BuildContext
+                                                                context,
                                                             Duration value,
                                                             Widget child) {
-                                                      final minutes =
-                                                          value.inMinutes;
-                                                      final seconds =
-                                                          value.inSeconds % 60;
-                                                      return RichText(
-                                                        text: TextSpan(
-                                                            style: TextStyle(
-                                                                color: Colors
-                                                                    .black),
-                                                            children: <
-                                                                TextSpan>[
-                                                              TextSpan(
-                                                                  text:
-                                                                      'Resend Code in',
-                                                                  style: TextStyle(
-                                                                      fontSize:
-                                                                          SizeConfig.blockSizeHorizontal *
-                                                                              4)),
-                                                              TextSpan(
-                                                                  text:
-                                                                      '  $minutes:$seconds',
-                                                                  style: TextStyle(
-                                                                      fontSize:
-                                                                          SizeConfig.blockSizeHorizontal *
+                                                          final minutes =
+                                                              value.inMinutes;
+                                                          final seconds =
+                                                              value.inSeconds %
+                                                                  60;
+                                                          return RichText(
+                                                            text: TextSpan(
+                                                                style: TextStyle(
+                                                                    color: Colors
+                                                                        .black),
+                                                                children: <
+                                                                    TextSpan>[
+                                                                  TextSpan(
+                                                                      text:
+                                                                          'Resend Code in',
+                                                                      style: TextStyle(
+                                                                          fontSize:
+                                                                              SizeConfig.blockSizeHorizontal * 4)),
+                                                                  TextSpan(
+                                                                      text:
+                                                                          '  $minutes:$seconds',
+                                                                      style: TextStyle(
+                                                                          fontSize: SizeConfig.blockSizeHorizontal *
                                                                               4,
-                                                                      fontWeight:
-                                                                          FontWeight
+                                                                          fontWeight: FontWeight
                                                                               .bold,
-                                                                      fontStyle:
-                                                                          FontStyle
-                                                                              .italic))
-                                                            ]),
-                                                      );
-                                                    }),
-                                            ElevatedButton(
-                                              onPressed: () =>
-                                                  _submitCode(context),
-                                              child: Text("CONFIRM"),
+                                                                          fontStyle:
+                                                                              FontStyle.italic))
+                                                                ]),
+                                                          );
+                                                        }),
+                                                ElevatedButton(
+                                                  onPressed: () =>
+                                                      _submitCode(context),
+                                                  child: Text("CONFIRM"),
+                                                ),
+                                              ],
                                             ),
                                           ],
                                         )
