@@ -22,15 +22,11 @@ void emailPasswordHelp(BuildContext context) {
                           style: TextStyle(color: Colors.black),
                           children: <TextSpan>[
                         TextSpan(
-                            text: 'Email Example (Use Google Account only)',
+                            text:
+                                'For Email please use your Existing Gmail ID Only',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: SizeConfig.safeBlockHorizontal * 4)),
-                        TextSpan(
-                            text: '\n \u2022 testing@gmail.com',
-                            style: TextStyle(
-                                fontStyle: FontStyle.italic,
-                                fontSize: SizeConfig.safeBlockHorizontal * 4))
                       ])),
                 ),
                 Padding(
@@ -40,9 +36,14 @@ void emailPasswordHelp(BuildContext context) {
                           style: TextStyle(color: Colors.black),
                           children: <TextSpan>[
                         TextSpan(
-                            text: 'Password Requirements -: ',
+                            text:
+                                'Please create New Password as per below parameters -: ',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
+                                fontSize: SizeConfig.safeBlockHorizontal * 4)),
+                        TextSpan(
+                            text: '\n \u2022 Exactly 8 characters long',
+                            style: TextStyle(
                                 fontSize: SizeConfig.safeBlockHorizontal * 4)),
                         TextSpan(
                             text: '\n \u2022 Include lowercase characters',

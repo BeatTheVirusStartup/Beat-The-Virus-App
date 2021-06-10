@@ -67,7 +67,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   Container(
                       width: SizeConfig.screenWidth * 0.70,
-                      height: SizeConfig.screenHeight * 0.30,
+                      height: SizeConfig.screenHeight * 0.35,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20.0)),
                       child: Card(
@@ -76,85 +76,88 @@ class _LoginScreenState extends State<LoginScreen> {
                               borderRadius: BorderRadius.circular(20.0)),
                           child: Form(
                               key: _formKey,
-                              child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 8.0),
-                                      child: TextFormField(
-                                        controller: emailTED,
-                                        keyboardType:
-                                            TextInputType.emailAddress,
-                                        decoration: InputDecoration(
-                                          border: OutlineInputBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(10.0)),
-                                          labelText: 'Enter Email',
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 8.0),
+                                        child: TextFormField(
+                                          controller: emailTED,
+                                          keyboardType:
+                                              TextInputType.emailAddress,
+                                          decoration: InputDecoration(
+                                            border: OutlineInputBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        10.0)),
+                                            labelText: 'Enter Email',
+                                          ),
+                                          validator: (email) {
+                                            if (email.isEmpty ||
+                                                !EmailValidator.validate(
+                                                    email)) {
+                                              return 'Invalid Email';
+                                            }
+                                            return null;
+                                          },
                                         ),
-                                        validator: (email) {
-                                          if (email.isEmpty ||
-                                              !EmailValidator.validate(email)) {
-                                            return 'Invalid Email';
-                                          }
-                                          return null;
-                                        },
                                       ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 8.0),
-                                      child: TextFormField(
-                                        controller: passwordTED,
-                                        keyboardType: TextInputType.text,
-                                        obscureText: true,
-                                        decoration: InputDecoration(
-                                          border: OutlineInputBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(10.0)),
-                                          labelText: 'Enter Password',
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 8.0),
+                                        child: TextFormField(
+                                          controller: passwordTED,
+                                          keyboardType: TextInputType.text,
+                                          obscureText: true,
+                                          decoration: InputDecoration(
+                                            border: OutlineInputBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        10.0)),
+                                            labelText: 'Enter Password',
+                                          ),
+                                          validator: (password) {
+                                            if (password.isEmpty) {
+                                              return 'Invalid Password';
+                                            }
+                                            return null;
+                                          },
                                         ),
-                                        validator: (password) {
-                                          if (password.isEmpty) {
-                                            return 'Invalid Password';
-                                          }
-                                          return null;
-                                        },
                                       ),
-                                    ),
-                                    if (_isLoading)
-                                      CircularProgressIndicator()
-                                    else
-                                      Column(
-                                        children: [
-                                          TextButton(
-                                              onPressed: () =>
-                                                  emailPasswordHelp(context),
-                                              child: Text('Need Help ?')),
-                                          Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.spaceEvenly,
-                                              children: [
-                                                ElevatedButton(
-                                                    onPressed: () =>
-                                                        _login(context),
-                                                    child: Text('Log in')),
-                                                OutlinedButton(
-                                                    style: OutlinedButton
-                                                        .styleFrom(
-                                                            side: BorderSide(
-                                                                color: Colors
-                                                                    .blue)),
-                                                    onPressed: () {
-                                                      _gotoSignUpScreen(
-                                                          context);
-                                                    },
-                                                    child: Text('New Account'))
-                                              ]),
-                                        ],
-                                      )
-                                  ]))))
+                                      if (_isLoading)
+                                        CircularProgressIndicator()
+                                      else
+                                        Column(
+                                          children: [
+                                            TextButton(
+                                                onPressed: () =>
+                                                    emailPasswordHelp(context),
+                                                child: Text('Login Help ?')),
+                                            Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceEvenly,
+                                                children: [
+                                                  ElevatedButton(
+                                                      onPressed: () {
+                                                        _gotoSignUpScreen(
+                                                            context);
+                                                      },
+                                                      child:
+                                                          Text('New Account')),
+                                                  ElevatedButton(
+                                                      onPressed: () =>
+                                                          _login(context),
+                                                      child: Text('Log in'))
+                                                ]),
+                                          ],
+                                        )
+                                    ]),
+                              ))))
                 ]))));
   }
 
