@@ -58,7 +58,7 @@ class _EmailConfirmationScreenState extends State<EmailConfirmationScreen> {
                   children: [
                 Image.asset(
                   'assets/icons/btvlogolow.png',
-                  height: SizeConfig.screenHeight * 0.25,
+                  height: SizeConfig.screenHeight * 0.22,
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -66,8 +66,8 @@ class _EmailConfirmationScreenState extends State<EmailConfirmationScreen> {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           color: Colors.white,
-                          fontFamily: 'Vivaldi',
-                          fontSize: SizeConfig.safeBlockHorizontal * 15)),
+                          fontFamily: 'AveriaSerifLibre',
+                          fontSize: SizeConfig.safeBlockHorizontal * 10)),
                 ),
                 Container(
                     width: SizeConfig.screenWidth * 0.70,
@@ -128,82 +128,81 @@ class _EmailConfirmationScreenState extends State<EmailConfirmationScreen> {
                                       if (_isLoading)
                                         CircularProgressIndicator()
                                       else
-                                        Column(
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
                                           children: [
-                                            TextButton(
-                                                onPressed: () => Navigator.of(
-                                                        context)
-                                                    .pushReplacement(
-                                                        MaterialPageRoute(
-                                                            builder: (_) =>
-                                                                LoginScreen())),
-                                                child: Text(
-                                                    'Already Registered ?')),
-                                            Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.spaceEvenly,
-                                              children: [
-                                                _isTimeOver
-                                                    ? TextButton.icon(
+                                            _isTimeOver
+                                                ? Container(
+                                                    decoration: BoxDecoration(
+                                                        border: Border.all(
+                                                            color: Colors.blue),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(
+                                                                    10.0)),
+                                                    child: TextButton.icon(
                                                         onPressed: () {},
                                                         icon:
                                                             Icon(Icons.refresh),
-                                                        label:
-                                                            Text('Resend Code'))
-                                                    : TweenAnimationBuilder<
-                                                            Duration>(
-                                                        tween: Tween(
-                                                            begin: Duration(
-                                                                minutes: 1),
-                                                            end: Duration.zero),
-                                                        duration: Duration(
+                                                        label: Text(
+                                                            'Resend Code')),
+                                                  )
+                                                : TweenAnimationBuilder<
+                                                        Duration>(
+                                                    tween: Tween(
+                                                        begin: Duration(
                                                             minutes: 1),
-                                                        onEnd: () {
-                                                          setState(() {
-                                                            _isTimeOver = true;
-                                                          });
-                                                        },
-                                                        builder: (BuildContext
-                                                                context,
+                                                        end: Duration.zero),
+                                                    duration:
+                                                        Duration(minutes: 1),
+                                                    onEnd: () {
+                                                      setState(() {
+                                                        _isTimeOver = true;
+                                                      });
+                                                    },
+                                                    builder:
+                                                        (BuildContext context,
                                                             Duration value,
                                                             Widget child) {
-                                                          final minutes =
-                                                              value.inMinutes;
-                                                          final seconds =
-                                                              value.inSeconds %
-                                                                  60;
-                                                          return RichText(
-                                                            text: TextSpan(
-                                                                style: TextStyle(
-                                                                    color: Colors
-                                                                        .black),
-                                                                children: <
-                                                                    TextSpan>[
-                                                                  TextSpan(
-                                                                      text:
-                                                                          'Resend Code in',
-                                                                      style: TextStyle(
-                                                                          fontSize:
-                                                                              SizeConfig.blockSizeHorizontal * 4)),
-                                                                  TextSpan(
-                                                                      text:
-                                                                          '  $minutes:$seconds',
-                                                                      style: TextStyle(
-                                                                          fontSize: SizeConfig.blockSizeHorizontal *
+                                                      final minutes =
+                                                          value.inMinutes;
+                                                      final seconds =
+                                                          value.inSeconds % 60;
+                                                      return RichText(
+                                                        text: TextSpan(
+                                                            style: TextStyle(
+                                                                color: Colors
+                                                                    .black),
+                                                            children: <
+                                                                TextSpan>[
+                                                              TextSpan(
+                                                                  text:
+                                                                      'Resend Code in',
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          SizeConfig.blockSizeHorizontal *
+                                                                              4)),
+                                                              TextSpan(
+                                                                  text:
+                                                                      '  $minutes:$seconds',
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          SizeConfig.blockSizeHorizontal *
                                                                               4,
-                                                                          fontWeight: FontWeight
+                                                                      fontWeight:
+                                                                          FontWeight
                                                                               .bold,
-                                                                          fontStyle:
-                                                                              FontStyle.italic))
-                                                                ]),
-                                                          );
-                                                        }),
-                                                ElevatedButton(
-                                                  onPressed: () =>
-                                                      _submitCode(context),
-                                                  child: Text("CONFIRM"),
-                                                ),
-                                              ],
+                                                                      fontStyle:
+                                                                          FontStyle
+                                                                              .italic))
+                                                            ]),
+                                                      );
+                                                    }),
+                                            ElevatedButton(
+                                              onPressed: () =>
+                                                  _submitCode(context),
+                                              child: Text("CONFIRM"),
                                             ),
                                           ],
                                         )

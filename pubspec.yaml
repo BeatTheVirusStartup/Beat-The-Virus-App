@@ -68,6 +68,7 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
+  
   fonts:
     - family: Forte
       fonts:
@@ -75,6 +76,9 @@ flutter:
     - family: Vivaldi
       fonts:
         - asset: assets/fonts/vivaldi.ttf
+    - family: AveriaSerifLibre
+      fonts:
+        - asset: assets/fonts/AveriaSerifLibre-Regular.ttf
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:
