@@ -42,7 +42,7 @@ void emailPasswordHelp(BuildContext context) {
                                 fontWeight: FontWeight.bold,
                                 fontSize: SizeConfig.safeBlockHorizontal * 4)),
                         TextSpan(
-                            text: '\n \u2022 Must be 8 characters long',
+                            text: '\n \u2022 Exactly 8 characters long',
                             style: TextStyle(
                                 fontSize: SizeConfig.safeBlockHorizontal * 4)),
                         TextSpan(
