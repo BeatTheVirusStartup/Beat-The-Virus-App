@@ -23,7 +23,7 @@ class ProductsProvider with ChangeNotifier {
     }
   }
 
-  List<Products> filterByCategory(String country, String cat) {
+  List<Products> filterByCategory(String cat) {
     return [..._allProducts.where((Products prod) => prod.category == cat)];
   }
 }

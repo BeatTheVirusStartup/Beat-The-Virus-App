@@ -1,8 +1,10 @@
 import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
 import 'package:beat_the_virus/provider/AuthenticateProvider.dart';
+import 'package:beat_the_virus/utility/EmailPasswordHelp.dart';
 import 'package:beat_the_virus/utility/Size_Config.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import 'EmailVerifyScreen.dart';
@@ -51,15 +53,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     children: [
                   Image.asset(
                     'assets/icons/btvlogolow.png',
-                    height: SizeConfig.screenHeight * 0.25,
+                    height: SizeConfig.screenHeight * 0.20,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8.0),
-                    child: Text('Create Account',
+                    child: Text('Join our Community',
                         textAlign: TextAlign.center,
                         style: TextStyle(
+                            fontFamily: 'AveriaSerifLibre',
                             color: Colors.white,
-                            fontFamily: 'Vivaldi',
                             fontSize: SizeConfig.safeBlockHorizontal * 15)),
                   ),
                   Container(
@@ -125,25 +127,39 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     if (_isLoading)
                                       CircularProgressIndicator()
                                     else
-                                      Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceEvenly,
-                                          children: [
-                                            ElevatedButton(
-                                                onPressed: () => Navigator.of(
-                                                        context)
-                                                    .pushReplacement(
-                                                        MaterialPageRoute(
-                                                            builder: (ctx) =>
-                                                                LoginScreen())),
-                                                child: Text('Go to Login')),
-                                            OutlinedButton(
-                                                //     _createAccountOnPressed(context)
-                                                onPressed: () =>
-                                                    createAccount(context),
-                                                child:
-                                                    Text('Create My Account')),
-                                          ])
+                                      Column(
+                                        children: [
+                                          TextButton(
+                                              onPressed: () =>
+                                                  emailPasswordHelp(context),
+                                              child: Text('Need Help ?')),
+                                          Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceEvenly,
+                                              children: [
+                                                OutlinedButton(
+                                                    style: OutlinedButton
+                                                        .styleFrom(
+                                                            side: BorderSide(
+                                                                color: Colors
+                                                                    .blue)),
+                                                    onPressed: () => Navigator
+                                                            .of(context)
+                                                        .pushReplacement(
+                                                            MaterialPageRoute(
+                                                                builder: (ctx) =>
+                                                                    LoginScreen())),
+                                                    child: Text(
+                                                        'Login Instead ?')),
+                                                ElevatedButton(
+                                                    //     _createAccountOnPressed(context)
+                                                    onPressed: () =>
+                                                        createAccount(context),
+                                                    child: Text(
+                                                        'Create My Account')),
+                                              ]),
+                                        ],
+                                      )
                                   ]))))
                 ]))));
   }

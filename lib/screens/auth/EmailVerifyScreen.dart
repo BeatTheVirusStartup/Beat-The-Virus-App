@@ -58,7 +58,7 @@ class _EmailConfirmationScreenState extends State<EmailConfirmationScreen> {
                   children: [
                 Image.asset(
                   'assets/icons/btvlogolow.png',
-                  height: SizeConfig.screenHeight * 0.25,
+                  height: SizeConfig.screenHeight * 0.22,
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -66,8 +66,8 @@ class _EmailConfirmationScreenState extends State<EmailConfirmationScreen> {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           color: Colors.white,
-                          fontFamily: 'Vivaldi',
-                          fontSize: SizeConfig.safeBlockHorizontal * 15)),
+                          fontFamily: 'AveriaSerifLibre',
+                          fontSize: SizeConfig.safeBlockHorizontal * 10)),
                 ),
                 Container(
                     width: SizeConfig.screenWidth * 0.70,
@@ -133,10 +133,21 @@ class _EmailConfirmationScreenState extends State<EmailConfirmationScreen> {
                                               MainAxisAlignment.spaceEvenly,
                                           children: [
                                             _isTimeOver
-                                                ? TextButton.icon(
-                                                    onPressed: () {},
-                                                    icon: Icon(Icons.refresh),
-                                                    label: Text('Resend Code'))
+                                                ? Container(
+                                                    decoration: BoxDecoration(
+                                                        border: Border.all(
+                                                            color: Colors.blue),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(
+                                                                    10.0)),
+                                                    child: TextButton.icon(
+                                                        onPressed: () {},
+                                                        icon:
+                                                            Icon(Icons.refresh),
+                                                        label: Text(
+                                                            'Resend Code')),
+                                                  )
                                                 : TweenAnimationBuilder<
                                                         Duration>(
                                                     tween: Tween(

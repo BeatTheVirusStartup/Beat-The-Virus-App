@@ -152,9 +152,7 @@ class _ProductsState extends State<Products> {
                                         })))
                           ])
                         ])),
-                    Expanded(
-                        child: ProductsGrid(
-                            country: currentRegion, chosenValue: chosenValue)),
+                    Expanded(child: ProductsGrid(chosenValue: chosenValue)),
                   ]),
             )),
       ],

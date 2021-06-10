@@ -3,9 +3,11 @@ import 'dart:io';
 import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
 import 'package:beat_the_virus/provider/AuthenticateProvider.dart';
 import 'package:beat_the_virus/screens/auth/EmailVerifyScreen.dart';
+import 'package:beat_the_virus/utility/EmailPasswordHelp.dart';
 import 'package:beat_the_virus/utility/Size_Config.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import 'SignUpScreen.dart';
@@ -56,11 +58,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8.0),
-                    child: Text('Log In',
+                    child: Text('Welcome',
                         textAlign: TextAlign.center,
                         style: TextStyle(
+                            fontFamily: 'AveriaSerifLibre',
                             color: Colors.white,
-                            fontFamily: 'Vivaldi',
                             fontSize: SizeConfig.safeBlockHorizontal * 15)),
                   ),
                   Container(
@@ -124,21 +126,34 @@ class _LoginScreenState extends State<LoginScreen> {
                                     if (_isLoading)
                                       CircularProgressIndicator()
                                     else
-                                      Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceEvenly,
-                                          children: [
-                                            ElevatedButton(
-                                                onPressed:
-                                                    // () => _loginButtonOnPressed(context)
-                                                    () => _login(context),
-                                                child: Text('Log in')),
-                                            OutlinedButton(
-                                                onPressed: () {
-                                                  _gotoSignUpScreen(context);
-                                                },
-                                                child: Text('New Account'))
-                                          ])
+                                      Column(
+                                        children: [
+                                          TextButton(
+                                              onPressed: () =>
+                                                  emailPasswordHelp(context),
+                                              child: Text('Need Help ?')),
+                                          Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceEvenly,
+                                              children: [
+                                                ElevatedButton(
+                                                    onPressed: () =>
+                                                        _login(context),
+                                                    child: Text('Log in')),
+                                                OutlinedButton(
+                                                    style: OutlinedButton
+                                                        .styleFrom(
+                                                            side: BorderSide(
+                                                                color: Colors
+                                                                    .blue)),
+                                                    onPressed: () {
+                                                      _gotoSignUpScreen(
+                                                          context);
+                                                    },
+                                                    child: Text('New Account'))
+                                              ]),
+                                        ],
+                                      )
                                   ]))))
                 ]))));
   }
