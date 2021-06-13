@@ -68,10 +68,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       width: SizeConfig.screenWidth * 0.70,
                       height: SizeConfig.screenHeight * 0.35,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20.0)),
+                          borderRadius: BorderRadius.circular(10.0)),
                       child: Card(
                           shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20.0)),
+                              borderRadius: BorderRadius.circular(10.0)),
                           elevation: 5.0,
                           child: Form(
                               key: _formKey,

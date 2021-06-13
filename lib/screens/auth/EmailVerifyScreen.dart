@@ -142,7 +142,9 @@ class _EmailConfirmationScreenState extends State<EmailConfirmationScreen> {
                                                                 .circular(
                                                                     10.0)),
                                                     child: TextButton.icon(
-                                                        onPressed: () {},
+                                                        onPressed: () =>
+                                                            _resendCode(
+                                                                context),
                                                         icon:
                                                             Icon(Icons.refresh),
                                                         label: Text(
@@ -238,6 +240,20 @@ class _EmailConfirmationScreenState extends State<EmailConfirmationScreen> {
     }
   }
 
+  void _resendCode(BuildContext context) async {
+    if (_formKey.currentState.validate()) {
+      FocusScope.of(context).unfocus();
+      await Provider.of<AuthenticateProvider>(context, listen: false)
+          .reConfirmAccount(email)
+          .then((_) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text('Code Sent Successfully'),
+          duration: Duration(seconds: 2),
+        ));
+      });
+    }
+  }
+
   void _showErrorDialog(String message) {
     showDialog(
         barrierDismissible: false,
@@ -260,18 +276,4 @@ class _EmailConfirmationScreenState extends State<EmailConfirmationScreen> {
                       })
                 ]));
   }
-
-  // void _resendCode(BuildContext context) async {
-  //   if (_formKey.currentState.validate()) {
-  //     FocusScope.of(context).unfocus();
-  //     await Provider.of<AuthenticateProvider>(context, listen: false)
-  //         .resendCode(email)
-  //         .then((ResendSignUpCodeResult result) {
-  //       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-  //         content: Text('Code Sent Successfully'),
-  //         duration: Duration(seconds: 2),
-  //       ));
-  //     });
-  //   }
-  // }
 }
